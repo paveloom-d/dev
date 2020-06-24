@@ -1,0 +1,21 @@
+language: minimal
+
+os:
+  - linux
+  - osx
+  - windows
+
+arch:
+  - x64
+  - x86
+
+services:
+  - docker
+
+script:
+  - docker build . -t image
+  - docker run --name container -d -t image
+  - docker exec container zsh --version
+
+notifications:
+  email: false
