@@ -13,7 +13,8 @@ services:
   - docker
 
 script:
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+  - |
+    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     docker build . -t image
     docker run --name container -d -t image
     docker exec container zsh --version
