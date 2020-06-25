@@ -21,7 +21,11 @@ sudo service docker restart
 
 # Build the image
 printf "\nBuilding the image...\n\n"
-CI=true dive build -t image --squash .
+docker build -t image --squash .
+
+# Analyse the image
+printf "\nAnalyzing the image...\n\n"
+CI=true dive image
 
 # Delete unnecessary build images
 printf "\nBuilding the image...\n\n"
