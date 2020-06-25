@@ -3,26 +3,15 @@ dist: bionic
 
 os:
   - linux
-  - windows
-
-arch:
-  - amd64
-  - i386
 
 services:
   - docker
 
 script:
   - |
-    if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     docker build . -t image
     docker run --name container -d -t image
     docker exec container zsh --version
-    else
-    docker build . --experimental -t image
-    docker run --name container -d -t image
-    docker exec container zsh --version
-    fi
 
 notifications:
   email: false
