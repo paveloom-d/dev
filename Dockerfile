@@ -3,6 +3,8 @@ FROM alpine:3.12.0
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
+LABEL version="0.1.0"
+LABEL description="This is paveloom's dev image."
 
 # Install Zsh
 RUN apk update && \
