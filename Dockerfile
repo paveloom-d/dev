@@ -6,8 +6,11 @@ LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
 
 # Install Zsh
 RUN apk update && \
+    # Install the package
     apk add --no-cache zsh=5.8-r1 && \
+    # Remove cache
     rm -f /tmp/* /etc/apk/cache/* && \
+    # Change default shell
     sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
 # Set SHELL to Zsh
