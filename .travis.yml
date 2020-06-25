@@ -8,10 +8,7 @@ services:
   - docker
 
 script:
-  - |
-    docker build . -t image
-    docker run --name container -d -t image
-    docker exec container zsh --version
+  - bash .github/scripts/build.bash
 
 notifications:
   email: false
