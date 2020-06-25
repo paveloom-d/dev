@@ -11,12 +11,13 @@ printf "\nInstalling dive...\n\n"
 sudo apt install ./dive_0.9.2_linux_amd64.deb
 
 # Activate experimental features
-printf "\nActivating experimental features...\n\n"
+printf "\nActivating experimental features...\n"
 sudo tee /etc/docker/daemon.json > /dev/null << EOF
 {
     "experimental": true
 }
 EOF
+sudo service docker restart
 
 # Build the image
 printf "\nBuilding the image...\n\n"
