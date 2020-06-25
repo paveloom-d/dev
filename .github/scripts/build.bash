@@ -7,7 +7,7 @@ printf "\nDownloading dive...\n\n"
 wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
 
 # Install dive
-printf "\nInstalling dive...\n\n"
+printf "Installing dive...\n\n"
 sudo apt install ./dive_0.9.2_linux_amd64.deb
 
 # Activate experimental features
@@ -28,7 +28,7 @@ printf "\nAnalyzing the image...\n\n"
 CI=true dive image
 
 # Delete unnecessary build images
-printf "\nBuilding the image...\n\n"
+printf "Building the image...\n\n"
 docker images -q | grep -E -v "$(docker images -q 'image')|$(docker images -q 'alpine')" | xargs docker rmi
 
 # Run a container
