@@ -16,28 +16,31 @@ ENV USER=paveloom
 ENV HOME /home/$USER
 
 # Temporarily copy scripts to the root
-ADD scripts /scripts
+COPY scripts /scripts
 
-# Allow their execution
+# Allow their execution and let user own them
 RUN chmod -R +x /scripts
 
 # Set up a new user
-RUN /scripts/basics/set-up-new-user.sh
+RUN /scripts/root/basics/set-up-new-user.sh
 
 # Install essential packages
-RUN /scripts/basics/install-essential-packages.sh
+RUN /scripts/root/basics/install-essential-packages.sh
 
-# Install Zsh and set up OhMyZsh
-RUN /scripts/zsh/install-zsh-and-ohmyzsh.sh
+# Install Zsh
+RUN /scripts/root/zsh/install-zsh.sh
 
 # Set SHELL to Zsh
 ENV SHELL /bin/zsh
-
-# Remove scripts
-RUN rm -rf /scripts
 
 # Switch to the created user
 USER $USER
 
 # Switch to the home directory of this user
 WORKDIR $HOME
+
+# Install OhMyZsh
+RUN /scripts/user/ohmyzsh/install-ohmyzsh.sh
+
+# Remove scripts
+RUN sudo rm -rf /scripts

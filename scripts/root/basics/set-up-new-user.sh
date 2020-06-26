@@ -21,4 +21,4 @@ chmod 0440 /etc/sudoers.d/$USER
 
 # Let user own home directory
 echo -e '\e[1m\033[36m> Letting new user to own home directory...\033[0m\n'
-sudo chown -R $USER:$USER $HOME
+chown -R $USER:$USER $HOME
