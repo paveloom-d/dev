@@ -22,11 +22,22 @@ sed -i '/# alias zshconfig="mate ~\/\.zshrc"/c\alias zshcfg="nano ~\/\.zshrc"' ~
 # Change colors of public directories
 echo -e '\e[1m\033[36m> Appending custom config changes...\033[0m'
 echo '
+# Settings for Zsh
+
+# Disable verification of insecure directories
+ZSH_DISABLE_COMPFIX="true"
+
+# Settings for zsh-autosuggestions plugin
+
+# Change the color of a suggestion
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff"
+
+# Theme settings
+
 # Change colors of public directories
 export LS_COLORS="$LS_COLORS:ow=1;35:tw=1;35:"
 
-# Changing display
-export DISPLAY=localhost:0.0
+# Other
 
 # Fixing GPG
 export GPG_TTY=$(tty)
@@ -35,5 +46,25 @@ export GPG_TTY=$(tty)
 eval "$(ssh-agent -s)" > /dev/null 2>&1' >> ~/.zshrc
 
 # Copy default theme
-echo -e '\e[1m\033[36m> Copying default theme...\033[0m\n'
+echo -e '\e[1m\033[36m> Copying default theme...\033[0m'
 cp ~/.oh-my-zsh/themes/robbyrussell.zsh-theme ~/.oh-my-zsh/custom/themes/paveloom.zsh-theme
+
+# Change the theme settings
+echo -e '\e[1m\033[36m> Changing the theme settings...\033[0m'
+sed -i '/PROMPT=/c\PROMPT="%(?:%{$fg_bold[green]%}~>:%{$fg_bold[red]%}~>)"' ~/.oh-my-zsh/custom/themes/paveloom.zsh-theme
+
+# Change the theme
+echo -e '\e[1m\033[36m> Changing the theme...\033[0m'
+sed -i '/ZSH_THEME="robbyrussell"/c\ZSH_THEME="paveloom"' ~/.zshrc
+
+# Activate nano's default syntax highlighting
+echo -e '\e[1m\033[36m> Activating nano'\''s default syntax highlighting...\033[0m'
+echo 'include /usr/share/nano/*.nanorc' > ~/.nanorc
+
+# Change some colors of ls output
+echo -e '\e[1m\033[36m> Changing some colors of ls output...\033[0m\n'
+sed -i '/source $ZSH\/oh-my-zsh./c\
+# Change colors of public directories\
+export LS_COLORS="$LS_COLORS:di=1;34:ow=1;31:tw=1;31:"\
+\
+source $ZSH/oh-my-zsh.sh' ~/.zshrc
