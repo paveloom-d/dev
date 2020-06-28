@@ -46,10 +46,10 @@ If you want to develop docker containers inside the container, it is recommended
 docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
 ```
 
-This needs that your local socket has read and write privileges for others group. You can give them like this:
+This requires that your local socket has read and write privileges for others group. You can give them like this:
 
 ```bash
-chmod 666 /var/run/docker.sock
+chmod o+rw /var/run/docker.sock
 ```
 
 If you don't need this functionality, you can omit the `-v` flag above.
@@ -68,7 +68,7 @@ make run
 make in
 ```
 
-Be mindful though that the build command here will delete all other images except mine and Alpine's.
+Build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `build` inside Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
 
 ### Development
 
