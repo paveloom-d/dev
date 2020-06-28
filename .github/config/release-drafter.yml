@@ -7,11 +7,11 @@ template: |
 version-resolver:
   major:
     labels:
-      - 'major'
+      - 'Major'
   minor:
     labels:
-      - 'minor'
+      - 'Minor'
   patch:
     labels:
-      - 'patch'
+      - 'Patch'
   default: patch
