@@ -40,7 +40,7 @@ echo -e '\n\e[1m\033[36mTesting if Zsh is installed...\033[0m\n'
 docker exec container zsh --version
 
 # Open a docker socket for others group
-echo -e ']n\e[1m\033[36mOpening a docker socket for others group...\033[0m\n'
+echo -e '\n\e[1m\033[36mOpening a docker socket for others group...\033[0m\n'
 sudo chmod o+rw /var/run/docker.sock
 
 # Test if docker is installed (also check permissions)

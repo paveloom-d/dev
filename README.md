@@ -34,7 +34,15 @@ docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.1.0
 
 ### Build, Run, Enter
 
-There is nothing specific when building, although I would recommend squashing the image. In the root directory (where Dockerfile is located) run the following:
+There is nothing specific when building, although I would recommend squashing the image. This means using docker's `--squash` option, which is an experimental feature. To enable it, be sure to put the following code in `/etc/docker/daemon.json`:
+
+```json
+{
+    "experimental": true
+}
+```
+
+To build the image in the root directory (where Dockerfile is located) run the following:
 
 ```bash
 docker build -t image --squash .
