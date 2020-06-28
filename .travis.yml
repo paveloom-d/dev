@@ -1,0 +1,14 @@
+language: shell
+dist: bionic
+
+os:
+  - linux
+
+services:
+  - docker
+
+script:
+  - bash .github/scripts/build.bash
+
+notifications:
+  email: false
