@@ -5,10 +5,10 @@
 - Base image: alpine (3.12.0)
 - Basic packages:
     - sudo (1.9.0-r0)
-    - git=2.26.2-r0
-    - nano=4.9.3-r0
-    - nano-syntax=4.9.3-r0
-    - openssh=8.3_p1-r0
+    - git (2.26.2-r0)
+    - nano (4.9.3-r0)
+    - nano-syntax (4.9.3-r0)
+    - openssh (8.3_p1-r0)
 - User (paveloom) set-up
 - Zsh (5.8-r1) as default shell
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
