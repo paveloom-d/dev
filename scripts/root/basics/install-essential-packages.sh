@@ -16,5 +16,9 @@ echo -e '\e[1m\033[36m> Installing nano-syntax...\033[0m'
 apk add --no-cache nano-syntax=4.9.3-r0 >/dev/null
 
 # Install openssh
-echo -e '\e[1m\033[36m> Installing openssh...\033[0m\n'
+echo -e '\e[1m\033[36m> Installing openssh...\033[0m'
 apk add --no-cache openssh=8.3_p1-r0 >/dev/null
+
+# Install shadow
+echo -e '\e[1m\033[36m> Installing shadow...\033[0m\n'
+apk add --no-cache shadow=4.8.1-r0 >/dev/null

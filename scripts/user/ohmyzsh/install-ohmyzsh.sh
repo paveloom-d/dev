@@ -24,9 +24,6 @@ echo -e '\e[1m\033[36m> Appending custom config changes...\033[0m'
 echo '
 # Settings for Zsh
 
-# Disable verification of insecure directories
-ZSH_DISABLE_COMPFIX="true"
-
 # Settings for zsh-autosuggestions plugin
 
 # Change the color of a suggestion
@@ -61,10 +58,13 @@ sed -i '/ZSH_THEME="robbyrussell"/c\ZSH_THEME="paveloom"' ~/.zshrc
 echo -e '\e[1m\033[36m> Activating nano'\''s default syntax highlighting...\033[0m'
 echo 'include /usr/share/nano/*.nanorc' > ~/.nanorc
 
-# Change some colors of ls output
-echo -e '\e[1m\033[36m> Changing some colors of ls output...\033[0m\n'
+# Add some configuration before sourcing
+echo -e '\e[1m\033[36m> Adding some configuration before sourcing...\033[0m\n'
 sed -i '/source $ZSH\/oh-my-zsh./c\
 # Change colors of public directories\
 export LS_COLORS="$LS_COLORS:di=1;34:ow=1;31:tw=1;31:"\
+\
+# Disable verification of insecure directories\
+ZSH_DISABLE_COMPFIX="true"\
 \
 source $ZSH/oh-my-zsh.sh' ~/.zshrc

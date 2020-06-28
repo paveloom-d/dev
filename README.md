@@ -9,6 +9,7 @@
     - nano (4.9.3-r0)
     - nano-syntax (4.9.3-r0)
     - openssh (8.3_p1-r0)
+    - shadow (4.8.1-r0)
 - User (paveloom) set-up
 - Zsh (5.8-r1) as default shell
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
@@ -21,7 +22,7 @@
 This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev
+docker pull paveloom/dev:0.1.0
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
@@ -30,22 +31,35 @@ or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.1.0
 ```
 
-
 ### Build, Run, Enter
 
-There is nothing specific when building, although I would recommend squashing the image. In the root directory (where Dockerfile is located) run the following:
+There is nothing specific when building, although I would recommend squashing the image. This means using docker's `--squash` option, which is an experimental feature. To enable it, be sure to put the following code in `/etc/docker/daemon.json`:
+
+```json
+{
+    "experimental": true
+}
+```
+
+To build the image in the root directory (where Dockerfile is located) run the following:
 
 ```bash
 docker build -t image --squash .
 ```
 
-If you want to develop docker containers inside this container, it is recommended to bind-mount Docker socket when running it, as follows:
+If you want to develop docker containers inside the container, it is recommended to bind-mount Docker socket when running it, as follows:
 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
 ```
 
-If you don't need this functionality, you can omit the `-v` flag above. Although it wouldn't hurt if you didn't do it.
+This requires that your local socket has read and write privileges for others group. You can give them like this:
+
+```bash
+sudo chmod o+rw /var/run/docker.sock
+```
+
+If you don't need this functionality, you can omit the `-v` flag above.
 
 Since Zsh is the default shell, enter the container using the following command:
 
@@ -61,7 +75,7 @@ make run
 make in
 ```
 
-Be mindful though that the build command here will delete all other images except mine and Alpine's.
+Build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `build` inside Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
 
 ### Development
 
