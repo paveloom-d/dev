@@ -45,13 +45,13 @@ export GPG_TTY=$(tty)
 # Starting ssh-agent
 eval "$(ssh-agent -s)" > /dev/null 2>&1' >> ~/.zshrc
 
-# Copy default theme
-echo -e '\e[1m\033[36m> Copying default theme...\033[0m'
-cp ~/.oh-my-zsh/themes/robbyrussell.zsh-theme ~/.oh-my-zsh/custom/themes/paveloom.zsh-theme
+# Create a theme
+echo -e '\e[1m\033[36m> Creating a theme...\033[0m'
+echo 'PROMPT="%(?:%{$fg_bold[green]%}~>:%{$fg_bold[red]%}~>)"
+PROMPT+='\'' %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'\''
 
-# Change the theme settings
-echo -e '\e[1m\033[36m> Changing the theme settings...\033[0m'
-sed -i '/PROMPT=/c\PROMPT="%(?:%{$fg_bold[green]%}~>:%{$fg_bold[red]%}~>)"' ~/.oh-my-zsh/custom/themes/paveloom.zsh-theme
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}<"
+ZSH_THEME_GIT_PROMPT_SUFFIX=">%{$reset_color%} "' > ~/.oh-my-zsh/custom/themes/paveloom.zsh-theme
 
 # Change the theme
 echo -e '\e[1m\033[36m> Changing the theme...\033[0m'
