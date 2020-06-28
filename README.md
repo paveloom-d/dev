@@ -16,7 +16,22 @@
         - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - Theme adjustments
 
- ### Build, Run, Enter
+### Download
+
+This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
+
+```bash
+docker pull paveloom/dev
+```
+
+or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
+
+```bash
+docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.1.0
+```
+
+
+### Build, Run, Enter
 
 There is nothing specific when building, although I would recommend squashing the image. In the root directory (where Dockerfile is located) run the following:
 
