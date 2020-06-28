@@ -9,6 +9,7 @@
     - nano (4.9.3-r0)
     - nano-syntax (4.9.3-r0)
     - openssh (8.3_p1-r0)
+    - shadow (4.8.1-r0)
 - User (paveloom) set-up
 - Zsh (5.8-r1) as default shell
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
@@ -39,13 +40,19 @@ There is nothing specific when building, although I would recommend squashing th
 docker build -t image --squash .
 ```
 
-If you want to develop docker containers inside this container, it is recommended to bind-mount Docker socket when running it, as follows:
+If you want to develop docker containers inside the container, it is recommended to bind-mount Docker socket when running it, as follows:
 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
 ```
 
-If you don't need this functionality, you can omit the `-v` flag above. Although it wouldn't hurt if you didn't do it.
+This needs that your local socket has read and write privileges for others group. You can give them like this:
+
+```bash
+chmod 666 /var/run/docker.sock
+```
+
+If you don't need this functionality, you can omit the `-v` flag above.
 
 Since Zsh is the default shell, enter the container using the following command:
 

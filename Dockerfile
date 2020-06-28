@@ -30,6 +30,9 @@ RUN /scripts/root/basics/install-essential-packages.sh
 # Install Zsh
 RUN /scripts/root/zsh/install-zsh.sh
 
+# Install docker
+RUN /scripts/root/docker/install-docker.sh
+
 # Set SHELL to Zsh
 ENV SHELL /bin/zsh
 
