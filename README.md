@@ -49,7 +49,7 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d i
 This requires that your local socket has read and write privileges for others group. You can give them like this:
 
 ```bash
-chmod o+rw /var/run/docker.sock
+sudo chmod o+rw /var/run/docker.sock
 ```
 
 If you don't need this functionality, you can omit the `-v` flag above.
