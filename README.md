@@ -53,7 +53,7 @@ Since Zsh is the default shell, enter the container using the following command:
 docker exec -it container zsh
 ```
 
-There is also a [Makefile](Makefile) published, which I use for the development. You can use it to execute the procedure above as simple as:
+There is also a [Makefile](https://github.com/paveloom-d/dev/blob/master/Makefile) published, which I use for the development. You can use it to execute the procedure above as simple as:
 
 ```bash
 make build
@@ -95,4 +95,4 @@ Different terminals (like Xterm), programs (like Visual Studio Code) and utiliti
 
 This one is based on [synthwave-everything](https://atomcorp.github.io/themes/?theme=synthwave-everything), which, I believe, was supposed to be used for local development. I made some changes to make it usable for remote development. So, with this being set up correctly, it should be looking something like this:
 
-![](.github/pictures/colors.png)
+![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/colors.png)
