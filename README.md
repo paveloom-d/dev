@@ -22,7 +22,7 @@
 This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev
+docker pull paveloom/dev:0.1.0
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
@@ -30,7 +30,6 @@ or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 ```bash
 docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.1.0
 ```
-
 
 ### Build, Run, Enter
 
