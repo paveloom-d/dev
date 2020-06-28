@@ -24,7 +24,7 @@ There is nothing specific when building, although I would recommend squashing th
 docker build -t image --squash .
 ```
 
-If you want to develop docker containers inside this container, it is recommended to bind-mount Docker socket when running a container as follows:
+If you want to develop docker containers inside this container, it is recommended to bind-mount Docker socket when running it, as follows:
 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
@@ -38,7 +38,7 @@ Since Zsh is the default shell, enter the container using the following command:
 docker exec -it container zsh
 ```
 
-There is also a Makefile published, which I use for the development. You can use it to execute the procedure above as simple as:
+There is also a [Makefile](Makefile) published, which I use for the development. You can use it to execute the procedure above as simple as:
 
 ```bash
 make build
@@ -50,7 +50,7 @@ Be mindful though that the build command here will delete all other images excep
 
 ### Development
 
-There is a ZenHub board, so make sure you have installed the extension to see it.
+There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
 
 ### Color theme
 
