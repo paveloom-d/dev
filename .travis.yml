@@ -10,5 +10,13 @@ services:
 script:
   - bash .github/scripts/build.bash
 
+jobs:
+  include:
+    - stage: "Build & Check"
+      name: "Build"
+      script: bash .github/scripts/Build.bash
+    - script: bash .github/scripts/VersionCheck.bash
+      name: "Check Version"
+
 notifications:
   email: false
