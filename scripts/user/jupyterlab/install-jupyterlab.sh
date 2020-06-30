@@ -21,5 +21,12 @@ echo -e '\e[1m\033[36m> Installing jupyter...\033[0m'
 pip3 install --no-cache-dir jupyter==1.0.0 >/dev/null
 
 # Install jupyterlab
-echo -e '\e[1m\033[36m> Installing jupyterlab...\033[0m\n'
+echo -e '\e[1m\033[36m> Installing jupyterlab...\033[0m'
 pip3 install --no-cache-dir jupyterlab==2.1.5 >/dev/null
+
+# Add aliases for running a notebook server
+echo -e '\e[1m\033[36m> Adding aliases for running a notebook server...\033[0m\n'
+echo '
+# Aliases for running a notebook server
+alias jnote="jupyter notebook --ip 0.0.0.0 --no-browser"
+alias jlab="jupyter lab --ip 0.0.0.0 --no-browser"' >> ~/.zshrc

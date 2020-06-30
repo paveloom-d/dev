@@ -77,6 +77,22 @@ make in
 
 Build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `build` inside Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
 
+### Jupyter
+
+To use Jupyter Notebook / Jupyter Lab you will need to do two things. First, publish the `8888` port when running a container:
+
+```bash
+docker run -p 8888:8888 --name container -t -d image
+```
+
+Secondly, when in the container, make notebook server listen on `0.0.0.0`:
+
+```bash
+jupyter notebook --ip 0.0.0.0 --no-browser
+```
+
+There are convenient aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for Jupyter Lab.
+
 ### Development
 
 There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
