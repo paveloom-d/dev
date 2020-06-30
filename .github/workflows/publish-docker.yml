@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - master
+      - feature
 
 jobs:
   update:
@@ -14,12 +15,14 @@ jobs:
     - uses: actions/checkout@master
     - name: Get release version
       id: get_version
-      run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
-    - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: paveloom-d/dev/dev
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: docker.pkg.github.com
-        tags: "latest,${{ env.RELEASE_VERSION }}"
+      run: |
+        echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+        echo ${GITHUB_REF:10}
+#     - name: Publish to Registry
+#       uses: elgohr/Publish-Docker-Github-Action@master
+#       with:
+#         name: paveloom-d/dev/dev
+#         username: ${{ github.actor }}
+#         password: ${{ secrets.GITHUB_TOKEN }}
+#         registry: docker.pkg.github.com
+#         tags: "latest,${{ env.RELEASE_VERSION }}"
