@@ -16,7 +16,7 @@ jobs:
     - name: Get release version
       run: bash .github/scripts/PublishDocker.bash
 
-    - name: Publish to Registry (with tagged version)
+    - name: Publish to Registry (with tagged image)
       if: ${{ env.PUBLISH_RELEASE_VERSION == 'true' }}
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
@@ -26,7 +26,7 @@ jobs:
         registry: docker.pkg.github.com
         tags: "latest,${{ env.RELEASE_VERSION }}"
 
-    - name: Publish to Registry (without tagged version)
+    - name: Publish to Registry (without tagged image)
       if: ${{ env.PUBLISH_RELEASE_VERSION == 'false' }}
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
