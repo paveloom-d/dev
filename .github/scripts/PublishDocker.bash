@@ -12,7 +12,7 @@ LAST_VERSION=$(curl --silent "https://api.github.com/repos/$REPOSITORY/releases/
 if [ ! -z "$LAST_VERSION" ]; then
 
      # Get current tag
-     CURRENT_TAG=$(echo "${GITHUB_REF:10}" | sed 's/\///')
+     CURRENT_TAG=$(echo ${GITHUB_REF#refs/*/})
 
      # Print info
      echo -e "\n\e[1m\033[36mLast version: $LAST_VERSION\033[0m"
