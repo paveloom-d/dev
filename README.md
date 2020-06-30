@@ -3,7 +3,7 @@
 ### Contents
 
 - Base image: alpine (3.12.0)
-- Basic packages:
+- Essential packages:
     - sudo (1.9.0-r0)
     - git (2.26.2-r0)
     - nano (4.9.3-r0)
@@ -12,10 +12,19 @@
     - shadow (4.8.1-r0)
 - User (paveloom) set-up
 - Zsh (5.8-r1) as default shell
+- Docker (19.03.11-r0)
+- Python:
+    - py3-pyzmq (18.1.1-r0)
+    - py3-pip (20.1.1-r0)
+    - wheel (0.34.2)
+- Jupyter:
+    - jupyter (1.0.0)
+    - jupyterlab (2.1.5)
+    - [Aliases to run a notebook server](#jupyter)
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
     - Additional plugins:
         - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    - Theme adjustments
+    - [Theme adjustments](#color-theme)
 
 ### Download
 
@@ -79,7 +88,9 @@ Build rule will call [dive](https://github.com/wagoodman/dive), so be sure you h
 
 ### Jupyter
 
-To use Jupyter Notebook / Jupyter Lab you will need to do two things. First, publish the `8888` port when running a container:
+To use Jupyter Notebook / Jupyter Lab you will need to do two things.
+
+First, publish the `8888` port when running a container:
 
 ```bash
 docker run -p 8888:8888 --name container -t -d image
