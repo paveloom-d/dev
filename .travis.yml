@@ -4,6 +4,10 @@ dist: bionic
 os:
   - linux
 
+branches:
+  except:
+  - master
+
 services:
   - docker
 
@@ -14,11 +18,9 @@ jobs:
   include:
     - stage: "Build & Check"
       name: "Build Docker Image"
-      if: branch != master
       script: bash .github/scripts/Build.bash
     - script: bash .github/scripts/VersionCheck.bash
       name: "Check Version"
-      if: branch != master
 
 notifications:
   email: false
