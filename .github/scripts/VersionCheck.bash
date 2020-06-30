@@ -56,7 +56,7 @@ get_latest_release() {
 # and Semantic Versioning was respected)
 LAST_VERSION=$(get_latest_release "paveloom-d/dev")
 
-# Check if there is a some tag
+# Check if there is some tag
 if [ ! -z "$LAST_VERSION" ]; then
 
      # Escape last version
