@@ -1,7 +1,12 @@
 # Description
 
+### A notice
+
+If you are not sure, please, follow [the instructions of the last released version](https://github.com/paveloom-d/dev/tree/9251bb9ba7cc404bf30149562e68c123de6bc667) only.
+
 ### Contents
 
+- Image version: 0.2.0
 - Base image: alpine (3.12.0)
 - Essential packages:
     - sudo (1.9.0-r0)
