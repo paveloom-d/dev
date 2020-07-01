@@ -2,11 +2,11 @@
 
 ### A notice
 
-If you are not sure, please, follow [the instructions of the last released version](https://github.com/paveloom-d/dev/releases/latest) only.
+If you are not sure, please, follow only the instructions linked to [the last tagged version of the image](https://github.com/paveloom-d/dev/packages/290377/versions). The development happens in-place, so the description you see on the [landing page](https://github.com/paveloom-d/dev) may differ drastically.
 
 ### Contents
 
-- Image version: 0.2.0
+- Image version: 0.3.0
 - Base image: alpine (3.12.0)
 - Essential packages:
     - bash (5.0.17-r0)
@@ -37,13 +37,13 @@ If you are not sure, please, follow [the instructions of the last released versi
 This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev:0.2.0
+docker pull paveloom/dev:0.3.0
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.2.0
+docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.0
 ```
 
 ### Build, Run, Enter

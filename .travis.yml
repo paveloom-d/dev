@@ -7,12 +7,10 @@ os:
 branches:
   except:
   - master
+  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
 services:
   - docker
-
-script:
-  - bash .github/scripts/build.bash
 
 jobs:
   include:
