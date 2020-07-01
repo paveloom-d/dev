@@ -90,7 +90,7 @@ make run
 make in
 ```
 
-The build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `build` inside the Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
+The build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `docker` inside the Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
 
 ### Jupyter
 
