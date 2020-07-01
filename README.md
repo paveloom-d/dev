@@ -27,6 +27,8 @@ If you are not sure, please, follow only the instructions linked to [the last ta
     - jupyter (1.0.0)
     - jupyterlab (2.1.5)
     - [Aliases to run a notebook server](#jupyter)
+- Julia (1.5.0-rc1):
+    - [Revise.jl](https://github.com/timholy/Revise.jl) (precompiled)
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
     - Additional plugins:
         - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
