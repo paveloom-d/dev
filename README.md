@@ -9,6 +9,7 @@ If you are not sure, please, follow [the instructions of the last released versi
 - Image version: 0.2.0
 - Base image: alpine (3.12.0)
 - Essential packages:
+    - bash (5.0.17-r0)
     - sudo (1.9.0-r0)
     - git (2.26.2-r0)
     - nano (4.9.3-r0)
