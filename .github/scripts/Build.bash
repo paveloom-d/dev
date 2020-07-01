@@ -6,12 +6,12 @@
 # Travis triggers a build for a base commit of a newly created branch,
 # basically building the same image again, which is not necessary)
 
-echo -e '\n\e[1m\033[36mCurrent branch: $TRAVIS_BRANCH\033[0m\n'
+echo -e "\n\e[1m\033[36mCurrent branch: $TRAVIS_BRANCH\033[0m\n"
 
 if [ "$TRAVIS_BRANCH" != "master" ]; then
 
     # Download dive
-    echo -e '\n\e[1m\033[36mDownloading dive...\033[0m\n'
+    echo -e '\e[1m\033[36mDownloading dive...\033[0m\n'
     wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
 
     # Install dive
@@ -70,7 +70,7 @@ EOF
 else
 
     # Print info
-    echo -e '\n\e[1m\033[36mThis build was probably triggered by creating a new\033[0m'
+    echo -e '\e[1m\033[36mThis build was probably triggered by creating a new\033[0m'
     echo -e '\e[1m\033[36mbranch, so there is no need to rebuild the image.\033[0m\n'
 
 fi

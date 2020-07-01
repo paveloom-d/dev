@@ -7,7 +7,7 @@
 # Travis triggers a build for a base commit of a newly created branch,
 # basically checking the version again, which is not necessary)
 
-echo -e '\n\e[1m\033[36mCurrent branch: $TRAVIS_BRANCH\033[0m\n'
+echo -e "\n\e[1m\033[36mCurrent branch: $TRAVIS_BRANCH\033[0m\n"
 
 if [ "$TRAVIS_BRANCH" != "master" ]; then
 
@@ -74,7 +74,7 @@ if [ "$TRAVIS_BRANCH" != "master" ]; then
           LOCAL_VERSION=$(grep "LABEL version=" Dockerfile | grep -o "\".*\"" | sed 's/\"//g')
 
           # Print version
-          echo -e "\n\e[1m\033[36mLast version:  $ESCAPED_LAST_VERSION\033[0m"
+          echo -e "\e[1m\033[36mLast version:  $ESCAPED_LAST_VERSION\033[0m"
           echo -e "\e[1m\033[36mLocal version: $LOCAL_VERSION\033[0m\n"
 
           # Check whether local version differs from the last one
@@ -105,14 +105,14 @@ if [ "$TRAVIS_BRANCH" != "master" ]; then
      else
 
           # Print information
-          echo -e "\n\e[1m\033[36mNo release has been found, version checking will be omitted.\033[0m\n"
+          echo -e "\e[1m\033[36mNo release has been found, version checking will be omitted.\033[0m\n"
 
      fi
 
 else
 
     # Print info
-    echo -e '\n\e[1m\033[36mThis build was probably triggered by creating a new\033[0m'
+    echo -e '\e[1m\033[36mThis build was probably triggered by creating a new\033[0m'
     echo -e '\e[1m\033[36mbranch, so there is no need to check the version again.\033[0m\n'
 
 fi
