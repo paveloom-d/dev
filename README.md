@@ -2,7 +2,7 @@
 
 ### A notice
 
-If you are not sure, please, follow only the instructions linked to [the last tagged version of the image](https://github.com/paveloom-d/dev/packages/290377/versions). The development happens in-place, so the description you see on the [landing page](https://github.com/paveloom-d/dev) may differ drastically.
+If you are not sure, please, follow only the instructions linked to [the last tagged version of the image](https://github.com/paveloom-d/dev/packages/290377/versions). The development happens in-place, so the description you see on the [landing page](https://github.com/paveloom-d/dev) may differ drastically and not be usable for the released versions yet.
 
 ### Contents
 
@@ -27,6 +27,8 @@ If you are not sure, please, follow only the instructions linked to [the last ta
     - jupyter (1.0.0)
     - jupyterlab (2.1.5)
     - [Aliases to run a notebook server](#jupyter)
+- Julia (1.5.0-rc1):
+    - [Revise.jl](https://github.com/timholy/Revise.jl) (precompiled)
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
     - Additional plugins:
         - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
