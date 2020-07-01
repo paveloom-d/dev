@@ -50,6 +50,9 @@ WORKDIR $HOME
 # Install OhMyZsh
 RUN /scripts/user/ohmyzsh/install-ohmyzsh.sh
 
+# Add ~/.local/bin to the PATH
+ENV PATH=$PATH:/home/$USER/.local/bin
+
 # Install JupyterLab
 RUN /scripts/user/jupyterlab/install-jupyterlab.sh
 

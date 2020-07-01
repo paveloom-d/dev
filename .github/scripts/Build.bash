@@ -52,9 +52,9 @@ echo -e '\n\e[1m\033[36mRunning hello-world in docker...\033[0m\n'
 docker exec container docker run hello-world
 
 # Check if Jupyter is installed
-echo -e '\n\e[1m\033[36mChecking if Jupyter is installed...\033[0m\n'
+echo -e '\e[1m\033[36mChecking if Jupyter is installed...\033[0m\n'
 docker exec container jupyter --version
 
 # Stop the container
-echo -e '\e[1m\033[36mStopping the container...\033[0m\n'
+echo -e '\n\e[1m\033[36mStopping the container...\033[0m\n'
 docker stop container
