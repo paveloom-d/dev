@@ -56,5 +56,11 @@ ENV PATH=$PATH:/home/$USER/.local/bin
 # Install JupyterLab
 RUN /scripts/user/jupyterlab/install-jupyterlab.sh
 
+# Add ~/Other/julia/bin to the PATH
+ENV PATH=$PATH:/home/$USER/Other/julia/bin
+
+# Install julia
+RUN /scripts/user/julia/install-julia.sh
+
 # Remove scripts
 RUN sudo rm -rf /scripts
