@@ -12,9 +12,6 @@ branches:
 services:
   - docker
 
-script:
-  - bash .github/scripts/build.bash
-
 jobs:
   include:
     - stage: "Build & Check"
