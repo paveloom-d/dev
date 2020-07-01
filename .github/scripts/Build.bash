@@ -63,8 +63,8 @@ EOF
     echo -e '\e[1m\033[36mChecking if Jupyter is installed...\033[0m\n'
     docker exec container jupyter --version
 
-    # Check if Jupyter is installed
-    echo -e '\e[1m\033[36mChecking if Julia is installed...\033[0m\n'
+    # Check if Julia is installed
+    echo -e '\n\e[1m\033[36mChecking if Julia is installed...\033[0m\n'
     docker exec container julia --version
 
     # Stop the container
