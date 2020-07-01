@@ -3,6 +3,10 @@
 # Print info
 echo -e '\n\e[1m\033[36mInstalling essential packages:\033[0m'
 
+# Install bash
+echo -e '\e[1m\033[36m> Installing bash...\033[0m'
+apk add --no-cache bash=5.0.17-r0 >/dev/null
+
 # Install git
 echo -e '\e[1m\033[36m> Installing git...\033[0m'
 apk add --no-cache git=2.26.2-r0 >/dev/null

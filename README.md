@@ -1,9 +1,15 @@
 # Description
 
+### A notice
+
+If you are not sure, please, follow [the instructions of the last released version](https://github.com/paveloom-d/dev/tree/9251bb9ba7cc404bf30149562e68c123de6bc667) only.
+
 ### Contents
 
+- Image version: 0.2.0
 - Base image: alpine (3.12.0)
-- Basic packages:
+- Essential packages:
+    - bash (5.0.17-r0)
     - sudo (1.9.0-r0)
     - git (2.26.2-r0)
     - nano (4.9.3-r0)
@@ -12,10 +18,19 @@
     - shadow (4.8.1-r0)
 - User (paveloom) set-up
 - Zsh (5.8-r1) as default shell
+- Docker (19.03.11-r0)
+- Python:
+    - py3-pyzmq (18.1.1-r0)
+    - py3-pip (20.1.1-r0)
+    - wheel (0.34.2)
+- Jupyter:
+    - jupyter (1.0.0)
+    - jupyterlab (2.1.5)
+    - [Aliases to run a notebook server](#jupyter)
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
     - Additional plugins:
         - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    - Theme adjustments
+    - [Theme adjustments](#color-theme)
 
 ### Download
 
@@ -41,13 +56,13 @@ There is nothing specific when building, although I would recommend squashing th
 }
 ```
 
-To build the image in the root directory (where Dockerfile is located) run the following:
+To build the image run the following in the root directory (where Dockerfile is located):
 
 ```bash
 docker build -t image --squash .
 ```
 
-If you want to develop docker containers inside the container, it is recommended to bind-mount Docker socket when running it, as follows:
+If you want to develop docker containers inside the container, it is recommended to bind-mount Docker socket when running it as follows:
 
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
@@ -61,7 +76,7 @@ sudo chmod o+rw /var/run/docker.sock
 
 If you don't need this functionality, you can omit the `-v` flag above.
 
-Since Zsh is the default shell, enter the container using the following command:
+Since Zsh is the default shell, you can enter the container using the following command:
 
 ```bash
 docker exec -it container zsh
@@ -75,7 +90,25 @@ make run
 make in
 ```
 
-Build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `build` inside Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
+The build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `docker` inside the Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
+
+### Jupyter
+
+To use Jupyter Notebook / Jupyter Lab you will need to do two things.
+
+First, publish the `8888` port when running a container:
+
+```bash
+docker run -p 8888:8888 --name container -t -d image
+```
+
+Secondly, when in the container, make notebook server listen on `0.0.0.0`:
+
+```bash
+jupyter notebook --ip 0.0.0.0 --no-browser
+```
+
+There are convenient aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for Jupyter Lab.
 
 ### Development
 
@@ -107,6 +140,6 @@ Different terminals (like Xterm), programs (like Visual Studio Code) and utiliti
   "foreground": "#f0eff1"
 ```
 
-This one is based on [synthwave-everything](https://atomcorp.github.io/themes/?theme=synthwave-everything), which, I believe, was supposed to be used for local development. I made some changes to make it usable for remote development. So, with this being set up correctly, it should be looking something like this:
+This one is based on [synthwave-everything](https://atomcorp.github.io/themes/?theme=synthwave-everything), which, I guess, was supposed to be used for local development. I made some changes to make it usable for remote development. So, with this being set up correctly, it should be looking something like this:
 
 ![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/colors.png)

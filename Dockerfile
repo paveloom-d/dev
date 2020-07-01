@@ -7,7 +7,9 @@ FROM alpine:3.12.0
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
 LABEL version="0.2.0"
-LABEL description="This is paveloom's dev image."
+LABEL description="This is an image containing paveloom's personal development environment."
+LABEL github-repository="https://github.com/paveloom-d/dev"
+LABEL docker-repository="https://hub.docker.com/r/paveloom/dev"
 
 # Specify new user
 ENV USER=paveloom
@@ -30,11 +32,14 @@ RUN /scripts/root/basics/install-essential-packages.sh
 # Install Zsh
 RUN /scripts/root/zsh/install-zsh.sh
 
+# Set SHELL to Zsh
+ENV SHELL /bin/zsh
+
 # Install docker
 RUN /scripts/root/docker/install-docker.sh
 
-# Set SHELL to Zsh
-ENV SHELL /bin/zsh
+# Install python3
+RUN /scripts/root/python3/install-python3.sh
 
 # Switch to the created user
 USER $USER
@@ -44,6 +49,12 @@ WORKDIR $HOME
 
 # Install OhMyZsh
 RUN /scripts/user/ohmyzsh/install-ohmyzsh.sh
+
+# Add ~/.local/bin to the PATH
+ENV PATH=$PATH:/home/$USER/.local/bin
+
+# Install JupyterLab
+RUN /scripts/user/jupyterlab/install-jupyterlab.sh
 
 # Remove scripts
 RUN sudo rm -rf /scripts
