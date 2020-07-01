@@ -2,7 +2,7 @@
 
 ### A notice
 
-If you are not sure, please, follow [the instructions of the last released version](https://github.com/paveloom-d/dev/tree/9251bb9ba7cc404bf30149562e68c123de6bc667) only.
+If you are not sure, please, follow [the instructions of the last released version](https://github.com/paveloom-d/dev/releases/latest) only.
 
 ### Contents
 
