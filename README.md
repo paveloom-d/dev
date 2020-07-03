@@ -9,26 +9,29 @@ If you are not sure, please, follow only the instructions linked to [the last ta
 - Image version: 0.3.0
 - Base image: alpine (3.12.0)
 - Essential packages:
-    - bash (5.0.17-r0)
-    - sudo (1.9.0-r0)
-    - git (2.26.2-r0)
-    - nano (4.9.3-r0)
-    - nano-syntax (4.9.3-r0)
-    - openssh (8.3_p1-r0)
-    - shadow (4.8.1-r0)
+    - bash
+    - sudo
+    - git
+    - nano
+    - nano-syntax
+    - openssh
+    - shadow
 - User (paveloom) set-up
-- Zsh (5.8-r1) as default shell
-- Docker (19.03.11-r0)
+- Zsh as default shell
+- Docker
 - Python:
-    - py3-pyzmq (18.1.1-r0)
-    - py3-pip (20.1.1-r0)
-    - wheel (0.34.2)
+    - libzmq (@v3.10)
+    - py3-pyzmq
+    - python3
+    - py3-pip
+    - wheel
 - Jupyter:
-    - jupyter (1.0.0)
-    - jupyterlab (2.1.5)
+    - jupyter
+    - jupyterlab
     - [Aliases to run a notebook server](#jupyter)
 - Julia (1.5.0-rc1):
     - [Revise.jl](https://github.com/timholy/Revise.jl) (precompiled)
+    - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/) (precompiled)
 - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
     - Additional plugins:
         - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)

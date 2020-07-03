@@ -5,24 +5,24 @@ echo -e '\n\e[1m\033[36mInstalling essential packages:\033[0m'
 
 # Install bash
 echo -e '\e[1m\033[36m> Installing bash...\033[0m'
-apk add --no-cache bash=5.0.17-r0 >/dev/null
+apk add --no-cache bash >/dev/null
 
 # Install git
 echo -e '\e[1m\033[36m> Installing git...\033[0m'
-apk add --no-cache git=2.26.2-r0 >/dev/null
+apk add --no-cache git >/dev/null
 
 # Install nano
 echo -e '\e[1m\033[36m> Installing nano...\033[0m'
-apk add --no-cache nano=4.9.3-r0 >/dev/null
+apk add --no-cache nano >/dev/null
 
 # Install nano-syntax
 echo -e '\e[1m\033[36m> Installing nano-syntax...\033[0m'
-apk add --no-cache nano-syntax=4.9.3-r0 >/dev/null
+apk add --no-cache nano-syntax >/dev/null
 
 # Install openssh
 echo -e '\e[1m\033[36m> Installing openssh...\033[0m'
-apk add --no-cache openssh=8.3_p1-r0 >/dev/null
+apk add --no-cache openssh >/dev/null
 
 # Install shadow
 echo -e '\e[1m\033[36m> Installing shadow...\033[0m\n'
-apk add --no-cache shadow=4.8.1-r0 >/dev/null
+apk add --no-cache shadow >/dev/null

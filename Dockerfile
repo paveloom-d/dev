@@ -23,6 +23,9 @@ COPY scripts /scripts
 # Allow their execution and let user own them
 RUN chmod -R +x /scripts
 
+# Set up package repositories
+RUN /scripts/root/apk/set-up-repositories.sh
+
 # Set up a new user
 RUN /scripts/root/basics/set-up-new-user.sh
 

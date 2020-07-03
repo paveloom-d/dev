@@ -5,7 +5,7 @@ echo -e '\n\e[1m\033[36mSetting up a user:\033[0m'
 
 # Install sudo
 echo -e '\e[1m\033[36m> Installing sudo...\033[0m'
-apk add --no-cache sudo=1.9.0-r0 >/dev/null
+apk add --no-cache sudo >/dev/null
 
 # Create a new user
 echo -e '\e[1m\033[36m> Adding a user...\033[0m'

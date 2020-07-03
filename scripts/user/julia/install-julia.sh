@@ -16,6 +16,10 @@ tar -xf ~/Other/julia/julia*.tar.gz -C ~/Other/julia --strip-components 1
 echo -e '\e[1m\033[36m> Deleting the tarball...\033[0m'
 rm ~/Other/julia/julia*.tar.gz
 
-# Install Revise.jl
-echo -e '\e[1m\033[36m> Installing Revise.jl...\033[0m\n'
+# Install Revise
+echo -e '\e[1m\033[36m> Installing Revise...\033[0m'
 julia -e 'using Pkg; Pkg.add("Revise"); using Revise' >/dev/null 2>&1
+
+# Install IJulia
+echo -e '\e[1m\033[36m> Installing IJulia...\033[0m\n'
+julia -e 'using Pkg; Pkg.add("IJulia"); using IJulia' >/dev/null 2>&1
