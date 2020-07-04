@@ -2,7 +2,7 @@
 # layers use docker's --squash option when building
 
 # Base image
-FROM alpine:3.12.0
+FROM ubuntu:20.04
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
@@ -11,26 +11,29 @@ LABEL description="This is an image containing paveloom's personal development e
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL docker-repository="https://hub.docker.com/r/paveloom/dev"
 
-# Specify new user
-ENV USER=paveloom
-
-# Set HOME for this user
-ENV HOME /home/$USER
-
 # Temporarily copy scripts to the root
 COPY scripts /scripts
 
 # Allow their execution and let user own them
 RUN chmod -R +x /scripts
 
-# Set up package repositories
-RUN /scripts/root/apk/set-up-repositories.sh
+# Temporarily disable prompts during the build
+ARG DEBIAN_FRONTEND=noninteractive
 
-# Set up a new user
-RUN /scripts/root/basics/set-up-new-user.sh
+# Set a time zone for tzdata
+ENV TZ=Europe/Moscow
 
 # Install essential packages
-RUN /scripts/root/basics/install-essential-packages.sh
+RUN /scripts/root/essential-packages/install-essential-packages.sh
+
+# Specify new user
+ENV USER=paveloom
+
+# Set HOME for this user
+ENV HOME /home/$USER
+
+# Set up a new user
+RUN /scripts/root/user/set-up-new-user.sh
 
 # Install Zsh
 RUN /scripts/root/zsh/install-zsh.sh
@@ -38,11 +41,14 @@ RUN /scripts/root/zsh/install-zsh.sh
 # Set SHELL to Zsh
 ENV SHELL /bin/zsh
 
+# Install python3
+RUN /scripts/root/python/install-python.sh
+
+# Temporarily disable apt-key warnings
+ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
+
 # Install docker
 RUN /scripts/root/docker/install-docker.sh
-
-# Install python3
-RUN /scripts/root/python3/install-python3.sh
 
 # Switch to the created user
 USER $USER
@@ -56,6 +62,9 @@ RUN /scripts/user/ohmyzsh/install-ohmyzsh.sh
 # Add ~/.local/bin to the PATH
 ENV PATH=$PATH:/home/$USER/.local/bin
 
+# Install Python packages
+RUN /scripts/user/python/install-python-packages.sh
+
 # Install JupyterLab
 RUN /scripts/user/jupyterlab/install-jupyterlab.sh
 
@@ -67,3 +76,6 @@ RUN /scripts/user/julia/install-julia.sh
 
 # Remove scripts
 RUN sudo rm -rf /scripts
+
+# Set DEBIAN_FRONTEND to teletype
+ENV DEBIAN_FRONTEND=teletype

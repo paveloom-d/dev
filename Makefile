@@ -88,7 +88,7 @@
      # Build an image squashing all layers, dive into it, delete redundant layers
      build :
 	        dive build -t image --squash .
-	        docker images -q | grep -E -v "$$(docker images -q 'image')|$$(docker images -q 'alpine')" | xargs docker rmi
+	        docker images -q | grep -E -v "$$(docker images -q 'image')|$$(docker images -q 'ubuntu')" | xargs docker rmi
 
      ## Run a container
      run :
@@ -111,4 +111,4 @@
      reset :
 	        docker stop container
 	        docker rm container
-	        docker images -q | grep -v "$$(docker images -q 'alpine')" | xargs docker rmi
+	        docker images -q | grep -v "$$(docker images -q 'ubuntu')" | xargs docker rmi

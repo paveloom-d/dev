@@ -7,35 +7,42 @@ If you are not sure, please, follow only the instructions linked to [the last ta
 ### Contents
 
 - Image version: 0.3.0
-- Base image: alpine (3.12.0)
+- Base image: Ubuntu (20.04)
 - Essential packages:
-    - bash
-    - sudo
+    - apt-utils
+    - apt-transport-https
+    - ca-certificates
     - git
     - nano
-    - nano-syntax
-    - openssh
-    - shadow
-- User (paveloom) set-up
-- Zsh as default shell
+    - wget
+    - curl
+    - gnupg-agent
+    - sudo (1.9.1)
+    - openssh-client
+    - software-properties-common
+- Non-root user set-up
+- Zsh as the default shell:
+    - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
+        - Additional plugins:
+            - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+        - [Theme adjustments](#color-theme)
 - Docker
 - Python:
-    - libzmq (@v3.10)
-    - py3-pyzmq
-    - python3
-    - py3-pip
-    - wheel
+    - python3-dev
+    - python3-pip
+    - Packages:
+        - wheel
+        - numpy
+        - matplotlib
 - Jupyter:
     - jupyter
     - jupyterlab
     - [Aliases to run a notebook server](#jupyter)
-- Julia (1.5.0-rc1):
-    - [Revise.jl](https://github.com/timholy/Revise.jl) (precompiled)
-    - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/) (precompiled)
-- [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
-    - Additional plugins:
-        - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    - [Theme adjustments](#color-theme)
+- Julia (1.4.2):
+    - [Revise.jl](https://github.com/timholy/Revise.jl)
+    - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
+    - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
+    - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
 
 ### Download
 
