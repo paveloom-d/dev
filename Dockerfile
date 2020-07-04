@@ -41,19 +41,19 @@ RUN /scripts/root/zsh/install-zsh.sh
 # Set SHELL to Zsh
 ENV SHELL /bin/zsh
 
-# Install python3
+# Install Python
 RUN /scripts/root/python/install-python.sh
 
 # Temporarily disable apt-key warnings
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
-# Install docker
+# Install Docker
 RUN /scripts/root/docker/install-docker.sh
 
 # Install Node.js and npm
 RUN /scripts/root/nodejs-and-npm/install-nodejs-and-npm.sh
 
-# Install texlive
+# Install TexLive
 RUN /scripts/root/texlive/install-texlive.sh
 
 # Switch to the created user

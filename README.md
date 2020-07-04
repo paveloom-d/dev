@@ -43,6 +43,7 @@ If you are not sure, please, follow only the instructions linked to [the last ta
     - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
     - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
     - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
+- Node.js and npm
 - TexLive:
     - dvipng
     - texlive-latex-extra
