@@ -7,32 +7,49 @@ If you are not sure, please, follow only the instructions linked to [the last ta
 ### Contents
 
 - Image version: 0.3.0
-- Base image: alpine (3.12.0)
+- Base image: Ubuntu (20.04)
 - Essential packages:
-    - bash (5.0.17-r0)
-    - sudo (1.9.0-r0)
-    - git (2.26.2-r0)
-    - nano (4.9.3-r0)
-    - nano-syntax (4.9.3-r0)
-    - openssh (8.3_p1-r0)
-    - shadow (4.8.1-r0)
-- User (paveloom) set-up
-- Zsh (5.8-r1) as default shell
-- Docker (19.03.11-r0)
+    - apt-utils
+    - apt-transport-https
+    - ca-certificates
+    - git
+    - nano
+    - wget
+    - curl
+    - gnupg-agent
+    - sudo (1.9.1)
+    - openssh-client
+    - software-properties-common
+- Non-root user set-up
+- Zsh as the default shell:
+    - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
+        - Additional plugins:
+            - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+        - [Theme adjustments](#color-theme)
+- Docker
 - Python:
-    - py3-pyzmq (18.1.1-r0)
-    - py3-pip (20.1.1-r0)
-    - wheel (0.34.2)
+    - python3-dev
+    - python3-pip
+    - Packages:
+        - wheel
+        - numpy
+        - matplotlib
 - Jupyter:
-    - jupyter (1.0.0)
-    - jupyterlab (2.1.5)
+    - jupyter
+    - jupyterlab
     - [Aliases to run a notebook server](#jupyter)
-- Julia (1.5.0-rc1):
-    - [Revise.jl](https://github.com/timholy/Revise.jl) (precompiled)
-- [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
-    - Additional plugins:
-        - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    - [Theme adjustments](#color-theme)
+- Julia (1.4.2):
+    - [Revise.jl](https://github.com/timholy/Revise.jl)
+    - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
+    - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
+    - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
+- Node.js and npm
+- TexLive:
+    - dvipng
+    - texlive-latex-extra
+    - texlive-fonts-extra
+    - texlive-lang-cyrillic
+    - cm-super
 
 ### Download
 
@@ -116,11 +133,25 @@ There are convenient aliases for the last step: `jnote` for Jupyter Notebook and
 
 There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
 
+### Key bindings
+
+This image contains key bindings for deleting words before and after the cursor: <kbd>Ctrl+Backspace</kbd> and <kbd>Ctrl+Delete</kbd> respectively. However, if you are using Windows Terminal, you may find out that the first one doesn't work when using SSH. This has been discussed [here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that you may use is this [AutoHotkey](https://www.autohotkey.com/) script:
+
+```autohotkey
+; For Windows Terminal: deletes the previous word
+#IfWinActive ahk_exe WindowsTerminal.exe ; Only apply when this window is active
+^backspace::
+    Send, ^H
+return
+#IfWinActive ; Turn off context sensitivity
+```
+
 ### Color theme
 
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities (like PuTTY) have their own color pallettes. So current theme may look ugly depending on what you use to enter the container. Since it's my image, I made it look more or less attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the following scheme:
 
 ```json
+{
   "name": "paveloom-theme",
   "black": "#fefefe",
   "red": "#f97e72",
@@ -140,6 +171,7 @@ Different terminals (like Xterm), programs (like Visual Studio Code) and utiliti
   "brightWhite": "#fefefe",
   "background": "#2a2139",
   "foreground": "#f0eff1"
+}
 ```
 
 This one is based on [synthwave-everything](https://atomcorp.github.io/themes/?theme=synthwave-everything), which, I guess, was supposed to be used for local development. I made some changes to make it usable for remote development. So, with this being set up correctly, it should be looking something like this:
