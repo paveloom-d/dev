@@ -128,7 +128,7 @@ There is a ZenHub board, so make sure you have installed the extension to see in
 
 ### Key bindings
 
-This image contains key bindings for deleting words before and after the cursor: Ctrl+Backspace and Ctrl+Delete respectively. However, if you are using Windows Terminal, you may find out that the first one doesn't work when using SSH. This has been discussed [here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that you may use is this [AutoHotkey](https://www.autohotkey.com/) script:
+This image contains key bindings for deleting words before and after the cursor: <kbd>Ctrl+Backspace</kbd> and <kbd>Ctrl+Delete</kbd> respectively. However, if you are using Windows Terminal, you may find out that the first one doesn't work when using SSH. This has been discussed [here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that you may use is this [AutoHotkey](https://www.autohotkey.com/) script:
 
 ```autohotkey
 ; For Windows Terminal: deletes the previous word
@@ -136,7 +136,7 @@ This image contains key bindings for deleting words before and after the cursor:
 ^backspace::
     Send, ^H
 return
-#IfWinActive
+#IfWinActive ; Turn off context sensitivity
 ```
 
 ### Color theme
