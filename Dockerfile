@@ -50,6 +50,12 @@ ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 # Install docker
 RUN /scripts/root/docker/install-docker.sh
 
+# Install Node.js and npm
+RUN /scripts/root/nodejs-and-npm/install-nodejs-and-npm.sh
+
+# Install texlive
+RUN /scripts/root/texlive/install-texlive.sh
+
 # Switch to the created user
 USER $USER
 

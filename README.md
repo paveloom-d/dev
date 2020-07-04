@@ -43,6 +43,12 @@ If you are not sure, please, follow only the instructions linked to [the last ta
     - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
     - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
     - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
+- TexLive:
+    - dvipng
+    - texlive-latex-extra
+    - texlive-fonts-extra
+    - texlive-lang-cyrillic
+    - cm-super
 
 ### Download
 
@@ -144,6 +150,7 @@ return
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities (like PuTTY) have their own color pallettes. So current theme may look ugly depending on what you use to enter the container. Since it's my image, I made it look more or less attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the following scheme:
 
 ```json
+{
   "name": "paveloom-theme",
   "black": "#fefefe",
   "red": "#f97e72",
@@ -163,6 +170,7 @@ Different terminals (like Xterm), programs (like Visual Studio Code) and utiliti
   "brightWhite": "#fefefe",
   "background": "#2a2139",
   "foreground": "#f0eff1"
+}
 ```
 
 This one is based on [synthwave-everything](https://atomcorp.github.io/themes/?theme=synthwave-everything), which, I guess, was supposed to be used for local development. I made some changes to make it usable for remote development. So, with this being set up correctly, it should be looking something like this:

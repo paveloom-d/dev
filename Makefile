@@ -99,13 +99,18 @@
 	     docker start container >/dev/null
 	     docker exec -it container zsh
 
+     ## Enter the container as root
+     in-root :
+	          docker start container >/dev/null
+	          docker exec -it -u root container zsh
+
      ## Show all Docker images
      images :
 	         docker images -a
 
      ## Show all Docker containers
      ps :
-	     docker ps -a
+	     docker ps -as
 
      ## Stop and delete the container, delete all created images
      reset :
