@@ -126,6 +126,19 @@ There are convenient aliases for the last step: `jnote` for Jupyter Notebook and
 
 There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
 
+### Key bindings
+
+This image contains key bindings for deleting words before and after the cursor: Ctrl+Backspace and Ctrl+Delete respectively. However, if you are using Windows Terminal, you may find out that the first one doesn't work when using SSH. This has been discussed [here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that you may use is this [AutoHotkey](https://www.autohotkey.com/) script:
+
+```autohotkey
+; For Windows Terminal: deletes the previous word
+#IfWinActive ahk_exe WindowsTerminal.exe ; Only apply when this window is active
+^backspace::
+    Send, ^H
+return
+#IfWinActive
+```
+
 ### Color theme
 
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities (like PuTTY) have their own color pallettes. So current theme may look ugly depending on what you use to enter the container. Since it's my image, I made it look more or less attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the following scheme:

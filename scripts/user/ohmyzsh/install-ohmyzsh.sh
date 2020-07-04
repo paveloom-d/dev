@@ -22,24 +22,30 @@ sed -i '/# alias zshconfig="mate ~\/\.zshrc"/c\alias zshcfg="nano ~\/\.zshrc"' ~
 # Change colors of public directories
 echo '\e[1m\033[36m> Appending custom config changes...\033[0m'
 echo '
-# Settings for Zsh
+# Key bindings
+
+## Bind Ctrl+Backspace to delete a word behind the cursor
+bindkey '\''^H'\'' backward-kill-word
+
+## Bind Ctrl+Delete to delete a word after the cursor
+bindkey '\''5~'\'' kill-word
 
 # Settings for zsh-autosuggestions plugin
 
-# Change the color of a suggestion
+## Change the color of a suggestion
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff"
 
 # Theme settings
 
-# Change colors of public directories
+## Change colors of public directories in the `ls` output
 export LS_COLORS="$LS_COLORS:ow=1;35:tw=1;35:"
 
 # Other
 
-# Fixing GPG
+## Fixing TTY for GPG
 export GPG_TTY=$(tty)
 
-# Starting ssh-agent
+## Starting a ssh-agent
 eval "$(ssh-agent -s)" > /dev/null 2>&1' >> ~/.zshrc
 
 # Create a theme
