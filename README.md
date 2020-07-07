@@ -2,11 +2,11 @@
 
 ### A notice
 
-If you are not sure, please, follow only the instructions linked to [the last tagged version of the image](https://github.com/paveloom-d/dev/packages/290377/versions). The development happens in-place, so the description you see on the [landing page](https://github.com/paveloom-d/dev) may differ drastically and not be usable for the released versions yet.
+If you are not sure, please, follow only the instructions from the last tagged commit on the `master` branch.
 
 ### Contents
 
-- Image version: 0.3.0
+- Image version: 0.3.1
 - Base image: Ubuntu (20.04)
 - Essential packages:
     - apt-utils
@@ -56,13 +56,13 @@ If you are not sure, please, follow only the instructions linked to [the last ta
 This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev:0.3.0
+docker pull paveloom/dev:0.3.1
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.0
+docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.1
 ```
 
 ### Build, Run, Enter
