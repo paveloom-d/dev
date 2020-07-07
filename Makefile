@@ -67,13 +67,13 @@
 
      ## Create a new feature branch
      new :
-	      git checkout -q master
+	      git checkout -q develop
 	      git checkout -b ${feature_branch}
 	      git push -u origin ${feature_branch}
 
      ## Delete current feature branch
      del :
-	      git checkout -q master
+	      git checkout -q develop
 	      git branch -D ${feature_branch}
 
 
