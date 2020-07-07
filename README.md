@@ -2,7 +2,7 @@
 
 ### A notice
 
-If you are not sure, please, follow only the instructions linked to [the last tagged version of the image](https://github.com/paveloom-d/dev/packages/290377/versions). The development happens in-place, so the description you see on the [landing page](https://github.com/paveloom-d/dev) may differ drastically and not be usable for the released versions yet.
+If you are not sure, please, follow only the instructions from the last tagged commit on the `master` branch.
 
 ### Contents
 
