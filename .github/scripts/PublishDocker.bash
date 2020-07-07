@@ -19,7 +19,7 @@ if [ ! -z "$LAST_VERSION" ]; then
      echo -e "\e[1m\033[36mCurrent tag:  $CURRENT_TAG\033[0m\n"
 
      # Check if the tag is a semantic version
-     if echo "$CURRENT_TAG" | grep -q "v[0-9]*.[0-9]*.[0-9]*"; then
+     if echo "$CURRENT_TAG" | grep -E "^v[0-9]+\.[0-9]+\.[0-9]+$"; then
 
           # Print information
           echo -e "\e[1m\033[36mCurrent tag is a semantic version. Tagged image will be published.\033[0m\n"
