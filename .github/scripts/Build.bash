@@ -3,7 +3,7 @@
 # A script to build the image and test a container based on it
 
 # Download dive
-echo -e '\e[1;36mDownloading dive...\e[0m\n'
+echo -e '\n\e[1;36mDownloading dive...\e[0m\n'
 wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
 
 # Install dive
