@@ -49,6 +49,10 @@ rm sudo_1.9.1-1_ubu2004_amd64.deb
 echo '\e[1;36m> Installing ssh...\e[0m'
 apt-get install -y --no-install-recommends ssh >/dev/null
 
+# Install keychain
+echo '\e[1;36m> Installing keychain...\e[0m'
+apt-get install -y --no-install-recommends keychain >/dev/null
+
 # Install software-properties-common
 echo '\e[1;36m> Installing software-properties-common...\e[0m'
 apt-get install -y --no-install-recommends software-properties-common >/dev/null

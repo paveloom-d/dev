@@ -26,9 +26,6 @@ ENV TZ=Europe/Moscow
 # Install essential packages
 RUN /docker-scripts/root/essential-packages/install-essential-packages.sh
 
-# Install keychain
-RUN /docker-scripts/root/keychain/install-keychain.sh
-
 # Specify new user
 ENV USER=paveloom
 
