@@ -84,7 +84,7 @@ ENV PATH=$PATH:/home/$USER/Other/julia/bin
 RUN /docker-scripts/user/julia/install-julia.sh
 
 # Copy user scripts
-COPY user-scripts ~/Scripts
+COPY user-scripts Scripts
 
 # Remove docker scripts
 RUN sudo rm -rf /docker-scripts

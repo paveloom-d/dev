@@ -151,7 +151,7 @@ If ssh service is running (this is done automatically when creating a new shell,
 ssh -p 5001 username@remote
 ```
 
-This will prompt for `username`'s password. If you haven't done this yet, [set it up](#User's-password).
+This will prompt for `username`'s password. If you haven't done this yet, [set it up](#users-password).
 
 ### Development
 
