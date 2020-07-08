@@ -25,7 +25,7 @@ There is a ZenHub board, so make sure you have installed the extension to see in
     - ssh
     - software-properties-common
 - Non-root user set-up
-- Keychain to manage your SSH keys
+- [Keychain to manage your SSH keys](#keychain)
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
         - Additional plugins:
@@ -160,7 +160,7 @@ This will prompt for `username`'s password. If you haven't done this yet, [set i
 
 ### Keychain
 
-Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There is a corresponding line for this in `~/.zshrc`.
+Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There are corresponding lines for this in `~/.zshrc` specifying the key(s), just uncomment them,
 
 ### Key bindings
 

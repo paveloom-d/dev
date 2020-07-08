@@ -50,6 +50,7 @@ sudo service ssh start >/dev/null
 
 ## Add an SSH key to keychain
 # keychain ~/.ssh/id_rsa 2>/dev/null
+# . ~/.keychain/`uname -n`-sh
 
 # Other
 
