@@ -129,6 +129,10 @@ jupyter notebook --ip 0.0.0.0 --no-browser
 
 There are convenient aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for Jupyter Lab.
 
+### User's password
+
+The default user doesn't have password specified (although it exists and will be prompted if trying to [SSH in a container](#ssh)), so you can easily run `sudo`'s commands. But if you want to specify it, run `passwd $USER` as root.
+
 ### SSH
 
 To SSH into a container you will need to map the container's `22` port (or any other configured by `/etc/ssh/sshd_config`) to any accessible host's port (for example, `5001`).
@@ -140,6 +144,14 @@ docker run -p 5001:22 --name container -t -d image
 ```
 
 Remember, you cannot expose new ports once the container is up.
+
+If ssh service is running (this is done automatically when creating a new shell, but you can check by `service ssh status`), you can SSH into the container like so:
+
+```bash
+ssh -p 5001 username@remote
+```
+
+This will prompt for `username`'s password. If you haven't done this yet, [set it up](#User's-password).
 
 ### Development
 
