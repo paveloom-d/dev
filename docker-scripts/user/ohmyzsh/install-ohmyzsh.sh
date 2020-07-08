@@ -40,13 +40,18 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff"
 ## Change colors of public directories in the `ls` output
 export LS_COLORS="$LS_COLORS:ow=1;35:tw=1;35:"
 
+# SSH
+
+## Starting a ssh-agent
+eval "$(ssh-agent -s)" >/dev/null 2>&1
+
+## Start ssh service
+sudo service ssh start >/dev/null
+
 # Other
 
 ## Fixing TTY for GPG
-export GPG_TTY=$(tty)
-
-## Starting a ssh-agent
-eval "$(ssh-agent -s)" > /dev/null 2>&1' >> ~/.zshrc
+export GPG_TTY=$(tty)' >> ~/.zshrc
 
 # Create a theme
 echo '\e[1;36m> Creating a theme...\e[0m'

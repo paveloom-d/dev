@@ -129,6 +129,18 @@ jupyter notebook --ip 0.0.0.0 --no-browser
 
 There are convenient aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for Jupyter Lab.
 
+### SSH
+
+To SSH into a container you will need to map the container's `22` port (or any other configured by `/etc/ssh/sshd_config`) to any accessible host's port (for example, `5001`).
+
+This can be done running a container using the `-p` flag:
+
+```bash
+docker run -p 5001:22 --name container -t -d image
+```
+
+Remember, you cannot expose new ports once the container is up.
+
 ### Development
 
 There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
