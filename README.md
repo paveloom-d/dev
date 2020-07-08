@@ -160,7 +160,7 @@ This will prompt for `username`'s password. If you haven't done this yet, [set i
 
 ### Keychain
 
-Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There are corresponding lines for this in `~/.zshrc` specifying the key(s), just uncomment them,
+Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There are corresponding lines for this in `~/.zshrc` specifying the key(s), just uncomment them.
 
 ### Key bindings
 
