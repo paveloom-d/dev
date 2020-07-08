@@ -4,6 +4,10 @@
 
 If you are not sure, please, follow only the instructions from the last tagged commit on the `master` branch.
 
+### Development
+
+There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
+
 ### Contents
 
 - Image version: 0.3.1
@@ -154,9 +158,9 @@ ssh -p 5001 username@remote
 
 This will prompt for `username`'s password. If you haven't done this yet, [set it up](#users-password).
 
-### Development
+### Keychain
 
-There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
+Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There is a corresponding line for this in `~/.zshrc`.
 
 ### Key bindings
 
