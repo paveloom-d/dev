@@ -21,6 +21,7 @@ If you are not sure, please, follow only the instructions from the last tagged c
     - ssh
     - software-properties-common
 - Non-root user set-up
+- Keychain to manage your SSH keys
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
         - Additional plugins:
