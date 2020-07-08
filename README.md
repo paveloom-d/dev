@@ -18,7 +18,7 @@ If you are not sure, please, follow only the instructions from the last tagged c
     - curl
     - gnupg-agent
     - sudo (1.9.1)
-    - openssh-client
+    - ssh
     - software-properties-common
 - Non-root user set-up
 - Zsh as the default shell:

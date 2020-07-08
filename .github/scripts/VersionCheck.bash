@@ -9,26 +9,26 @@ ERROR_COUNT=0
 # Check version
 function check_readme_versions {
 
-     echo -e "\e[1m\033[36mChecking versions in \"$1\"...\033[0m"
+     echo -e "\e[1;36mChecking versions in \"$1\"...\e[0m"
 
      if [ $(grep "docker pull paveloom/dev" README.md | grep -o ":.*" | sed 's/\://') == "$LOCAL_VERSION" ]; then
 
-          echo -e "\e[1m\033[36m> The version in the first download line is relevant.\033[0m"
+          echo -e "\e[1;36m> The version in the first download line is relevant.\e[0m"
 
      else
 
-          echo -e "\e[1m\033[31m> The version in the first download line is not relevant.\033[0m"
+          echo -e "\e[1;31m> The version in the first download line is not relevant.\e[0m"
           ERROR_COUNT=$((ERROR_COUNT+1))
 
      fi
 
      if [ $(grep "docker pull docker.pkg.github.com/paveloom-d/dev/dev:" README.md | grep -o ":.*" | sed 's/\://') == "$LOCAL_VERSION" ]; then
 
-          echo -e "\e[1m\033[36m> The version in the second download line is relevant.\033[0m"
+          echo -e "\e[1;36m> The version in the second download line is relevant.\e[0m"
 
      else
 
-          echo -e "\e[1m\033[31m> The version in the second download line is not relevant.\033[0m"
+          echo -e "\e[1;31m> The version in the second download line is not relevant.\e[0m"
           ERROR_COUNT=$((ERROR_COUNT+1))
 
      fi
@@ -66,14 +66,14 @@ if [ ! -z "$LAST_VERSION" ]; then
      LOCAL_VERSION=$(grep "LABEL version=" Dockerfile | grep -o "\".*\"" | sed 's/\"//g')
 
      # Print version
-     echo -e "\e[1m\033[36mLast version:  $ESCAPED_LAST_VERSION\033[0m"
-     echo -e "\e[1m\033[36mLocal version: $LOCAL_VERSION\033[0m\n"
+     echo -e "\e[1;36mLast version:  $ESCAPED_LAST_VERSION\e[0m"
+     echo -e "\e[1;36mLocal version: $LOCAL_VERSION\e[0m\n"
 
      # Check whether local version differs from the last one
      if [ $LOCAL_VERSION == $ESCAPED_LAST_VERSION ]; then
 
-          echo -e "\e[1m\033[31mLocal version and the last version are identical. Consider\033[0m"
-          echo -e "\e[1m\033[31msuggesting a new version according to Semantic Versioning.\n\033[0m"
+          echo -e "\e[1;31mLocal version and the last version are identical. Consider\e[0m"
+          echo -e "\e[1;31msuggesting a new version according to Semantic Versioning.\n\e[0m"
 
           exit 1
 
@@ -85,18 +85,18 @@ if [ ! -z "$LAST_VERSION" ]; then
      # Print the number of consistency errors
      if [ "$ERROR_COUNT" -gt 0 ]; then
 
-          echo -e "\e[1m\033[31mSome consistency errors have been found ($ERROR_COUNT)\033[0m\n"
+          echo -e "\e[1;31mSome consistency errors have been found ($ERROR_COUNT)\e[0m\n"
           exit 1
 
      else
 
-          echo -e "\e[1m\033[36mNo consistency errors.\033[0m\n"
+          echo -e "\e[1;36mNo consistency errors.\e[0m\n"
 
      fi
 
 else
 
      # Print information
-     echo -e "\e[1m\033[36mNo release has been found, version checking will be omitted.\033[0m\n"
+     echo -e "\e[1;36mNo release has been found, version checking will be omitted.\e[0m\n"
 
 fi

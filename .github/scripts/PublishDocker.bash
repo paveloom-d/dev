@@ -15,14 +15,14 @@ if [ ! -z "$LAST_VERSION" ]; then
      CURRENT_TAG=$(echo ${GITHUB_REF#refs/*/})
 
      # Print info
-     echo -e "\n\e[1m\033[36mLast version: $LAST_VERSION\033[0m"
-     echo -e "\e[1m\033[36mCurrent tag:  $CURRENT_TAG\033[0m\n"
+     echo -e "\n\e[1;36mLast version: $LAST_VERSION\e[0m"
+     echo -e "\e[1;36mCurrent tag:  $CURRENT_TAG\e[0m\n"
 
      # Check if the tag is a semantic version
      if echo "$CURRENT_TAG" | grep -E "^v[0-9]+\.[0-9]+\.[0-9]+$"; then
 
           # Print information
-          echo -e "\e[1m\033[36mCurrent tag is a semantic version. Tagged image will be published.\033[0m\n"
+          echo -e "\e[1;36mCurrent tag is a semantic version. Tagged image will be published.\e[0m\n"
 
           # Set environment variable
           echo ::set-env name=RELEASE_VERSION::$(echo ${CURRENT_TAG} | sed 's/v//')
@@ -33,7 +33,7 @@ if [ ! -z "$LAST_VERSION" ]; then
      else
 
           # Print information
-          echo -e "\e[1m\033[36mCurrent tag is not a semantic version. Tagged image will not be published.\033[0m\n"
+          echo -e "\e[1;36mCurrent tag is not a semantic version. Tagged image will not be published.\e[0m\n"
 
           # Don't publish tagged image
           echo ::set-env name=PUBLISH_RELEASE_VERSION::$(echo false)
@@ -43,7 +43,7 @@ if [ ! -z "$LAST_VERSION" ]; then
 else
 
      # Print information
-     echo -e "\n\e[1m\033[36mNo release has been found, tagged version will not be published.\033[0m\n"
+     echo -e "\n\e[1;36mNo release has been found, tagged version will not be published.\e[0m\n"
 
      # Don't publish tagged image
      echo ::set-env name=PUBLISH_RELEASE_VERSION::$(echo false)
