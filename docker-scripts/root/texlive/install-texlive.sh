@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Print info
-echo '\n\e[1;36mInstalling texlive:\e[0m'
+echo '\n\e[1;36mInstalling TexLive:\e[0m'
 
 # Update lists of packages
 echo '\e[1;36m> Updating lists of packages...\e[0m'

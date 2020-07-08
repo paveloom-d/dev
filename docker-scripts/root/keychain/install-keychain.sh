@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Print info
-echo '\n\e[1;36mInstalling keychain:\e[0m'
+echo '\n\e[1;36mInstalling Keychain:\e[0m'
 
 # Update lists of packages
 echo '\e[1;36m> Updating lists of packages...\e[0m'
