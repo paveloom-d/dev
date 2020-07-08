@@ -26,6 +26,7 @@ There is a ZenHub board, so make sure you have installed the extension to see in
     - software-properties-common
 - Non-root user set-up
 - [Keychain to manage your SSH keys](#keychain)
+- [Auxiliary user scripts](#user-scripts)
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
         - Additional plugins:
@@ -161,6 +162,10 @@ This will prompt for `username`'s password. If you haven't done this yet, [set i
 ### Keychain
 
 Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There are corresponding lines for this in `~/.zshrc` specifying the key(s), just uncomment them.
+
+### User scripts
+
+The image provides auxillary scripts to help a user to generate SSH and GPG keys and connect them to a GitHub account. They are located in `~/Scripts`.
 
 ### Key bindings
 
