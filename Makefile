@@ -92,7 +92,7 @@
 
      ## Run a container
      run :
-	      docker run -p 8888:8888 -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
+	      docker run -p 5001:22 -p 8888:8888 -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
 
      ## Enter the container
      in :

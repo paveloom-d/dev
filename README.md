@@ -4,6 +4,10 @@
 
 If you are not sure, please, follow only the instructions from the last tagged commit on the `master` branch.
 
+### Development
+
+There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
+
 ### Contents
 
 - Image version: 0.3.1
@@ -18,9 +22,11 @@ If you are not sure, please, follow only the instructions from the last tagged c
     - curl
     - gnupg-agent
     - sudo (1.9.1)
-    - openssh-client
+    - ssh
     - software-properties-common
 - Non-root user set-up
+- [Keychain to manage your SSH keys](#keychain)
+- [Auxiliary user scripts](#user-scripts)
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
         - Additional plugins:
@@ -129,9 +135,37 @@ jupyter notebook --ip 0.0.0.0 --no-browser
 
 There are convenient aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for Jupyter Lab.
 
-### Development
+### User's password
 
-There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
+The default user doesn't have password specified (although it exists and will be prompted if trying to [SSH in a container](#ssh)), so you can easily run `sudo`'s commands. But if you want to specify it, run `passwd $USER` as root.
+
+### SSH
+
+To SSH into a container you will need to map the container's `22` port (or any other configured by `/etc/ssh/sshd_config`) to any accessible host's port (for example, `5001`).
+
+This can be done running a container using the `-p` flag:
+
+```bash
+docker run -p 5001:22 --name container -t -d image
+```
+
+Remember, you cannot expose new ports once the container is up.
+
+If ssh service is running (this is done automatically when creating a new shell, but you can check by `service ssh status`), you can SSH into the container like so:
+
+```bash
+ssh -p 5001 username@remote
+```
+
+This will prompt for `username`'s password. If you haven't done this yet, [set it up](#users-password).
+
+### Keychain
+
+Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There are corresponding lines for this in `~/.zshrc` specifying the key(s), just uncomment them.
+
+### User scripts
+
+The image provides auxillary scripts to help a user to generate SSH and GPG keys and connect them to a GitHub account. They are located in `~/Scripts`.
 
 ### Key bindings
 
