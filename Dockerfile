@@ -6,7 +6,7 @@ FROM ubuntu:20.04
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-LABEL version="0.3.1"
+LABEL version="0.3.2"
 LABEL description="This is an image containing paveloom's personal development environment."
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL docker-repository="https://hub.docker.com/r/paveloom/dev"
@@ -53,7 +53,7 @@ RUN /docker-scripts/root/docker/install-docker.sh
 # Install Node.js and npm
 RUN /docker-scripts/root/nodejs-and-npm/install-nodejs-and-npm.sh
 
-# Install rclone
+# Install Rclone
 RUN /docker-scripts/root/rclone/install-rclone.sh
 
 # Install TexLive

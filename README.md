@@ -8,9 +8,9 @@ If you are not sure, please, follow only the instructions from the last tagged c
 
 There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
 
-### Contents
+### Content of the image
 
-- Image version: 0.3.1
+- Image version: 0.3.2
 - Base image: Ubuntu (20.04)
 - Essential packages:
     - apt-utils
@@ -50,6 +50,7 @@ There is a ZenHub board, so make sure you have installed the extension to see in
     - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
     - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
 - Node.js and npm
+- Rclone
 - TexLive:
     - dvipng
     - texlive-latex-extra
@@ -62,13 +63,13 @@ There is a ZenHub board, so make sure you have installed the extension to see in
 This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev:0.3.1
+docker pull paveloom/dev:0.3.2
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.1
+docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.2
 ```
 
 ### Build, Run, Enter
