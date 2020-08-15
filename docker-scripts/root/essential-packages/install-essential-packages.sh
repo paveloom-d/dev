@@ -27,6 +27,10 @@ apt-get install -y --no-install-recommends git >/dev/null
 echo '\e[1;36m> Installing nano...\e[0m'
 apt-get install -y --no-install-recommends nano >/dev/null
 
+# Install less
+echo '\e[1;36m> Installing less...\e[0m'
+apt-get install -y --no-install-recommends less >/dev/null
+
 # Install wget
 echo '\e[1;36m> Installing wget...\e[0m'
 apt-get install -y --no-install-recommends wget >/dev/null
