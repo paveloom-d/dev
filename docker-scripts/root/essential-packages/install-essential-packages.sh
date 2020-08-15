@@ -23,6 +23,18 @@ apt-get install -y --no-install-recommends ca-certificates >/dev/null
 echo '\e[1;36m> Installing git...\e[0m'
 apt-get install -y --no-install-recommends git >/dev/null
 
+# Install make
+echo '\e[1;36m> Installing make...\e[0m'
+apt-get install -y --no-install-recommends make >/dev/null
+
+# Install ncdu
+echo '\e[1;36m> Installing ncdu...\e[0m'
+apt-get install -y --no-install-recommends ncdu >/dev/null
+
+# Install zip and unzip
+echo '\e[1;36m> Installing zip and unzip...\e[0m'
+apt-get install -y --no-install-recommends zip unzip >/dev/null
+
 # Install nano
 echo '\e[1;36m> Installing nano...\e[0m'
 apt-get install -y --no-install-recommends nano >/dev/null
