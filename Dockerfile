@@ -53,7 +53,7 @@ RUN /docker-scripts/root/docker/install-docker.sh
 # Install Node.js and npm
 RUN /docker-scripts/root/nodejs-and-npm/install-nodejs-and-npm.sh
 
-# Install rclone
+# Install Rclone
 RUN /docker-scripts/root/rclone/install-rclone.sh
 
 # Install TexLive

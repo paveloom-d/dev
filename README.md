@@ -8,7 +8,7 @@ If you are not sure, please, follow only the instructions from the last tagged c
 
 There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
 
-### Contents
+### Content of the image
 
 - Image version: 0.3.1
 - Base image: Ubuntu (20.04)
@@ -50,6 +50,7 @@ There is a ZenHub board, so make sure you have installed the extension to see in
     - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
     - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
 - Node.js and npm
+- Rclone
 - TexLive:
     - dvipng
     - texlive-latex-extra
