@@ -5,7 +5,7 @@ echo '\n\e[1;36mSetting up a user:\e[0m'
 
 # Add a new user
 echo '\e[1;36m> Adding a user...\e[0m'
-useradd -ms /bin/bash paveloom
+useradd -ms /bin/bash $USER
 
 # Disable password prompt
 echo '\e[1;36m> Disabling password prompt...\e[0m'
