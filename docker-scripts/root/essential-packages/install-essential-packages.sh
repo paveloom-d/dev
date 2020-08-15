@@ -27,6 +27,10 @@ apt-get install -y --no-install-recommends git >/dev/null
 echo '\e[1;36m> Installing nano...\e[0m'
 apt-get install -y --no-install-recommends nano >/dev/null
 
+# Install less
+echo '\e[1;36m> Installing less...\e[0m'
+apt-get install -y --no-install-recommends less >/dev/null
+
 # Install wget
 echo '\e[1;36m> Installing wget...\e[0m'
 apt-get install -y --no-install-recommends wget >/dev/null
@@ -52,6 +56,11 @@ apt-get install -y --no-install-recommends ssh >/dev/null
 # Install keychain
 echo '\e[1;36m> Installing keychain...\e[0m'
 apt-get install -y --no-install-recommends keychain >/dev/null
+
+# Install locales
+echo '\e[1;36m> Installing locales...\e[0m'
+apt-get install -y --no-install-recommends locales >/dev/null
+locale-gen ru_RU.UTF-8 >/dev/null
 
 # Install software-properties-common
 echo '\e[1;36m> Installing software-properties-common...\e[0m'

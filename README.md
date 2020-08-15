@@ -18,11 +18,13 @@ There is a ZenHub board, so make sure you have installed the extension to see in
     - ca-certificates
     - git
     - nano
+    - less
     - wget
     - curl
     - gnupg-agent
     - sudo (1.9.1)
     - ssh
+    - locales
     - software-properties-common
 - Non-root user set-up
 - [Keychain to manage your SSH keys](#keychain)

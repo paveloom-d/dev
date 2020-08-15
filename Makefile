@@ -90,9 +90,14 @@
 	        dive build -t image --squash .
 	        docker images -q | grep -E -v "$$(docker images -q 'image')|$$(docker images -q 'ubuntu')" | xargs docker rmi
 
+     # Build an image squashing all layers, delete redundant layers
+     build-f :
+	          docker build -t image --squash .
+	          docker images -q | grep -E -v "$$(docker images -q 'image')|$$(docker images -q 'ubuntu')" | xargs docker rmi
+
      ## Run a container
      run :
-	      docker run -p 5001:22 -p 8888:8888 -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
+	      docker run -p 5001:22 -p 8888:8888 -p 8889:8889 -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
 
      ## Enter the container
      in :
