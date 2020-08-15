@@ -17,6 +17,10 @@ There is a ZenHub board, so make sure you have installed the extension to see in
     - apt-transport-https
     - ca-certificates
     - git
+    - make
+    - ncdu
+    - zip
+    - unzip
     - nano
     - less
     - wget
