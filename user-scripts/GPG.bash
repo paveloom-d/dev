@@ -44,7 +44,7 @@ fi
 NAME="Pavel Sobolev"
 NAME_Default=$NAME
 
-# Check if the current e-mail is what the user needs
+# Check if the current name is what the user needs
 echo -e "\n${cyan}Current name is set to ${mage}${NAME}${cyan}. If it's not your"
 echo -e "name, type yours. Otherwise, just don't input anything.${reset}\n"
 echo -en "${cyan}Your name: ${reset}" && read -r NAME
@@ -58,7 +58,7 @@ echo -e "\n${cyan}Calling gpg to generate a key. Choose RSA and RSA, 4096 bits l
 gpg --full-generate-key
 [ $? -ne 0 ] && echo -e "\n${red}Some error occurred during the call to gpg.${reset}\n" && exit
 
-# Ask to copy key ID
+# Ask to copy the key's ID
 gpg --list-secret-keys --keyid-format LONG
 echo -e "${cyan}All your GPG keys have been displayed above. Copy an ID of your key\n\
 (it's in the row ${mage}sec${cyan}, after the slash) and paste it in the prompt.${reset}\n"
@@ -68,11 +68,11 @@ echo -en "${cyan}Your key ID: ${reset}" && read -r KEY
 echo && gpg --armor --export $KEY
 echo -e "\n${cyan}Copy and paste the output above on GitHub (${mage}Settings -> SSH and GPG keys -> New GPG key${cyan}).${reset}"
 
-# Update git configuration
+# Update the `git` configuration
 git config --global user.name "$NAME"
 git config --global user.email "$EMAIL"
 git config --global user.signingkey "$KEY"
 git config --global push.default matching
 git config --global commit.gpgsign true
 git config --global gpg.program gpg
-echo -e "\n${cyan}This script have also updated git configuration. You can check it using ${mage}git config --list${cyan}.${reset}\n"
+echo -e "\n${cyan}This script have also updated the `git` configuration. You can check it using ${mage}git config --list${cyan}.${reset}\n"
