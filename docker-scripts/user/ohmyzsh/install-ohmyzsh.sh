@@ -55,7 +55,10 @@ sudo service ssh start >/dev/null
 # Other
 
 ## Fixing TTY for GPG
-export GPG_TTY=$(tty)' >> ~/.zshrc
+export GPG_TTY=$(tty)
+
+## Activating Russian locale
+export LC_CTYPE=ru_RU.UTF8' >> ~/.zshrc
 
 # Create a theme
 echo '\e[1;36m> Creating a theme...\e[0m'

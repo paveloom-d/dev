@@ -53,6 +53,11 @@ apt-get install -y --no-install-recommends ssh >/dev/null
 echo '\e[1;36m> Installing keychain...\e[0m'
 apt-get install -y --no-install-recommends keychain >/dev/null
 
+# Install locales
+echo '\e[1;36m> Installing locales...\e[0m'
+apt-get install -y --no-install-recommends locales >/dev/null
+locale-gen ru_RU.UTF-8 >/dev/null
+
 # Install software-properties-common
 echo '\e[1;36m> Installing software-properties-common...\e[0m'
 apt-get install -y --no-install-recommends software-properties-common >/dev/null
