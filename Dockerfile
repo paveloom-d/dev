@@ -35,6 +35,9 @@ ENV HOME /home/$USER
 # Set up a new user
 RUN /docker-scripts/root/user/set-up-new-user.sh
 
+# Install XFCE
+RUN /docker-scripts/root/x2go-server/install-x2go-server.sh
+
 # Install Zsh
 RUN /docker-scripts/root/zsh/install-zsh.sh
 
@@ -88,6 +91,3 @@ COPY user-scripts Scripts
 
 # Remove docker scripts
 RUN sudo rm -rf /docker-scripts
-
-# Set DEBIAN_FRONTEND to teletype
-ENV DEBIAN_FRONTEND=teletype

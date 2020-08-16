@@ -34,6 +34,7 @@ have the extension installed.
     - software-properties-common
 - Non-root user set-up
 - [Keychain to manage your SSH keys](#keychain)
+- X2Go Server and XFCE DE
 - [Auxiliary user scripts](#users-scripts)
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
