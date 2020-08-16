@@ -17,6 +17,8 @@ have the extension installed.
 - Essential packages:
     - apt-utils
     - apt-transport-https
+    - dialog
+    - htop
     - ca-certificates
     - git
     - make
