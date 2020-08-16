@@ -3,13 +3,19 @@
 echo '\n\e[1;36mInstalling Julia:\e[0m'
 
 echo '\e[1;36m> Downloading the tarball...\e[0m'
-wget https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz -P ~/Other/julia >/dev/null 2>&1
+wget https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.0-linux-x86_64.tar.gz -P ~/Other/julia >/dev/null 2>&1
 
 echo '\e[1;36m> Extracting the tarball...\e[0m'
 tar -xf ~/Other/julia/julia*.tar.gz -C ~/Other/julia --strip-components 1
 
 echo '\e[1;36m> Deleting the tarball...\e[0m'
 rm ~/Other/julia/julia*.tar.gz
+
+echo '\e[1;36m> Installing `Documenter`...\e[0m'
+julia -e 'using Pkg; Pkg.add("Documenter"); using Documenter' >/dev/null 2>&1
+
+echo '\e[1;36m> Installing `Literate`...\e[0m'
+julia -e 'using Pkg; Pkg.add("Literate"); using Literate' >/dev/null 2>&1
 
 echo '\e[1;36m> Installing `Revise`...\e[0m'
 julia -e 'using Pkg; Pkg.add("Revise"); using Revise' >/dev/null 2>&1

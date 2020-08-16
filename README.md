@@ -52,7 +52,9 @@ have the extension installed.
     - jupyter
     - jupyterlab
     - [Aliases to run a notebook server](#jupyter)
-- Julia (1.4.2):
+- Julia (1.5.0):
+    - [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl)
+    - [Literate.jl](https://github.com/fredrikekre/Literate.jl)
     - [Revise.jl](https://github.com/timholy/Revise.jl)
     - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
     - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
@@ -215,7 +217,8 @@ return
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities
 (like PuTTY) have their own color pallettes. So the current theme can look ugly depending
 on what you use to enter the container. Since this is my image, I made it look more or less
-attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the following scheme:
+attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the
+following scheme:
 
 ```json
 {
