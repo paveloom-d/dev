@@ -37,6 +37,7 @@ have the extension installed.
 - Non-root user set-up
 - [Keychain to manage your SSH keys](#keychain)
 - X2Go Server and XFCE DE
+- Midori Web Browser
 - [Auxiliary user scripts](#users-scripts)
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
