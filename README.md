@@ -215,7 +215,8 @@ return
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities
 (like PuTTY) have their own color pallettes. So the current theme can look ugly depending
 on what you use to enter the container. Since this is my image, I made it look more or less
-attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the following scheme:
+attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the
+following scheme:
 
 ```json
 {
