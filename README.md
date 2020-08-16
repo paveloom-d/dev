@@ -52,7 +52,9 @@ have the extension installed.
     - jupyter
     - jupyterlab
     - [Aliases to run a notebook server](#jupyter)
-- Julia (1.4.2):
+- Julia (1.5.0):
+    - [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl)
+    - [Literate.jl](https://github.com/fredrikekre/Literate.jl)
     - [Revise.jl](https://github.com/timholy/Revise.jl)
     - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
     - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)

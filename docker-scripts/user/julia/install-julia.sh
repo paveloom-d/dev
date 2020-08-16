@@ -11,6 +11,12 @@ tar -xf ~/Other/julia/julia*.tar.gz -C ~/Other/julia --strip-components 1
 echo '\e[1;36m> Deleting the tarball...\e[0m'
 rm ~/Other/julia/julia*.tar.gz
 
+echo '\e[1;36m> Installing `Documenter`...\e[0m'
+julia -e 'using Pkg; Pkg.add("Documenter"); using Documenter' >/dev/null 2>&1
+
+echo '\e[1;36m> Installing `Literate`...\e[0m'
+julia -e 'using Pkg; Pkg.add("Literate"); using Literate' >/dev/null 2>&1
+
 echo '\e[1;36m> Installing `Revise`...\e[0m'
 julia -e 'using Pkg; Pkg.add("Revise"); using Revise' >/dev/null 2>&1
 
