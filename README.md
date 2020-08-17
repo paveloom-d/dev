@@ -17,6 +17,8 @@ have the extension installed.
 - Essential packages:
     - apt-utils
     - apt-transport-https
+    - dialog
+    - htop
     - ca-certificates
     - git
     - make
@@ -34,6 +36,8 @@ have the extension installed.
     - software-properties-common
 - Non-root user set-up
 - [Keychain to manage your SSH keys](#keychain)
+- X2Go Server and XFCE DE
+- Midori Web Browser
 - [Auxiliary user scripts](#users-scripts)
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):

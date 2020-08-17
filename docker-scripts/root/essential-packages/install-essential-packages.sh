@@ -11,6 +11,12 @@ apt-get -y install apt-utils >/dev/null 2>&1
 echo '\e[1;36m> Installing `apt-transport-https`...\e[0m'
 apt-get install -y --no-install-recommends apt-transport-https >/dev/null
 
+echo '\e[1;36m> Installing `dialog`...\e[0m'
+apt-get install -y --no-install-recommends dialog >/dev/null
+
+echo '\e[1;36m> Installing `htop`...\e[0m'
+apt-get install -y --no-install-recommends htop >/dev/null
+
 echo '\e[1;36m> Installing `ca-certificates`...\e[0m'
 apt-get install -y --no-install-recommends ca-certificates >/dev/null
 
