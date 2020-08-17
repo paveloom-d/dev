@@ -6,7 +6,7 @@ FROM ubuntu:20.04
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-LABEL version="0.3.1"
+LABEL version="0.3.2"
 LABEL description="This is an image containing paveloom's personal development environment."
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL docker-repository="https://hub.docker.com/r/paveloom/dev"
@@ -35,6 +35,12 @@ ENV HOME /home/$USER
 # Set up a new user
 RUN /docker-scripts/root/user/set-up-new-user.sh
 
+# Install X2Go Server and XFCE
+RUN /docker-scripts/root/x2go-server/install-x2go-server.sh
+
+# Install the browser
+RUN /docker-scripts/root/browser/install-browser.sh
+
 # Install Zsh
 RUN /docker-scripts/root/zsh/install-zsh.sh
 
@@ -53,7 +59,7 @@ RUN /docker-scripts/root/docker/install-docker.sh
 # Install Node.js and npm
 RUN /docker-scripts/root/nodejs-and-npm/install-nodejs-and-npm.sh
 
-# Install rclone
+# Install Rclone
 RUN /docker-scripts/root/rclone/install-rclone.sh
 
 # Install TexLive
@@ -88,6 +94,3 @@ COPY user-scripts Scripts
 
 # Remove docker scripts
 RUN sudo rm -rf /docker-scripts
-
-# Set DEBIAN_FRONTEND to teletype
-ENV DEBIAN_FRONTEND=teletype

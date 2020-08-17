@@ -45,7 +45,7 @@ echo -e "\n${cyan}Calling ssh-keygen to generate an SSH key. Follow the instruct
 ssh-keygen -t rsa -b 4096 -C "$EMAIL"
 [ $? -ne 0 ] && echo -e "\n${red}Some error occurred during the call to ssh-keygen.${reset}\n" && exit
 
-# Start the ssh-agent in the background (just in case it's up already)
+# Start an `ssh-agent` in the background (just in case it's not up already)
 eval "$(ssh-agent -s)" > /dev/null 2>&1
 
 # Echo the contents of the public key
@@ -58,5 +58,5 @@ fi
 echo && cat "$KEY.pub"
 echo -e "\n${cyan}This is the public part of your key. Copy and paste it on GitHub (${mage}Settings -> SSH and GPG keys -> New SSH key${cyan}).${reset}"
 
-# Final words
+# Print final words
 echo -e "\n${cyan}And that's it.${reset}\n"

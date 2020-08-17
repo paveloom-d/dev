@@ -2,31 +2,43 @@
 
 ### A notice
 
-If you are not sure, please, follow only the instructions from the last tagged commit on the `master` branch.
+If you are unsure, please refer to the description on the last commit on the
+[`master`](https://github.com/paveloom-d/dev/tree/master) branch.
 
 ### Development
 
-There is a ZenHub board, so make sure you have installed the extension to see in which pipelines the issues are.
+There is a [ZenHub](https://www.zenhub.com/) board, so if you want to see it, make sure you
+have the extension installed.
 
-### Contents
+### Content of the image
 
-- Image version: 0.3.1
+- Image version: 0.3.2
 - Base image: Ubuntu (20.04)
 - Essential packages:
     - apt-utils
     - apt-transport-https
+    - dialog
+    - htop
     - ca-certificates
     - git
+    - make
+    - ncdu
+    - zip
+    - unzip
     - nano
+    - less
     - wget
     - curl
     - gnupg-agent
     - sudo (1.9.1)
     - ssh
+    - locales
     - software-properties-common
 - Non-root user set-up
 - [Keychain to manage your SSH keys](#keychain)
-- [Auxiliary user scripts](#user-scripts)
+- X2Go Server and XFCE DE
+- Midori Web Browser
+- [Auxiliary user scripts](#users-scripts)
 - Zsh as the default shell:
     - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
         - Additional plugins:
@@ -44,12 +56,15 @@ There is a ZenHub board, so make sure you have installed the extension to see in
     - jupyter
     - jupyterlab
     - [Aliases to run a notebook server](#jupyter)
-- Julia (1.4.2):
+- Julia (1.5.0):
+    - [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl)
+    - [Literate.jl](https://github.com/fredrikekre/Literate.jl)
     - [Revise.jl](https://github.com/timholy/Revise.jl)
     - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
     - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
     - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
 - Node.js and npm
+- Rclone
 - TexLive:
     - dvipng
     - texlive-latex-extra
@@ -62,18 +77,23 @@ There is a ZenHub board, so make sure you have installed the extension to see in
 This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev:0.3.1
+docker pull paveloom/dev:0.3.2
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.1
+docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.2
 ```
 
-### Build, Run, Enter
+After that, you can run a container based on that image. If you want to build the image
+yourself, see the next section.
 
-There is nothing specific when building, although I would recommend squashing the image. This means using docker's `--squash` option, which is an experimental feature. To enable it, be sure to put the following code in `/etc/docker/daemon.json`:
+### Build, run, and enter
+
+There is nothing special when building, although I would recommend squashing the image.
+By this means using the Docker's `--squash` flag, which is an experimental feature.
+To enable it, make sure you have the following code in the `/etc/docker/daemon.json` file:
 
 ```json
 {
@@ -81,25 +101,17 @@ There is nothing specific when building, although I would recommend squashing th
 }
 ```
 
-To build the image run the following in the root directory (where Dockerfile is located):
+To build the image, execute the following in the root directory:
 
 ```bash
 docker build -t image --squash .
 ```
 
-If you want to develop docker containers inside the container, it is recommended to bind-mount Docker socket when running it as follows:
+You can then run the container as follows:
 
 ```bash
-docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
+docker run --name container -t -d image
 ```
-
-This requires that your local socket has read and write privileges for others group. You can give them like this:
-
-```bash
-sudo chmod o+rw /var/run/docker.sock
-```
-
-If you don't need this functionality, you can omit the `-v` flag above.
 
 Since Zsh is the default shell, you can enter the container using the following command:
 
@@ -107,69 +119,93 @@ Since Zsh is the default shell, you can enter the container using the following 
 docker exec -it container zsh
 ```
 
-There is also a [Makefile](https://github.com/paveloom-d/dev/blob/master/Makefile) published, which I use for the development. You can use it to execute the procedure above as simple as:
+### Using Docker inside
+
+Bind mounting the Docker socket allows you to develop other images inside a running
+container. This requires that the `others` group has read and write privileges relative
+to your local socket. You can give these privileges as follows:
 
 ```bash
-make build
-make run
-make in
+sudo chmod o+rw /var/run/docker.sock
 ```
 
-The build rule will call [dive](https://github.com/wagoodman/dive), so be sure you have this tool, or just change `dive` to `docker` inside the Makefile. Be mindful though that the build rule here will delete all other images except mine and Alpine's.
+After that, the container should be run with an additional `-v` flag:
+
+```bash
+docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
+```
 
 ### Jupyter
 
-To use Jupyter Notebook / Jupyter Lab you will need to do two things.
+To use Jupyter Notebook or Jupyter Lab you will need to do two things.
 
-First, publish the `8888` port when running a container:
+First, publish the `8888` port (or any other, but this one is standard) when running a
+container:
 
 ```bash
 docker run -p 8888:8888 --name container -t -d image
 ```
 
-Secondly, when in the container, make notebook server listen on `0.0.0.0`:
+Secondly, while inside the container, run the notebook server listening on IP `0.0.0.0`:
 
 ```bash
 jupyter notebook --ip 0.0.0.0 --no-browser
 ```
 
-There are convenient aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for Jupyter Lab.
+There are handy aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for
+Jupyter Lab.
 
 ### User's password
 
-The default user doesn't have password specified (although it exists and will be prompted if trying to [SSH in a container](#ssh)), so you can easily run `sudo`'s commands. But if you want to specify it, run `passwd $USER` as root.
+The system (by default) will not ask the user to enter a password (this makes it easier to
+run administrator commands), but this password exists and will be asked when you try to
+establish an [SSH connection](#ssh) with a container from the outside. If you want to set
+this password, run `passwd $USER` as root.
 
 ### SSH
 
-To SSH into a container you will need to map the container's `22` port (or any other configured by `/etc/ssh/sshd_config`) to any accessible host's port (for example, `5001`).
+To establish an SSH connection to the container, you need to map the container's `22` port
+to any other port available and not occupied on the host machine (for example, `5001`).
 
-This can be done running a container using the `-p` flag:
+This can be accomplished by running the container using the `-p` flag:
 
 ```bash
 docker run -p 5001:22 --name container -t -d image
 ```
 
-Remember, you cannot expose new ports once the container is up.
+Remember, you can't publish new ports when the container is already running.
 
-If ssh service is running (this is done automatically when creating a new shell, but you can check by `service ssh status`), you can SSH into the container like so:
+If the SSH service is running inside the container (it starts automatically when you
+open a new shell instance, however, you can check this by doing `service ssh status`),
+you can SSH into the container as follows:
 
 ```bash
 ssh -p 5001 username@remote
 ```
 
-This will prompt for `username`'s password. If you haven't done this yet, [set it up](#users-password).
+This will prompt for the `username`'s password. If you haven't done this yet,
+[set it up](#users-password).
 
 ### Keychain
 
-Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`. There are corresponding lines for this in `~/.zshrc` specifying the key(s), just uncomment them.
+Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`.
+The corresponding lines are present in the `~/.zshrc`, just uncomment them and specify
+your keys.
 
-### User scripts
+### User's scripts
 
-The image provides auxillary scripts to help a user to generate SSH and GPG keys and connect them to a GitHub account. They are located in `~/Scripts`.
+The image provides auxiliary scripts that can help the user create SSH and GPG keys and
+connect them to an account on GitHub. They are located in `~/Scripts`.
 
 ### Key bindings
 
-This image contains key bindings for deleting words before and after the cursor: <kbd>Ctrl+Backspace</kbd> and <kbd>Ctrl+Delete</kbd> respectively. However, if you are using Windows Terminal, you may find out that the first one doesn't work when using SSH. This has been discussed [here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that you may use is this [AutoHotkey](https://www.autohotkey.com/) script:
+This image provides keyboard shortcuts to delete a word before and after the cursor:
+<kbd>Ctrl+Backspace</kbd> and <kbd>Ctrl+Delete</kbd> respectively. However, if you are
+using [Windows Terminal](https://github.com/microsoft/terminal), you may find that the
+first one does not work when you use an SSH connection. This has been discussed
+[here](https://github.com/microsoft/terminal/issues/755),
+and one of the solutions that you can use is this [AutoHotkey](https://www.autohotkey.com/)
+script:
 
 ```autohotkey
 ; For Windows Terminal: deletes the previous word
@@ -182,7 +218,11 @@ return
 
 ### Color theme
 
-Different terminals (like Xterm), programs (like Visual Studio Code) and utilities (like PuTTY) have their own color pallettes. So current theme may look ugly depending on what you use to enter the container. Since it's my image, I made it look more or less attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the following scheme:
+Different terminals (like Xterm), programs (like Visual Studio Code) and utilities
+(like PuTTY) have their own color pallettes. So the current theme can look ugly depending
+on what you use to enter the container. Since this is my image, I made it look more or less
+attractive when using [Windows Terminal](https://github.com/microsoft/terminal) with the
+following scheme:
 
 ```json
 {
@@ -208,6 +248,10 @@ Different terminals (like Xterm), programs (like Visual Studio Code) and utiliti
 }
 ```
 
-This one is based on [synthwave-everything](https://atomcorp.github.io/themes/?theme=synthwave-everything), which, I guess, was supposed to be used for local development. I made some changes to make it usable for remote development. So, with this being set up correctly, it should be looking something like this:
+It's based on
+[`synthwave-everything`](https://atomcorp.github.io/themes/?theme=synthwave-everything),
+which I believe was intended for local development. I made a few changes to make it
+suitable for remote development. With everything else set correctly, the terminal window
+should look like this:
 
-![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/colors.png)
+![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/color-theme.png)
