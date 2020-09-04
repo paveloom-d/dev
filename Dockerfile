@@ -80,6 +80,9 @@ RUN chown -R $USER:$USER Scripts && chmod -R +x Scripts
 # Switch to the created user
 USER $USER
 
+# Point to the hosts file for SSH
+RUN /docker-scripts/user/ssh/point-to-the-hosts-file.sh
+
 # Activate the configuration for Rclone
 RUN /docker-scripts/user/rclone/touch-rclone-config.sh
 
