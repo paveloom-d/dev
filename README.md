@@ -5,11 +5,6 @@
 If you are unsure, please refer to the description on the last commit on the
 [`master`](https://github.com/paveloom-d/dev/tree/master) branch.
 
-### Development
-
-There is a [ZenHub](https://www.zenhub.com/) board, so if you want to see it, make sure you
-have the extension installed.
-
 ### Content of the image
 
 - Image version: 0.3.3
