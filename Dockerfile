@@ -80,6 +80,9 @@ RUN chown -R $USER:$USER Scripts && chmod -R +x Scripts
 # Switch to the created user
 USER $USER
 
+# Activate the configuration for Rclone
+RUN /docker-scripts/user/rclone/touch-rclone-config.sh
+
 # Install OhMyZsh
 RUN /docker-scripts/user/ohmyzsh/install-ohmyzsh.sh
 
