@@ -14,7 +14,7 @@ but can be used both locally and in the cloud.
 
 ### Okay, what's inside?
 
-What's not there, perhaps you meant to ask? The list is very large and varied,
+Well, what's not there? The list is very large and varied,
 so see all the details under the spoiler:
 
 <details>
@@ -23,7 +23,7 @@ so see all the details under the spoiler:
   <li>Base image: Ubuntu (20.04)</li>
   <li>Essential packages:</li>
   <ul>
-    <li>apt-utils</li>
+    <li><code>apt-utils</code></li>
     <li>apt-transport-https</li>
     <li>dialog</li>
     <li>dumb-init</li>
