@@ -24,25 +24,25 @@ so see all the details under the spoiler:
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
-    <li>apt-transport-https</li>
-    <li>dialog</li>
-    <li>dumb-init</li>
-    <li>htop</li>
-    <li>ca-certificates</li>
-    <li>git</li>
-    <li>make</li>
-    <li>ncdu</li>
-    <li>zip</li>
-    <li>unzip</li>
-    <li>nano</li>
-    <li>less</li>
-    <li>wget</li>
-    <li>curl</li>
-    <li>gnupg-agent</li>
-    <li><a href="https://github.com/sudo-project/sudo">sudo</a> (1.9.1)</li>
-    <li>ssh</li>
-    <li>locales</li>
-    <li>software-properties-common</li>
+    <li><code>apt-transport-https</code></li>
+    <li><code>dialog</code></li>
+    <li><code>dumb-init</code></li>
+    <li><code>htop</code></li>
+    <li><code>ca-certificates</code></li>
+    <li><code>git</code></li>
+    <li><code>make</code></li>
+    <li><code>ncdu</code></li>
+    <li><code>zip</code></li>
+    <li><code>unzip</code></li>
+    <li><code>nano</code></li>
+    <li><code>less</code></li>
+    <li><code>wget</code></li>
+    <li><code>curl</code></li>
+    <li><code>gnupg-agent</code></li>
+    <li><a href="https://github.com/sudo-project/sudo"><code>sudo</code></a> (1.9.1)</li>
+    <li><code>ssh</code></li>
+    <li><code>locales</code></li>
+    <li><code>software-properties-common</code></li>
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#keychain">Keychain to manage your SSH keys</a></li>
@@ -56,7 +56,11 @@ so see all the details under the spoiler:
       <li>Additional plugins:</li>
       <ul>
         <li>
-          <a href="https://github.com/zsh-users/zsh-autosuggestions">Zsh-autosuggestions</a>
+          <a href="https://github.com/zsh-users/zsh-autosuggestions">
+            <code>
+              zsh-autosuggestions
+            </code>
+          </a>
         </li>
       </ul>
       <li><a href="#color-theme">Theme adjustments</a></li>
@@ -65,19 +69,19 @@ so see all the details under the spoiler:
   <li>Docker</li>
   <li>Python:</li>
   <ul>
-    <li>`python3-dev`</li>
-    <li>`python3-pip`</li>
+    <li><code>python3-dev</code></li>
+    <li><code>python3-pip</code></li>
     <li>Packages:</li>
     <ul>
-      <li>`wheel`</li>
-      <li>`numpy`</li>
-      <li>`matplotlib`</li>
+      <li><code>wheel</code></li>
+      <li><code>numpy</code></li>
+      <li><code>matplotlib</code></li>
     </ul>
   </ul>
   <li>Jupyter:</li>
   <ul>
-    <li>`jupyter`</li>
-    <li>`jupyterlab`</li>
+    <li><code>jupyter</code></li>
+    <li><code>jupyterlab</code></li>
     <li><a href="#jupyter">Aliases to run a notebook server</a></li>
   </ul>
   <li>Julia (1.5.0):</li>
@@ -93,13 +97,13 @@ so see all the details under the spoiler:
   <li>Rclone</li>
   <li>TexLive:</li>
   <ul>
-    <li>`dvipng`</li>
-    <li>`texlive-latex-extra`</li>
-    <li>`texlive-fonts-extra`</li>
-    <li>`texlive-lang-cyrillic`</li>
-    <li>`cm-super`</li>
+    <li><code>dvipng</code></li>
+    <li><code>texlive-latex-extra</code></li>
+    <li><code>texlive-fonts-extra</code></li>
+    <li><code>texlive-lang-cyrillic</code></li>
+    <li><code>cm-super</code></li>
   </ul>
-  <li><a href="#code-server">code-server</a></li>
+  <li><a href="#code-server"><code>code-server</code></a></li>
 </ul>
 </details>
 
