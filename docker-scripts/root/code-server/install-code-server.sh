@@ -11,5 +11,5 @@ curl -fOL https://github.com/cdr/code-server/releases/download/v$PACKAGE_TAG/$PA
 echo '\e[1;36m> Installing the package...\e[0m'
 dpkg -i $PACKAGE_NAME >/dev/null
 
-echo '\e[1;36m> Deleting the package file...\e[0m'
+echo '\e[1;36m> Deleting the package file...\e[0m\n'
 rm $PACKAGE_NAME
