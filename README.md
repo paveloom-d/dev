@@ -45,7 +45,8 @@ so see all the details under the spoiler:
     <li><code>software-properties-common</code></li>
   </ul>
   <li>Non-root user set-up</li>
-  <li><a href="#keychain">Keychain to manage your SSH keys</a></li>
+  <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>
+  <li><a href="#keybindings">Key bindings</a></li>
   <li>X2Go Server and XFCE Desktop Environment</li>
   <li>Midori Web Browser</li>
   <li><a href="#users-scripts">Auxiliary user scripts</a></li>
@@ -137,7 +138,7 @@ in the `/etc/docker/daemon.json` file:
 }
 ```
 
-To build the image, execute the following in the root directory:
+To build the image, execute the following in the repository's root directory:
 
 ```bash
 docker build -t image --squash .
@@ -157,7 +158,7 @@ docker exec -it container zsh
 
 ### Can I use Docker from the inside?
 
-Yes, but this requires that your local Docker socket is bind mounted and that the `others`
+Yes, but this requires that your local Docker socket is bind-mounted and that the `others`
 group has read and write privileges relative to it. You can give these privileges as
 follows:
 
@@ -193,18 +194,19 @@ Jupyter Lab.
 
 ### I don't see any password requests. Is that normal?
 
-Yes. The system (by default) will not ask the user to enter a password (this makes it
+Yes. The system will not ask the user to enter a password (this makes it
 easier to run administrator commands, for instance), but it will be asked if you try to
 establish an [SSH connection](#ssh) with a container from the outside. If no password has
 been set, the connection cannot be established. If you want to set this password, run
 `passwd $USER` as root.
 
-### SSH
+### So I can connect to this container over SSH?
 
-To establish an SSH connection to the container, you need to map the container's `22` port
-to any other port available and not occupied on the host machine (for example, `5001`).
+Absolutely. Although to establish an SSH connection to the container, you need to map the
+container's `22` port to any other port available and not occupied on the host machine
+(for example, `5001`).
 
-This can be accomplished by running the container using the `-p` flag:
+This can be accomplished by running a container using the `-p` flag:
 
 ```bash
 docker run -p 5001:22 --name container -t -d image
@@ -213,7 +215,7 @@ docker run -p 5001:22 --name container -t -d image
 Remember, you can't publish new ports when the container is already running.
 
 If the SSH service is running inside the container (it starts automatically when you
-open a new shell instance, however, you can check this by doing `service ssh status`),
+open a new shell instance, although you can check this by running `service ssh status`),
 you can SSH into the container as follows:
 
 ```bash
@@ -223,26 +225,20 @@ ssh -p 5001 username@remote
 This will prompt for the `username`'s password. If you haven't done this yet,
 [set it up](#users-password).
 
-### Keychain
+### What is this Keychain thing?
 
-Instead of calling `ssh-add` every time, you can add your SSH key(s) using `keychain`.
-The corresponding lines are present in the `~/.zshrc`, just uncomment them and specify
-your keys.
+Instead of calling `ssh-add` every time you log-in, you can add your SSH key(s) using
+[`keychain`](https://linux.die.net/man/1/keychain). The corresponding lines are present
+in the `~/.zshrc`, just uncomment them and specify your keys.
 
-### User's scripts
-
-The image provides auxiliary scripts that can help the user create SSH and GPG keys and
-connect them to an account on GitHub. They are located in `~/Scripts`.
-
-### Key bindings
+### What key bindings are offered?
 
 This image provides keyboard shortcuts to delete a word before and after the cursor:
 <kbd>Ctrl+Backspace</kbd> and <kbd>Ctrl+Delete</kbd> respectively. However, if you are
 using [Windows Terminal](https://github.com/microsoft/terminal), you may find that the
-first one does not work when you use an SSH connection. This has been discussed
-[here](https://github.com/microsoft/terminal/issues/755),
-and one of the solutions that you can use is this [AutoHotkey](https://www.autohotkey.com/)
-script:
+first one does not work. This has been discussed
+[here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that
+you can use is this [AutoHotkey](https://www.autohotkey.com/) script:
 
 ```autohotkey
 ; For Windows Terminal: deletes the previous word
@@ -253,18 +249,12 @@ return
 #IfWinActive ; Turn off context sensitivity
 ```
 
-### Code Server
+### Auxiliary user scripts, huh? What's that?
 
-This image contains the [`code-server`](https://github.com/cdr/code-server): a
-[Visual Studio Code](https://code.visualstudio.com/) fork to run IDE in the browser.
-By default, it uses port `8080`, so this port must be published before running the
-container:
+The image provides auxiliary scripts that can help the user create SSH and GPG keys and
+connect them to an account on GitHub. They are located in `~/Scripts`.
 
-```bash
-docker run -p 8080:8080 --name container -t -d image
-```
-
-### Color theme
+### Color scheme? What does that look like?
 
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities
 (like PuTTY) have their own color pallettes. So the current theme can look ugly depending
@@ -303,3 +293,14 @@ suitable for remote development. With everything else set correctly, the termina
 should look like this:
 
 ![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/color-theme.png)
+
+### What is `code-server`?
+
+[`code-server`](https://github.com/cdr/code-server) is a
+[Visual Studio Code](https://code.visualstudio.com/) fork to run IDE in the browser.
+By default, it uses port `8080`, so this port must be published before running the
+container:
+
+```bash
+docker run -p 8080:8080 --name container -t -d image
+```
