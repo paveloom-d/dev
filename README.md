@@ -5,69 +5,103 @@
 If you are unsure, please refer to the description on the last commit on the
 [`master`](https://github.com/paveloom-d/dev/tree/master) branch.
 
-### Content of the image
+### What is this?
 
-- Image version: 0.3.3
-- Base image: Ubuntu (20.04)
-- Essential packages:
-    - apt-utils
-    - apt-transport-https
-    - dialog
-    - dumb-init
-    - htop
-    - ca-certificates
-    - git
-    - make
-    - ncdu
-    - zip
-    - unzip
-    - nano
-    - less
-    - wget
-    - curl
-    - gnupg-agent
-    - sudo (1.9.1)
-    - ssh
-    - locales
-    - software-properties-common
-- Non-root user set-up
-- [Keychain to manage your SSH keys](#keychain)
-- X2Go Server and XFCE DE
-- Midori Web Browser
-- [Auxiliary user scripts](#users-scripts)
-- Zsh as the default shell:
-    - [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh):
-        - Additional plugins:
-            - [Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-        - [Theme adjustments](#color-theme)
-- Docker
-- Python:
-    - python3-dev
-    - python3-pip
-    - Packages:
-        - wheel
-        - numpy
-        - matplotlib
-- Jupyter:
-    - jupyter
-    - jupyterlab
-    - [Aliases to run a notebook server](#jupyter)
-- Julia (1.5.0):
-    - [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl)
-    - [Literate.jl](https://github.com/fredrikekre/Literate.jl)
-    - [Revise.jl](https://github.com/timholy/Revise.jl)
-    - [IJulia.jl](https://github.com/JuliaLang/IJulia.jl/)
-    - [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl)
-    - [Plots.jl](https://github.com/JuliaPlots/Plots.jl)
-- Node.js and npm
-- Rclone
-- TexLive:
-    - dvipng
-    - texlive-latex-extra
-    - texlive-fonts-extra
-    - texlive-lang-cyrillic
-    - cm-super
-- [`code-server`](#code-server)
+As the short description says, this is a Docker image containing my development environment.
+The main reason for creation is the desire to get rid of setting up environments from
+scratch when transitioning between machines. Designed initially for remote development,
+but can be used both locally and in the cloud.
+
+### Okay, what's inside?
+
+What's not there, perhaps you meant to ask? The list is very large and varied,
+so see all the details under the spoiler:
+
+<details>
+<summary>Content of the image</summary>
+<ul>
+  <li>Base image: Ubuntu (20.04)</li>
+  <li>Essential packages:</li>
+  <ul>
+    <li>apt-utils</li>
+    <li>apt-transport-https</li>
+    <li>dialog</li>
+    <li>dumb-init</li>
+    <li>htop</li>
+    <li>ca-certificates</li>
+    <li>git</li>
+    <li>make</li>
+    <li>ncdu</li>
+    <li>zip</li>
+    <li>unzip</li>
+    <li>nano</li>
+    <li>less</li>
+    <li>wget</li>
+    <li>curl</li>
+    <li>gnupg-agent</li>
+    <li><a href="https://github.com/sudo-project/sudo">sudo</a> (1.9.1)</li>
+    <li>ssh</li>
+    <li>locales</li>
+    <li>software-properties-common</li>
+  </ul>
+  <li>Non-root user set-up</li>
+  <li><a href="#keychain">Keychain to manage your SSH keys</a></li>
+  <li>X2Go Server and XFCE Desktop Environment</li>
+  <li>Midori Web Browser</li>
+  <li><a href="#users-scripts">Auxiliary user scripts</a></li>
+  <li>Zsh as the default shell:</li>
+  <ul>
+    <li><a href="https://github.com/ohmyzsh/ohmyzsh">OhMyZsh</a></li>
+    <ul>
+      <li>Additional plugins:</li>
+      <ul>
+        <li>
+          <a href="https://github.com/zsh-users/zsh-autosuggestions">Zsh-autosuggestions</a>
+        </li>
+      </ul>
+      <li><a href="#color-theme">Theme adjustments</a></li>
+    </ul>
+  </ul>
+  <li>Docker</li>
+  <li>Python:</li>
+  <ul>
+    <li>`python3-dev`</li>
+    <li>`python3-pip`</li>
+    <li>Packages:</li>
+    <ul>
+      <li>`wheel`</li>
+      <li>`numpy`</li>
+      <li>`matplotlib`</li>
+    </ul>
+  </ul>
+  <li>Jupyter:</li>
+  <ul>
+    <li>`jupyter`</li>
+    <li>`jupyterlab`</li>
+    <li><a href="#jupyter">Aliases to run a notebook server</a></li>
+  </ul>
+  <li>Julia (1.5.0):</li>
+  <ul>
+    <li><a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a></li>
+    <li><a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a></li>
+    <li><a href="https://github.com/timholy/Revise.jl">Revise.jl</a></li>
+    <li><a href="https://github.com/JuliaLang/IJulia.jl">IJulia.jl</a></li>
+    <li><a href="https://github.com/JuliaPy/PyPlot.jl">PyPlot.jl</a></li>
+    <li><a href="https://github.com/JuliaPlots/Plots.jl">Plots.jl</a></li>
+  </ul>
+  <li>Node.js and npm</li>
+  <li>Rclone</li>
+  <li>TexLive:</li>
+  <ul>
+    <li>`dvipng`</li>
+    <li>`texlive-latex-extra`</li>
+    <li>`texlive-fonts-extra`</li>
+    <li>`texlive-lang-cyrillic`</li>
+    <li>`cm-super`</li>
+  </ul>
+  <li><a href="#code-server">code-server</a></li>
+</ul>
+</details>
 
 ### Download
 
