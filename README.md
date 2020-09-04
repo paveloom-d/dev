@@ -12,12 +12,13 @@ have the extension installed.
 
 ### Content of the image
 
-- Image version: 0.3.2
+- Image version: 0.3.3
 - Base image: Ubuntu (20.04)
 - Essential packages:
     - apt-utils
     - apt-transport-https
     - dialog
+    - dumb-init
     - htop
     - ca-certificates
     - git
@@ -74,16 +75,16 @@ have the extension installed.
 
 ### Download
 
-This image can be downloaded from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
+This image can be pulled from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev:0.3.2
+docker pull paveloom/dev:0.3.3
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.2
+docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.3
 ```
 
 After that, you can run a container based on that image. If you want to build the image

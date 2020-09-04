@@ -6,7 +6,7 @@ FROM ubuntu:20.04
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-LABEL version="0.3.2"
+LABEL version="0.3.3"
 LABEL description="This is an image containing paveloom's personal development environment."
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL docker-repository="https://hub.docker.com/r/paveloom/dev"
@@ -64,6 +64,9 @@ RUN /docker-scripts/root/rclone/install-rclone.sh
 
 # Install TexLive
 RUN /docker-scripts/root/texlive/install-texlive.sh
+
+# Install `code-server`
+RUN /docker-scripts/root/code-server/install-code-server.sh
 
 # Switch to the created user
 USER $USER
