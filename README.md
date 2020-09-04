@@ -46,10 +46,10 @@ so see all the details under the spoiler:
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>
-  <li><a href="#keybindings">Key bindings</a></li>
+  <li><a href="#what-key-bindings-are-offered">Key bindings</a></li>
   <li>X2Go Server and XFCE Desktop Environment</li>
   <li>Midori Web Browser</li>
-  <li><a href="#users-scripts">Auxiliary user scripts</a></li>
+  <li><a href="#auxiliary-user-scripts-huh-whats-that">Auxiliary user scripts</a></li>
   <li>Zsh as the default shell:</li>
   <ul>
     <li><a href="https://github.com/ohmyzsh/ohmyzsh">OhMyZsh</a></li>
@@ -64,7 +64,7 @@ so see all the details under the spoiler:
           </a>
         </li>
       </ul>
-      <li><a href="#color-theme">Theme adjustments</a></li>
+      <li><a href="#theme-adjustments-why-is-that">Theme adjustments</a></li>
     </ul>
   </ul>
   <li>Docker</li>
@@ -83,7 +83,11 @@ so see all the details under the spoiler:
   <ul>
     <li><code>jupyter</code></li>
     <li><code>jupyterlab</code></li>
-    <li><a href="#jupyter">Aliases to run a notebook server</a></li>
+    <li>
+      <a href="#i-see-jupyter-installed-there-how-do-i-use-it">
+        Aliases to run a notebook server
+      </a>
+    </li>
   </ul>
   <li>Julia (1.5.0):</li>
   <ul>
@@ -104,7 +108,7 @@ so see all the details under the spoiler:
     <li><code>texlive-lang-cyrillic</code></li>
     <li><code>cm-super</code></li>
   </ul>
-  <li><a href="#code-server"><code>code-server</code></a></li>
+  <li><a href="#what-is-code-server"><code>code-server</code></a></li>
 </ul>
 </details>
 
@@ -196,11 +200,11 @@ Jupyter Lab.
 
 Yes. The system will not ask the user to enter a password (this makes it
 easier to run administrator commands, for instance), but it will be asked if you try to
-establish an [SSH connection](#ssh) with a container from the outside. If no password has
-been set, the connection cannot be established. If you want to set this password, run
-`passwd $USER` as root.
+establish an [SSH connection](#so-i-can-connect-to-this-container-over-ssh) with a
+container from the outside. If no password has been set, the connection cannot be
+established. If you want to set this password, run `passwd $USER` as root.
 
-### So I can connect to this container over SSH?
+### So I can connect to a container over SSH?
 
 Absolutely. Although to establish an SSH connection to the container, you need to map the
 container's `22` port to any other port available and not occupied on the host machine
@@ -223,7 +227,7 @@ ssh -p 5001 username@remote
 ```
 
 This will prompt for the `username`'s password. If you haven't done this yet,
-[set it up](#users-password).
+[set it up](#i-dont-see-any-password-requests-is-that-normal).
 
 ### What is this Keychain thing?
 
@@ -254,7 +258,7 @@ return
 The image provides auxiliary scripts that can help the user create SSH and GPG keys and
 connect them to an account on GitHub. They are located in `~/Scripts`.
 
-### Color scheme? What does that look like?
+### Theme adjustments? Why is that?
 
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities
 (like PuTTY) have their own color pallettes. So the current theme can look ugly depending
@@ -294,7 +298,7 @@ should look like this:
 
 ![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/color-theme.png)
 
-### What is `code-server`?
+### What is code-server?
 
 [`code-server`](https://github.com/cdr/code-server) is a
 [Visual Studio Code](https://code.visualstudio.com/) fork to run IDE in the browser.
