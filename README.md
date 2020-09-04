@@ -258,7 +258,7 @@ return
 The image provides auxiliary scripts that can help the user create SSH and GPG keys and
 connect them to an account on GitHub. They are located in `~/Scripts`.
 
-### Theme adjustments? Why is that?
+### Theme adjustments? Why?
 
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities
 (like PuTTY) have their own color pallettes. So the current theme can look ugly depending
@@ -301,8 +301,8 @@ should look like this:
 ### What is code-server?
 
 [`code-server`](https://github.com/cdr/code-server) is a
-[Visual Studio Code](https://code.visualstudio.com/) fork to run IDE in the browser.
-By default, it uses port `8080`, so this port must be published before running the
+[Visual Studio Code](https://code.visualstudio.com/) fork to run the IDE in the browser.
+By default, it uses port `8080`, so this port must be published before running a
 container:
 
 ```bash
