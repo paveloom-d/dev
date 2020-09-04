@@ -68,7 +68,7 @@ so see all the details under the spoiler:
     </ul>
   </ul>
   <li>Docker</li>
-  <li>Python:</li>
+  <li>Python (3.8):</li>
   <ul>
     <li><code>python3-dev</code></li>
     <li><code>python3-pip</code></li>
@@ -89,7 +89,7 @@ so see all the details under the spoiler:
       </a>
     </li>
   </ul>
-  <li>Julia (1.5.0):</li>
+  <li>Julia (1.5.1):</li>
   <ul>
     <li><a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a></li>
     <li><a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a></li>
