@@ -56,7 +56,7 @@ export LC_CTYPE=ru_RU.UTF8
 
 ## Make `less` not open a window
 ## if text takes up less space
-export LESS=-FX' >> ~/.zshrc
+export LESS=-FXR' >> ~/.zshrc
 
 echo '\e[1;36m> Creating a theme...\e[0m'
 echo 'PROMPT="%(?:%{$fg_bold[green]%}~>:%{$fg_bold[red]%}~>)"

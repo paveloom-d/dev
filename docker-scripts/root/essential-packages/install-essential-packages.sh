@@ -14,6 +14,9 @@ apt-get install -y --no-install-recommends apt-transport-https >/dev/null
 echo '\e[1;36m> Installing `dialog`...\e[0m'
 apt-get install -y --no-install-recommends dialog >/dev/null
 
+echo '\e[1;36m> Installing `dumb-init`...\e[0m'
+apt-get install -y --no-install-recommends dumb-init >/dev/null
+
 echo '\e[1;36m> Installing `htop`...\e[0m'
 apt-get install -y --no-install-recommends htop >/dev/null
 

@@ -75,4 +75,4 @@ git config --global user.signingkey "$KEY"
 git config --global push.default matching
 git config --global commit.gpgsign true
 git config --global gpg.program gpg
-echo -e "\n${cyan}This script have also updated the `git` configuration. You can check it using ${mage}git config --list${cyan}.${reset}\n"
+echo -e "\n${cyan}This script have also updated the ${mage}git${cyan} configuration. You can check it using ${mage}git config --list${cyan}.${reset}\n"

@@ -15,11 +15,8 @@ services:
 
 jobs:
   include:
-    - stage: "Build & Check"
-      name: "Build Docker Image"
-      script: bash .github/scripts/Build.bash
-    - script: bash .github/scripts/VersionCheck.bash
-      name: "Check Version"
+    - name: "Build Docker Image"
+      script: bash .github/scripts/build.bash
 
 notifications:
   email: false

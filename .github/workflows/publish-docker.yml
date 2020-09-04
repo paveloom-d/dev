@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Get release version
-      run: bash .github/scripts/PublishDocker.bash
+      run: bash .github/scripts/publish-docker.bash
 
     - name: Publish to Registry (with tagged image)
       if: ${{ env.PUBLISH_RELEASE_VERSION == 'true' }}
