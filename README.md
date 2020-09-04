@@ -220,7 +220,7 @@ return
 
 ### Code Server
 
-This image contains the [`code-server`](https://github.com/cdr/code-server):
+This image contains the [`code-server`](https://github.com/cdr/code-server): a
 [Visual Studio Code](https://code.visualstudio.com/) fork to run IDE in the browser.
 By default, it uses port `8080`, so this port must be published before running the
 container:
