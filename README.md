@@ -117,17 +117,17 @@ so see all the details under the spoiler:
 The image can be pulled from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
-docker pull paveloom/dev:0.3.3
+docker pull paveloom/dev:tag
 ```
 
 or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.3
+docker pull docker.pkg.github.com/paveloom-d/dev/dev:tag
 ```
 
-After that, you can run the Docker container based on it or create another image using
-that as a base.
+where the `tag` is one of the [releases](https://github.com/paveloom-d/dev/releases)
+(e.g. `0.1.0`).
 
 ### Can I build the image myself?
 
