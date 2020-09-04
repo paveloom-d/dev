@@ -72,6 +72,7 @@ have the extension installed.
     - texlive-fonts-extra
     - texlive-lang-cyrillic
     - cm-super
+- [`code-server`](#code-server)
 
 ### Download
 
@@ -215,6 +216,16 @@ script:
     Send, ^H
 return
 #IfWinActive ; Turn off context sensitivity
+```
+
+### Code Server
+
+This image contains [`code-server`](https://github.com/cdr/code-server):
+[Visual Studio Code](https://code.visualstudio.com/) fork to run IDE in the browser.
+By default, it uses port `8080`, so it must be published before running the container:
+
+```bash
+docker run -p 8080:8080 --name container -t -d image
 ```
 
 ### Color theme
