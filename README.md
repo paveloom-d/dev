@@ -107,9 +107,9 @@ so see all the details under the spoiler:
 </ul>
 </details>
 
-### Download
+### How do I use it?
 
-This image can be pulled from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
+The image can be pulled from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
 
 ```bash
 docker pull paveloom/dev:0.3.3
@@ -121,14 +121,15 @@ or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
 docker pull docker.pkg.github.com/paveloom-d/dev/dev:0.3.3
 ```
 
-After that, you can run a container based on that image. If you want to build the image
-yourself, see the next section.
+After that, you can run the Docker container based on it or create another image using
+that as a base.
 
-### Build, run, and enter
+### Can I build the image myself?
 
-There is nothing special when building, although I would recommend squashing the image.
-By this means using the Docker's `--squash` flag, which is an experimental feature.
-To enable it, make sure you have the following code in the `/etc/docker/daemon.json` file:
+Totally, but know that it's going to take some time. There is nothing special when building,
+although I would recommend squashing the image. By this means using the Docker's `--squash`
+flag, which is an experimental feature. To enable it, make sure you have the following code
+in the `/etc/docker/daemon.json` file:
 
 ```json
 {
@@ -154,11 +155,11 @@ Since Zsh is the default shell, you can enter the container using the following 
 docker exec -it container zsh
 ```
 
-### Using Docker inside
+### Can I use Docker from the inside?
 
-Bind mounting the Docker socket allows you to develop other images inside a running
-container. This requires that the `others` group has read and write privileges relative
-to your local socket. You can give these privileges as follows:
+Yes, but this requires that your local Docker socket is bind mounted and that the `others`
+group has read and write privileges relative to it. You can give these privileges as
+follows:
 
 ```bash
 sudo chmod o+rw /var/run/docker.sock
@@ -170,7 +171,7 @@ After that, the container should be run with an additional `-v` flag:
 docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
 ```
 
-### Jupyter
+### I see Jupyter installed there. How do I use it?
 
 To use Jupyter Notebook or Jupyter Lab you will need to do two things.
 
@@ -190,12 +191,13 @@ jupyter notebook --ip 0.0.0.0 --no-browser
 There are handy aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for
 Jupyter Lab.
 
-### User's password
+### I don't see any password requests. Is that normal?
 
-The system (by default) will not ask the user to enter a password (this makes it easier to
-run administrator commands), but this password exists and will be asked when you try to
-establish an [SSH connection](#ssh) with a container from the outside. If you want to set
-this password, run `passwd $USER` as root.
+Yes. The system (by default) will not ask the user to enter a password (this makes it
+easier to run administrator commands, for instance), but it will be asked if you try to
+establish an [SSH connection](#ssh) with a container from the outside. If no password has
+been set, the connection cannot be established. If you want to set this password, run
+`passwd $USER` as root.
 
 ### SSH
 
