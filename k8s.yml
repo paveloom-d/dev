@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-server
+  labels:
+    app: code-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-server
+  template:
+    metadata:
+      labels:
+        app: code-server
+    spec:
+      containers:
+      - name: dev
+        image: paveloom/dev:0.3.3
+        ports:
+        - containerPort: 8080
+        command: ["dumb-init", "code-server", "--port", "8080", "--host", "0.0.0.0"]
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: code-server
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP
+  ports:
+  - name: "code-server"
+    port: 8080
+  selector:
+    app: code-server
