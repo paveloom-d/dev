@@ -18,9 +18,9 @@ spec:
       - name: dev
         image: paveloom/dev:0.3.3
         securityContext:
+          runAsUser: 1000
+          runAsGroup: 0
           capabilities:
-            runAsUser: 1000
-            runAsGroup: 0
             add: ["SYS_PTRACE"]
         ports:
         - containerPort: 8080
