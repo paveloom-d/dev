@@ -22,7 +22,7 @@ spec:
         image: paveloom/dev:0.3.3
         securityContext:
           capabilities:
-            add: ["SYS_ADMIN"]
+            add: ["SYS_PTRACE"]
         ports:
         - containerPort: 8080
         command: ["dumb-init", "code-server", "--port", "8080", "--host", "0.0.0.0", "--auth", "password"]
