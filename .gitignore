@@ -1,2 +1,2 @@
-# Unintentional .save files
-*.save
+# User's Makefile(s)
+*Makefile
