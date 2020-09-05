@@ -14,14 +14,13 @@ spec:
       labels:
         app: code-server
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
       containers:
       - name: dev
         image: paveloom/dev:0.3.3
         securityContext:
           capabilities:
+            runAsUser: 1000
+            runAsGroup: 0
             add: ["SYS_PTRACE"]
         ports:
         - containerPort: 8080
