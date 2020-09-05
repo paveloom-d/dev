@@ -18,9 +18,7 @@ spec:
       - name: dev
         image: paveloom/dev:0.3.3
         securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-          fsGroup: 0
+          runAsUser: 0
         ports:
         - containerPort: 8080
         command: ["dumb-init", "code-server", "--port", "8080", "--host", "0.0.0.0", "--auth", "password"]
