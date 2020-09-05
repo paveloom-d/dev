@@ -15,7 +15,7 @@ spec:
         app: code-server
     spec:
       securityContext:
-        runAsUser: 1000
+        runAsUser: 0
         runAsGroup: 1000
       containers:
       - name: dev
