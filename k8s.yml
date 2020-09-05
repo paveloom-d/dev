@@ -19,7 +19,7 @@ spec:
         image: paveloom/dev:0.3.3
         ports:
         - containerPort: 8080
-        command: ["dumb-init", "code-server", "--port", "8080", "--host", "0.0.0.0"]
+        command: ["dumb-init", "code-server", "--port", "8080", "--host", "0.0.0.0", "--password", "$(SECRET_PASSWORD)"]
         resources:
           requests:
             memory: "4Gi"
