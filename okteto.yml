@@ -1,0 +1,8 @@
+name: code-server
+labels:
+  app.kubernetes.io/part-of: code-server
+command: ["dumb-init", "code-server", "--port", "8080", "--host", "0.0.0.0", "--auth", "password"]
+workdir: ~/Repositories
+reverse:
+  - 8080:8080
+remote: 5002

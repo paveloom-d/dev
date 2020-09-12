@@ -46,19 +46,3 @@ spec:
     port: 8080
   selector:
     app: code-server
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: ssh-service
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 5001
-    targetPort: 5001
-    name: ssh
-    protocol: TCP
-  selector:
-    app: code-server
