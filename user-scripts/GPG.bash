@@ -75,4 +75,21 @@ git config --global user.signingkey "$KEY"
 git config --global push.default matching
 git config --global commit.gpgsign true
 git config --global gpg.program gpg
+
 echo -e "\n${cyan}This script have also updated the ${mage}git${cyan} configuration. You can check it using ${mage}git config --list${cyan}.${reset}\n"
+
+# Add several Git aliases
+git config --global alias.new '!f() {
+    if [ ! -z "${1}" ]; then
+        git checkout -b ${1}
+        git push -u origin ${1}
+    fi
+}; f'
+git config --global alias.done '!f() {
+    git add -A
+    if git commit -e; then
+        git push -u origin `git branch --show-current`
+    fi
+}; f'
+
+echo -e "\n${cyan}Also, several Git aliases have been added: ${mage}new${cyan} and ${mage}done${cyan}.${reset}\n"
