@@ -20,7 +20,7 @@ so see all the details under the spoiler:
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: Ubuntu (20.04)</li>
+  <li>Base image: Ubuntu (20.10)</li>
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>

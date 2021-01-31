@@ -2,7 +2,7 @@
 # layers use docker's --squash option when building
 
 # Base image
-FROM ubuntu:20.04
+FROM ubuntu:20.10
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
