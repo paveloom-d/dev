@@ -20,7 +20,7 @@ so see all the details under the spoiler:
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: Ubuntu (20.04)</li>
+  <li>Base image: Ubuntu (20.10)</li>
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
@@ -46,7 +46,6 @@ so see all the details under the spoiler:
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>
-  <li><a href="#what-key-bindings-are-offered">Key bindings</a></li>
   <li>X2Go Server and XFCE Desktop Environment</li>
   <li>Midori Web Browser</li>
   <li><a href="#auxiliary-user-scripts-huh-whats-that">Auxiliary user scripts</a></li>
@@ -108,7 +107,6 @@ so see all the details under the spoiler:
     <li><code>texlive-lang-cyrillic</code></li>
     <li><code>cm-super</code></li>
   </ul>
-  <li><a href="#what-is-code-server"><code>code-server</code></a></li>
 </ul>
 </details>
 
@@ -131,7 +129,7 @@ where the `tag` is one of the [releases](https://github.com/paveloom-d/dev/relea
 
 ### Can I build the image myself?
 
-Totally, but know that it's going to take some time. There is nothing special when building,
+Totally, but be aware that it may take a long time. There is nothing special when building,
 although I would recommend squashing the image. By this means using the Docker's `--squash`
 flag, which is an experimental feature. To enable it, make sure you have the following code
 in the `/etc/docker/daemon.json` file:
@@ -235,28 +233,11 @@ Instead of calling `ssh-add` every time you log-in, you can add your SSH key(s) 
 [`keychain`](https://linux.die.net/man/1/keychain). The corresponding lines are present
 in the `~/.zshrc`, just uncomment them and specify your keys.
 
-### What key bindings are offered?
-
-This image provides keyboard shortcuts to delete a word before and after the cursor:
-<kbd>Ctrl+Backspace</kbd> and <kbd>Ctrl+Delete</kbd> respectively. However, if you are
-using [Windows Terminal](https://github.com/microsoft/terminal), you may find that the
-first one does not work. This has been discussed
-[here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that
-you can use is this [AutoHotkey](https://www.autohotkey.com/) script:
-
-```autohotkey
-; For Windows Terminal: deletes the previous word
-#IfWinActive ahk_exe WindowsTerminal.exe ; Only apply when this window is active
-^backspace::
-    Send, ^H
-return
-#IfWinActive ; Turn off context sensitivity
-```
-
 ### Auxiliary user scripts, huh? What's that?
 
 The image provides auxiliary scripts that can help the user create SSH and GPG keys and
-connect them to an account on GitHub. They are located in `~/Scripts`.
+connect them to an account on GitHub. Also, these scripts adjust Git config and add several
+Git aliases. They are located in `~/Scripts`.
 
 ### Theme adjustments? Why?
 
@@ -291,20 +272,7 @@ following scheme:
 ```
 
 It's based on
-[`synthwave-everything`](https://atomcorp.github.io/themes/?theme=synthwave-everything),
-which I believe was intended for local development. I made a few changes to make it
-suitable for remote development. With everything else set correctly, the terminal window
-should look like this:
+[`synthwave-everything`](https://atomcorp.github.io/themes/?theme=synthwave-everything).
+With everything else set correctly, the terminal window should look like this:
 
 ![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/color-theme.png)
-
-### What is code-server?
-
-[`code-server`](https://github.com/cdr/code-server) is a
-[Visual Studio Code](https://code.visualstudio.com/) fork to run the IDE in the browser.
-By default, it uses port `8080`, so this port must be published before running a
-container:
-
-```bash
-docker run -p 8080:8080 --name container -t -d image
-```

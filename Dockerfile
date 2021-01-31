@@ -2,16 +2,16 @@
 # layers use docker's --squash option when building
 
 # Base image
-FROM ubuntu:20.04
+FROM ubuntu:20.10
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-LABEL version="0.3.3"
+LABEL version="0.4.0"
 LABEL description="This is an image containing paveloom's personal development environment."
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL docker-repository="https://hub.docker.com/r/paveloom/dev"
 
-# Copy docker scripts to the root
+# Copy Docker scripts to the root
 COPY docker-scripts /docker-scripts
 
 # Allow their execution
@@ -65,9 +65,6 @@ RUN /docker-scripts/root/rclone/install-rclone.sh
 # Install TexLive
 RUN /docker-scripts/root/texlive/install-texlive.sh
 
-# Install `code-server`
-RUN /docker-scripts/root/code-server/install-code-server.sh
-
 # Switch to the home directory of the user
 WORKDIR $HOME
 
@@ -104,5 +101,5 @@ ENV PATH=$PATH:/home/$USER/Other/julia/bin
 # Install julia
 RUN /docker-scripts/user/julia/install-julia.sh
 
-# Remove docker scripts
+# Remove Docker scripts
 RUN sudo rm -rf /docker-scripts
