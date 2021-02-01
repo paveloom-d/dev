@@ -92,6 +92,9 @@ RUN /build-scripts/user/python/install-python-packages.sh
 # Install JupyterLab
 RUN /build-scripts/user/jupyterlab/install-jupyterlab.sh
 
+# Add `~/.cargo/bin` to the `PATH`
+ENV PATH=$PATH:/home/$USER/.cargo/bin
+
 # Install Rust
 RUN /build-scripts/user/rust/install-rust.sh
 
