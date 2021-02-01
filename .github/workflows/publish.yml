@@ -6,12 +6,14 @@ on:
   push:
     branches:
       - develop
+      - update
 
 env:
-  OWNER: ${{ github.event.repository.owner }}
-  NAME: ${{ github.event.repository.name }}
-  USERNAME: ${{ github.actor }}
   GHCR_PAT: ${{ secrets.GHCR_PAT }}
+  IMAGENAME: ${{ github.event.repository.name }}
+  OWNER: ${{ github.repository_owner }}
+  REPOSITORY: ${{ github.repository }}
+  USERNAME: ${{ github.actor }}
 
 jobs:
   Publish:
@@ -22,4 +24,4 @@ jobs:
     - name: Determine whether to upload a release version
       run: bash .github/scripts/version.bash
     - name: Publish to GHCR
-      run: bash .github/scripts/version.bash
+      run: bash .github/scripts/publish.bash
