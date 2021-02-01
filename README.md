@@ -88,7 +88,7 @@ so see all the details under the spoiler:
       </a>
     </li>
   </ul>
-  <li>Julia (1.5.1):</li>
+  <li>Julia (1.5.3):</li>
   <ul>
     <li><a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a></li>
     <li><a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a></li>
