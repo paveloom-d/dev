@@ -92,6 +92,9 @@ RUN /build-scripts/user/python/install-python-packages.sh
 # Install JupyterLab
 RUN /build-scripts/user/jupyterlab/install-jupyterlab.sh
 
+# Install Rust
+RUN /build-scripts/user/rust/install-rust.sh
+
 # Add `~/Other/julia/bin` to the `PATH`
 ENV PATH=$PATH:/home/$USER/Other/julia/bin
 
