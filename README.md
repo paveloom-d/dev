@@ -66,7 +66,7 @@ so see all the details under the spoiler:
       <li><a href="#theme-adjustments-why-is-that">Theme adjustments</a></li>
     </ul>
   </ul>
-  <li>Docker</li>
+  <li>Podman and Buildah</li>
   <li>Python (3.8):</li>
   <ul>
     <li><code>python3-dev</code></li>
