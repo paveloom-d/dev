@@ -18,7 +18,7 @@ RUN chmod -R +x /build-scripts
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Set a time zone for `tzdata`
-ARG TZ=Europe/Moscow
+ENV TZ=Europe/Moscow
 
 # Install essential packages
 RUN /build-scripts/root/essential-packages/install-essential-packages.sh
@@ -84,7 +84,7 @@ RUN /build-scripts/user/rclone/touch-rclone-config.sh
 RUN /build-scripts/user/ohmyzsh/install-ohmyzsh.sh
 
 # Add `~/.local/bin` to the `PATH`
-ARG PATH=$PATH:/home/$USER/.local/bin
+ENV PATH=$PATH:/home/$USER/.local/bin
 
 # Install Python packages
 RUN /build-scripts/user/python/install-python-packages.sh
@@ -93,7 +93,7 @@ RUN /build-scripts/user/python/install-python-packages.sh
 RUN /build-scripts/user/jupyterlab/install-jupyterlab.sh
 
 # Add `~/Other/julia/bin` to the `PATH`
-ARG PATH=$PATH:/home/$USER/Other/julia/bin
+ENV PATH=$PATH:/home/$USER/Other/julia/bin
 
 # Install Julia
 RUN /build-scripts/user/julia/install-julia.sh
