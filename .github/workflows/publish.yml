@@ -18,13 +18,13 @@ jobs:
     - name: Publish to GHCR (with a tagged image)
       if: ${{ env.PUBLISH_RELEASE_VERSION == 'true' }}
       run: |
-        echo ${{ secrets.GHCR_PAT }} | podman login ghcr.io -u ${{ github.actor }} --password-stdin
         podman build --squash-all -t dev .
+        echo ${{ secrets.GHCR_PAT }} | podman login ghcr.io -u ${{ github.actor }} --password-stdin
         podman push dev ghcr.io/paveloom-d/dev:latest
         podman push dev ghcr.io/paveloom-d/dev:${{ env.RELEASE_VERSION }}
     - name: Publish to GHCR (without a tagged image)
       if: ${{ env.PUBLISH_RELEASE_VERSION == 'false' }}
       run: |
-        echo ${{ secrets.GHCR_PAT }} | podman login ghcr.io -u ${{ github.actor }} --password-stdin
         podman build --squash-all -t dev .
+        echo ${{ secrets.GHCR_PAT }} | podman login ghcr.io -u ${{ github.actor }} --password-stdin
         podman push dev ghcr.io/paveloom-d/dev:latest
