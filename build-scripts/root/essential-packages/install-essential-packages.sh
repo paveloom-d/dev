@@ -11,6 +11,9 @@ apt-get -y install apt-utils >/dev/null 2>&1
 echo '\e[1;36m> Installing `apt-transport-https`...\e[0m'
 apt-get install -y --no-install-recommends apt-transport-https >/dev/null
 
+echo '\e[1;36m> Installing `build-essential`...\e[0m'
+apt-get install -y --no-install-recommends build-essential >/dev/null
+
 echo '\e[1;36m> Installing `dialog`...\e[0m'
 apt-get install -y --no-install-recommends dialog >/dev/null
 
@@ -28,6 +31,9 @@ apt-get install -y --no-install-recommends git >/dev/null
 
 echo '\e[1;36m> Installing `make`...\e[0m'
 apt-get install -y --no-install-recommends make >/dev/null
+
+echo '\e[1;36m> Installing `screen`...\e[0m'
+apt-get install -y --no-install-recommends screen >/dev/null
 
 echo '\e[1;36m> Installing `ncdu`...\e[0m'
 apt-get install -y --no-install-recommends ncdu >/dev/null
@@ -64,6 +70,9 @@ apt-get install -y --no-install-recommends keychain >/dev/null
 echo '\e[1;36m> Installing `locales`...\e[0m'
 apt-get install -y --no-install-recommends locales >/dev/null
 locale-gen ru_RU.UTF-8 >/dev/null
+
+echo '\e[1;36m> Installing `language-pack-en-base`...\e[0m'
+apt-get install -y --no-install-recommends language-pack-en-base >/dev/null
 
 echo '\e[1;36m> Installing `software-properties-common`...\e[0m'
 apt-get install -y --no-install-recommends software-properties-common >/dev/null
