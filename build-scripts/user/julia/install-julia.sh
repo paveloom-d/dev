@@ -11,8 +11,9 @@ tar -xf ~/Other/julia/julia*.tar.gz -C ~/Other/julia --strip-components 1
 echo '\e[1;36m> Deleting the tarball...\e[0m'
 rm ~/Other/julia/julia*.tar.gz
 
+echo '\e[1;36m> Explicitly updating the PATH variable in the `~/.zshrc`...\e[0m'
 echo '
-# Add Julia to the PATH
+# Add Julia binaries to the `PATH`
 export PATH=$PATH:/home/$USER/Other/julia/bin' >> ~/.zshrc
 
 echo '\e[1;36m> Installing `Documenter`...\e[0m'
