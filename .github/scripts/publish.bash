@@ -13,5 +13,5 @@ podman push $IMAGENAME ghcr.io/$OWNER/$IMAGENAME:latest
 
 # Push the release version
 if [ "$PUBLISH_RELEASE_VERSION" = true ]; then
-    podman push dev ghcr.io/$OWNER/$IMAGENAME:${{ env.RELEASE_VERSION }}
+    podman push dev ghcr.io/$OWNER/$IMAGENAME:$RELEASE_VERSION
 fi

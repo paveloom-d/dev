@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - develop
-      - update
 
 env:
   GHCR_PAT: ${{ secrets.GHCR_PAT }}
