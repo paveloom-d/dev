@@ -20,7 +20,7 @@ spoiler:
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: Ubuntu (20.10)</li>
+  <li>Base image: <a href="https://hub.docker.com/_/ubuntu">Ubuntu</a> (20.10)</li>
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
