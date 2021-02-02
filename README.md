@@ -7,15 +7,15 @@ If you are unsure, please refer to the description on the last commit on the
 
 ### What is this?
 
-As the short description says, this is a Docker image containing my development environment.
-The main reason for creation is the desire to get rid of setting up environments from
-scratch when transitioning between machines. Designed initially for remote development,
-but can be used both locally and in the cloud.
+This is an [OCI](https://opencontainers.org/) compliant image containing my personal
+development environment. The main reason for creation is the desire to stop setting up
+environments from scratch when transitioning between machines. Designed initially for
+remote development, but can also be used both locally and in the cloud.
 
-### Okay, what's inside?
+### What's inside?
 
-Well, what's not there? The list is very large and varied,
-so see all the details under the spoiler:
+Well, what's not there? The list is large and varied, so see all the details under the
+spoiler:
 
 <details>
 <summary>Content of the image</summary>
@@ -113,68 +113,47 @@ so see all the details under the spoiler:
 </ul>
 </details>
 
-### How do I use it?
+### How do I get it?
 
-The image can be pulled from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
+I recommend using [Podman](https://podman.io) for building the image and running a container,
+although the same can be done using [Docker](https://www.docker.com).
 
-```bash
-docker pull paveloom/dev:tag
-```
-
-or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
+Since `v0.4.0`, the image can be pulled from
+[GitHub Container Registry](https://github.com/orgs/paveloom-d/packages/container/package/dev):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:tag
+podman pull ghcr.io/paveloom-d/dev:tag
 ```
 
 where the `tag` is one of the [releases](https://github.com/paveloom-d/dev/releases)
 (e.g. `0.1.0`).
 
+Older versions can be pulled from [DockerHub](https://hub.docker.com/r/paveloom/dev) or
+from [GitHub Packages](https://github.com/paveloom-d/dev/packages/290377):
+
+```bash
+podman pull docker.io/paveloom/dev:tag
+```
+
 ### Can I build the image myself?
 
-Totally, but be aware that it may take a long time. There is nothing special when building,
-although I would recommend squashing the image. By this means using the Docker's `--squash`
-flag, which is an experimental feature. To enable it, make sure you have the following code
-in the `/etc/docker/daemon.json` file:
-
-```json
-{
-    "experimental": true
-}
-```
-
-To build the image, execute the following in the repository's root directory:
+Yes. To build the image, checkout the repository from a tagged commit on the `master` branch
+and execute the following in the repository's root directory:
 
 ```bash
-docker build -t image --squash .
+podman build --squash-all -t dev .
 ```
 
-You can then run the container as follows:
+You can then run a container based on this image as follows:
 
 ```bash
-docker run --name container -t -d image
+podman run --name container -t -d dev
 ```
 
 Since Zsh is the default shell, you can enter the container using the following command:
 
 ```bash
-docker exec -it container zsh
-```
-
-### Can I use Docker from the inside?
-
-Yes, but this requires that your local Docker socket is bind-mounted and that the `others`
-group has read and write privileges relative to it. You can give these privileges as
-follows:
-
-```bash
-sudo chmod o+rw /var/run/docker.sock
-```
-
-After that, the container should be run with an additional `-v` flag:
-
-```bash
-docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
+podman exec -it container zsh
 ```
 
 ### I see Jupyter installed there. How do I use it?
@@ -185,10 +164,10 @@ First, publish the `8888` port (or any other, but this one is standard) when run
 container:
 
 ```bash
-docker run -p 8888:8888 --name container -t -d image
+podman run -p 8888:8888 --name container -t -d dev
 ```
 
-Secondly, while inside the container, run the notebook server listening on IP `0.0.0.0`:
+Next, while inside the container, run the notebook server listening on IP `0.0.0.0`:
 
 ```bash
 jupyter notebook --ip 0.0.0.0 --no-browser
@@ -214,7 +193,7 @@ container's `22` port to any other port available and not occupied on the host m
 This can be accomplished by running a container using the `-p` flag:
 
 ```bash
-docker run -p 5001:22 --name container -t -d image
+podman run -p 5001:22 --name container -t -d dev
 ```
 
 Remember, you can't publish new ports when the container is already running.
