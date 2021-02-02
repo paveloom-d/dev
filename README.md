@@ -7,30 +7,32 @@ If you are unsure, please refer to the description on the last commit on the
 
 ### What is this?
 
-As the short description says, this is a Docker image containing my development environment.
-The main reason for creation is the desire to get rid of setting up environments from
-scratch when transitioning between machines. Designed initially for remote development,
-but can be used both locally and in the cloud.
+This is an [OCI](https://opencontainers.org/) compliant image containing my personal
+development environment. The main reason for creation is the desire to stop setting up
+environments from scratch when transitioning between machines. Designed initially for
+remote development, but can also be used both locally and in the cloud.
 
-### Okay, what's inside?
+### What's inside?
 
-Well, what's not there? The list is very large and varied,
-so see all the details under the spoiler:
+Well, what's not there? The list is large and varied, so see all the details under the
+spoiler:
 
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: Ubuntu (20.04)</li>
+  <li>Base image: <a href="https://hub.docker.com/_/ubuntu">Ubuntu</a> (20.10)</li>
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
     <li><code>apt-transport-https</code></li>
+    <li><code>build-essential</code></li>
     <li><code>dialog</code></li>
     <li><code>dumb-init</code></li>
     <li><code>htop</code></li>
     <li><code>ca-certificates</code></li>
     <li><code>git</code></li>
     <li><code>make</code></li>
+    <li><code>screen</code></li>
     <li><code>ncdu</code></li>
     <li><code>zip</code></li>
     <li><code>unzip</code></li>
@@ -42,11 +44,11 @@ so see all the details under the spoiler:
     <li><a href="https://github.com/sudo-project/sudo"><code>sudo</code></a> (1.9.1)</li>
     <li><code>ssh</code></li>
     <li><code>locales</code></li>
+    <li><code>language-pack-en-base</code></li>
     <li><code>software-properties-common</code></li>
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>
-  <li><a href="#what-key-bindings-are-offered">Key bindings</a></li>
   <li>X2Go Server and XFCE Desktop Environment</li>
   <li>Midori Web Browser</li>
   <li><a href="#auxiliary-user-scripts-huh-whats-that">Auxiliary user scripts</a></li>
@@ -67,7 +69,7 @@ so see all the details under the spoiler:
       <li><a href="#theme-adjustments-why-is-that">Theme adjustments</a></li>
     </ul>
   </ul>
-  <li>Docker</li>
+  <li>Podman and Buildah</li>
   <li>Python (3.8):</li>
   <ul>
     <li><code>python3-dev</code></li>
@@ -89,7 +91,8 @@ so see all the details under the spoiler:
       </a>
     </li>
   </ul>
-  <li>Julia (1.5.1):</li>
+  <li>Rust</li>
+  <li>Julia (1.5.3):</li>
   <ul>
     <li><a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a></li>
     <li><a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a></li>
@@ -108,72 +111,50 @@ so see all the details under the spoiler:
     <li><code>texlive-lang-cyrillic</code></li>
     <li><code>cm-super</code></li>
   </ul>
-  <li><a href="#what-is-code-server"><code>code-server</code></a></li>
 </ul>
 </details>
 
-### How do I use it?
+### How do I get it?
 
-The image can be pulled from [Docker Hub](https://hub.docker.com/r/paveloom/dev):
+I recommend using [Podman](https://podman.io) for building the image and running a container,
+although the same can be done using [Docker](https://www.docker.com).
 
-```bash
-docker pull paveloom/dev:tag
-```
-
-or from [GitHub Packages](https://github.com/paveloom-d/dev/packages):
+Since `v0.4.0`, the image can be pulled from
+[GitHub Container Registry](https://github.com/orgs/paveloom-d/packages/container/package/dev):
 
 ```bash
-docker pull docker.pkg.github.com/paveloom-d/dev/dev:tag
+podman pull ghcr.io/paveloom-d/dev:tag
 ```
 
 where the `tag` is one of the [releases](https://github.com/paveloom-d/dev/releases)
 (e.g. `0.1.0`).
 
+Older versions can be pulled from [DockerHub](https://hub.docker.com/r/paveloom/dev) or
+from [GitHub Packages](https://github.com/paveloom-d/dev/packages/290377):
+
+```bash
+podman pull docker.io/paveloom/dev:tag
+```
+
 ### Can I build the image myself?
 
-Totally, but know that it's going to take some time. There is nothing special when building,
-although I would recommend squashing the image. By this means using the Docker's `--squash`
-flag, which is an experimental feature. To enable it, make sure you have the following code
-in the `/etc/docker/daemon.json` file:
-
-```json
-{
-    "experimental": true
-}
-```
-
-To build the image, execute the following in the repository's root directory:
+Yes. To build the image, checkout the repository from a tagged commit on the `master` branch
+and execute the following in the repository's root directory:
 
 ```bash
-docker build -t image --squash .
+podman build --squash-all -t dev .
 ```
 
-You can then run the container as follows:
+You can then run a container based on this image as follows:
 
 ```bash
-docker run --name container -t -d image
+podman run --name container -t -d dev
 ```
 
 Since Zsh is the default shell, you can enter the container using the following command:
 
 ```bash
-docker exec -it container zsh
-```
-
-### Can I use Docker from the inside?
-
-Yes, but this requires that your local Docker socket is bind-mounted and that the `others`
-group has read and write privileges relative to it. You can give these privileges as
-follows:
-
-```bash
-sudo chmod o+rw /var/run/docker.sock
-```
-
-After that, the container should be run with an additional `-v` flag:
-
-```bash
-docker run -v /var/run/docker.sock:/var/run/docker.sock --name container -t -d image
+podman exec -it container zsh
 ```
 
 ### I see Jupyter installed there. How do I use it?
@@ -184,10 +165,10 @@ First, publish the `8888` port (or any other, but this one is standard) when run
 container:
 
 ```bash
-docker run -p 8888:8888 --name container -t -d image
+podman run -p 8888:8888 --name container -t -d dev
 ```
 
-Secondly, while inside the container, run the notebook server listening on IP `0.0.0.0`:
+Next, while inside the container, run the notebook server listening on IP `0.0.0.0`:
 
 ```bash
 jupyter notebook --ip 0.0.0.0 --no-browser
@@ -213,7 +194,7 @@ container's `22` port to any other port available and not occupied on the host m
 This can be accomplished by running a container using the `-p` flag:
 
 ```bash
-docker run -p 5001:22 --name container -t -d image
+podman run -p 5001:22 --name container -t -d dev
 ```
 
 Remember, you can't publish new ports when the container is already running.
@@ -235,28 +216,11 @@ Instead of calling `ssh-add` every time you log-in, you can add your SSH key(s) 
 [`keychain`](https://linux.die.net/man/1/keychain). The corresponding lines are present
 in the `~/.zshrc`, just uncomment them and specify your keys.
 
-### What key bindings are offered?
-
-This image provides keyboard shortcuts to delete a word before and after the cursor:
-<kbd>Ctrl+Backspace</kbd> and <kbd>Ctrl+Delete</kbd> respectively. However, if you are
-using [Windows Terminal](https://github.com/microsoft/terminal), you may find that the
-first one does not work. This has been discussed
-[here](https://github.com/microsoft/terminal/issues/755), and one of the solutions that
-you can use is this [AutoHotkey](https://www.autohotkey.com/) script:
-
-```autohotkey
-; For Windows Terminal: deletes the previous word
-#IfWinActive ahk_exe WindowsTerminal.exe ; Only apply when this window is active
-^backspace::
-    Send, ^H
-return
-#IfWinActive ; Turn off context sensitivity
-```
-
 ### Auxiliary user scripts, huh? What's that?
 
 The image provides auxiliary scripts that can help the user create SSH and GPG keys and
-connect them to an account on GitHub. They are located in `~/Scripts`.
+connect them to an account on GitHub. Also, these scripts adjust Git config and add several
+Git aliases. They are located in `~/Scripts`.
 
 ### Theme adjustments? Why?
 
@@ -291,20 +255,7 @@ following scheme:
 ```
 
 It's based on
-[`synthwave-everything`](https://atomcorp.github.io/themes/?theme=synthwave-everything),
-which I believe was intended for local development. I made a few changes to make it
-suitable for remote development. With everything else set correctly, the terminal window
-should look like this:
+[`synthwave-everything`](https://atomcorp.github.io/themes/?theme=synthwave-everything).
+With everything else set correctly, the terminal window should look like this:
 
 ![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/color-theme.png)
-
-### What is code-server?
-
-[`code-server`](https://github.com/cdr/code-server) is a
-[Visual Studio Code](https://code.visualstudio.com/) fork to run the IDE in the browser.
-By default, it uses port `8080`, so this port must be published before running a
-container:
-
-```bash
-docker run -p 8080:8080 --name container -t -d image
-```

@@ -1,0 +1,15 @@
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@master
+    - name: Build the image
+      run: podman build --squash-all -t dev .
