@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo '\n\e[1;36mInstalling JupyterLab:\e[0m'
+echo '\n\e[1;36mInstalling Jupyter:\e[0m'
 
 echo '\e[1;36m> Installing `jupyter`...\e[0m'
 pip3 install --no-cache-dir jupyter >/dev/null
