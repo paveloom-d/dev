@@ -91,6 +91,7 @@ spoiler:
       </a>
     </li>
   </ul>
+  <li>Rust</li>
   <li>Julia (1.5.3):</li>
   <ul>
     <li><a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a></li>
