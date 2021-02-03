@@ -73,6 +73,7 @@ git config --global user.name "$NAME"
 git config --global user.email "$EMAIL"
 git config --global user.signingkey "$KEY"
 git config --global push.default matching
+git config --global pull.rebase false
 git config --global commit.gpgsign true
 git config --global gpg.program gpg
 
