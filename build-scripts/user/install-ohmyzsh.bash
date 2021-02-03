@@ -1,20 +1,20 @@
 #!/bin/bash
 
-echo '\n\e[1;36mInstalling OhMyZsh:\e[0m'
+echo -e '\n\e[1;36mInstalling OhMyZsh:\e[0m'
 
-echo '\e[1;36m> Installing the framework...\e[0m'
+echo -e '\e[1;36m> Installing the framework...\e[0m'
 (sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" ) >/dev/null 2>&1
 
-echo '\e[1;36m> Downloading the `zsh-autosuggestions` plugin...\e[0m'
+echo -e '\e[1;36m> Downloading the `zsh-autosuggestions` plugin...\e[0m'
 git clone --quiet https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions >/dev/null
 
-echo '\e[1;36m> Activating the plugin...\e[0m'
+echo -e '\e[1;36m> Activating the plugin...\e[0m'
 sed -i '/plugins=(git)/c\plugins=(git zsh-autosuggestions)' ~/.zshrc
 
-echo '\e[1;36m> Activating `zshcfg` alias...\e[0m'
+echo -e '\e[1;36m> Activating `zshcfg` alias...\e[0m'
 sed -i '/# alias zshconfig="mate ~\/\.zshrc"/c\alias zshcfg="nano ~\/\.zshrc"' ~/.zshrc
 
-echo '\e[1;36m> Appending custom config changes...\e[0m'
+echo -e '\e[1;36m> Appending custom config changes...\e[0m'
 echo '
 # Key bindings
 
@@ -61,20 +61,20 @@ export LESS=-FXR
 ## Go home at the start
 cd $HOME' >> ~/.zshrc
 
-echo '\e[1;36m> Creating a theme...\e[0m'
+echo -e '\e[1;36m> Creating a theme...\e[0m'
 echo 'PROMPT="%(?:%{$fg_bold[green]%}~>:%{$fg_bold[red]%}~>)"
 PROMPT+='\'' %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'\''
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}<"
 ZSH_THEME_GIT_PROMPT_SUFFIX=">%{$reset_color%} "' > ~/.oh-my-zsh/custom/themes/paveloom.zsh-theme
 
-echo '\e[1;36m> Adjusting the theme...\e[0m'
+echo -e '\e[1;36m> Adjusting the theme...\e[0m'
 sed -i '/ZSH_THEME="robbyrussell"/c\ZSH_THEME="paveloom"' ~/.zshrc
 
-echo '\e[1;36m> Activating `nano`'\''s default syntax highlighting...\e[0m'
+echo -e '\e[1;36m> Activating `nano`'\''s default syntax highlighting...\e[0m'
 echo 'include /usr/share/nano/*.nanorc' > ~/.nanorc
 
-echo '\e[1;36m> Adding the configuration before sourcing...\e[0m\n'
+echo -e '\e[1;36m> Adding the configuration before sourcing...\e[0m\n'
 sed -i '/source $ZSH\/oh-my-zsh./c\
 # Change the colors of public directories\
 export LS_COLORS="$LS_COLORS:di=1;34:ow=1;31:tw=1;31:"\
