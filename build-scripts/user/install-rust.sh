@@ -10,4 +10,4 @@ echo '
 # Add Rust binaries to the `PATH`
 export PATH=$PATH:/home/$USER/.cargo/bin' >> ~/.zshrc
 
-rustc --version
+~/.cargo/bin/rustc --version
