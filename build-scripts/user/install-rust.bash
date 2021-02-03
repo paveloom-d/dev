@@ -9,5 +9,3 @@ echo -e '\e[1;36m> Explicitly updating the PATH variable in the `~/.zshrc`...\e[
 echo '
 # Add Rust binaries to the `PATH`
 export PATH=$PATH:/home/$USER/.cargo/bin' >> ~/.zshrc
-
-~/.cargo/bin/rustc --version
