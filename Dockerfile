@@ -3,10 +3,13 @@ FROM docker.io/library/ubuntu:20.10
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-LABEL version="0.4.0"
+LABEL version="0.4.1"
 LABEL description="This is an image containing paveloom's personal development environment."
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL image-repository="https://hub.docker.com/r/paveloom/dev"
+
+# Set the default shell for `RUN` commands
+SHELL ["/bin/bash", "-c"]
 
 # Copy build scripts to the root
 COPY build-scripts /build-scripts
@@ -21,7 +24,13 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 
 # Install essential packages
-RUN /build-scripts/root/install-essential-packages.sh
+RUN /build-scripts/root/install-essential-packages.bash
+
+# Install Zsh
+RUN /build-scripts/root/install-zsh.bash
+
+# Set `SHELL` to Zsh
+ENV SHELL /bin/zsh
 
 # Specify new user
 ENV USER=paveloom
@@ -30,37 +39,31 @@ ENV USER=paveloom
 ENV HOME /home/$USER
 
 # Set up a new user
-RUN /build-scripts/root/set-up-a-new-user.sh
+RUN /build-scripts/root/set-up-a-new-user.bash
 
 # Install X2Go Server and XFCE
-RUN /build-scripts/root/install-x2go-and-xfce.sh
+RUN /build-scripts/root/install-x2go-and-xfce.bash
 
 # Install a browser
-RUN /build-scripts/root/install-browser.sh
-
-# Install Zsh
-RUN /build-scripts/root/install-zsh.sh
-
-# Set `SHELL` to Zsh
-ENV SHELL /bin/zsh
+RUN /build-scripts/root/install-browser.bash
 
 # Install Python
-RUN /build-scripts/root/install-python.sh
+RUN /build-scripts/root/install-python.bash
 
 # Temporarily disable `apt-key` warnings
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
 # Install Podman and Buildah
-RUN /build-scripts/root/install-podman-and-buildah.sh
+RUN /build-scripts/root/install-podman-and-buildah.bash
 
 # Install Node.js and npm
-RUN /build-scripts/root/install-nodejs-and-npm.sh
+RUN /build-scripts/root/install-nodejs-and-npm.bash
 
 # Install Rclone
-RUN /build-scripts/root/install-rclone.sh
+RUN /build-scripts/root/install-rclone.bash
 
 # Install TexLive
-RUN /build-scripts/root/install-texlive.sh
+RUN /build-scripts/root/install-texlive.bash
 
 # Switch to the home directory of the user
 WORKDIR $HOME
@@ -75,34 +78,34 @@ RUN chown -R $USER:$USER Scripts && chmod -R +x Scripts
 USER $USER
 
 # Point to the hosts file for SSH
-RUN /build-scripts/user/point-to-the-hosts-file.sh
+RUN /build-scripts/user/point-to-the-hosts-file.bash
 
 # Activate the configuration for Rclone
-RUN /build-scripts/user/touch-rclone-config.sh
+RUN /build-scripts/user/touch-rclone-config.bash
 
 # Install OhMyZsh
-RUN /build-scripts/user/install-ohmyzsh.sh
+RUN /build-scripts/user/install-ohmyzsh.bash
 
 # Add `~/.local/bin` to the `PATH`
 ENV PATH=$PATH:/home/$USER/.local/bin
 
 # Install Python packages
-RUN /build-scripts/user/install-python-packages.sh
+RUN /build-scripts/user/install-python-packages.bash
 
 # Install Jupyter
-RUN /build-scripts/user/install-jupyter.sh
+RUN /build-scripts/user/install-jupyter.bash
 
 # Add `~/.cargo/bin` to the `PATH`
 ENV PATH=$PATH:/home/$USER/.cargo/bin
 
 # Install Rust
-RUN /build-scripts/user/install-rust.sh
+RUN /build-scripts/user/install-rust.bash
 
 # Add `~/Other/julia/bin` to the `PATH`
 ENV PATH=$PATH:/home/$USER/Other/julia/bin
 
 # Install Julia
-RUN /build-scripts/user/install-julia.sh
+RUN /build-scripts/user/install-julia.bash
 
 # Remove build scripts
 RUN sudo rm -rf /build-scripts
