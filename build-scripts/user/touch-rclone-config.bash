@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo '\n\e[1;36mActivating the configuration for Rclone:\e[0m'
 

@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 echo '\n\e[1;36mSetting up a user:\e[0m'
 
 echo '\e[1;36m> Adding a user...\e[0m'
-useradd -ms /bin/bash $USER
+useradd -ms /bin/zsh $USER
 
 echo '\e[1;36m> Disabling the password prompt...\e[0m'
 echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER

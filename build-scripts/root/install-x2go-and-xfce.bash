@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo '\n\e[1;36mInstalling X2Go Server and XFCE:\e[0m'
 

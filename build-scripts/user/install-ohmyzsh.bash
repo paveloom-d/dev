@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo '\n\e[1;36mInstalling OhMyZsh:\e[0m'
 

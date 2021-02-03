@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo '\n\e[1;36mPointing to the hosts file for SSH:\e[0m'
 
