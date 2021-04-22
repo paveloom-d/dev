@@ -12,4 +12,4 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@master
     - name: Build the image
-      run: podman --cgroup-manager=cgroupfs --storage-driver=overlay build --squash-all -t dev .
+      run: podman --cgroup-manager=cgroupfs --storage-opt overlay.mount_program=/usr/bin/fuse-overlayfs --storage-driver=overlay build --squash-all -t dev .
