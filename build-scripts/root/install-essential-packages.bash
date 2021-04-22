@@ -28,8 +28,7 @@ echo -e '\n\e[1;36mInstalling essential packages:\e[0m'
 
 echo -e '\e[1;36m> Installing `git`...\e[0m'
 # apt-get install -y --no-install-recommends git >/dev/null
-# install_packages git
-git --version
+install_packages git
 
 # echo -e '\e[1;36m> Installing `make`...\e[0m'
 # apt-get install -y --no-install-recommends make >/dev/null
@@ -84,9 +83,9 @@ echo -e '\e[1;36m> Installing `locales`...\e[0m'
 install_packages locales
 locale-gen ru_RU.UTF-8 >/dev/null
 
-echo -e '\e[1;36m> Installing `language-pack-en-base`...\e[0m'
+# echo -e '\e[1;36m> Installing `language-pack-en-base`...\e[0m'
 # apt-get install -y --no-install-recommends language-pack-en-base >/dev/null
-install_packages language-pack-en-base
+# install_packages language-pack-en-base
 
 # echo -e '\e[1;36m> Installing `software-properties-common`...\e[0m'
 # apt-get install -y --no-install-recommends software-properties-common >/dev/null
