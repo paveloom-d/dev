@@ -5,8 +5,9 @@ echo -e '\n\e[1;36mInstalling essential packages:\e[0m'
 # echo -e '\e[1;36m> Updating lists of packages...\e[0m'
 # apt-get update >/dev/null
 
-# echo -e '\e[1;36m> Installing `apt-utils`...\e[0m'
+echo -e '\e[1;36m> Installing `apt-utils`...\e[0m'
 # apt-get -y install apt-utils >/dev/null 2>&1
+install_packages apt-utils
 
 # echo -e '\e[1;36m> Installing `apt-transport-https`...\e[0m'
 # apt-get install -y --no-install-recommends apt-transport-https >/dev/null
@@ -22,7 +23,7 @@ echo -e '\n\e[1;36mInstalling essential packages:\e[0m'
 
 echo -e '\e[1;36m> Installing `htop`...\e[0m'
 # apt-get install -y --no-install-recommends htop >/dev/null
-install_packages htop
+install_packages htop >/dev/null
 
 # echo -e '\e[1;36m> Installing `ca-certificates`...\e[0m'
 # apt-get install -y --no-install-recommends ca-certificates >/dev/null
