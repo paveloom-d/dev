@@ -20,5 +20,5 @@ jobs:
         podman stop container
     - name: Export the container
       run: |
-        podman export container > dev-$(${GITHUB_SHA} | cut -c1-8)
+        podman export container > dev-`echo ${GITHUB_SHA} | cut -c1-8`
         ls
