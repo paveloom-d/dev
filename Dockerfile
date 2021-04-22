@@ -1,21 +1,21 @@
 # Base image
 FROM docker.io/bitnami/minideb:buster
 
-# # Meta information
-# LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-# LABEL version="0.5.0"
-# LABEL description="This is an image containing paveloom's personal development environment."
-# LABEL github-repository="https://github.com/paveloom-d/dev"
-# LABEL image-repository="https://hub.docker.com/r/paveloom/dev"
+# Meta information
+LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
+LABEL version="0.5.0"
+LABEL description="This is an image containing paveloom's personal development environment."
+LABEL github-repository="https://github.com/paveloom-d/dev"
+LABEL image-repository="https://github.com/orgs/paveloom-d/packages/container/package/dev"
 
-# # Set the default shell for `RUN` commands
-# SHELL ["/bin/bash", "-c"]
+# Set the default shell for `RUN` commands
+SHELL ["/bin/bash", "-c"]
 
-# # Copy build scripts to the root
-# COPY build-scripts /build-scripts
+# Copy build scripts to the root
+COPY build-scripts /build-scripts
 
-# # Allow their execution
-# RUN chmod -R +x /build-scripts
+# Allow their execution
+RUN chmod -R +x /build-scripts
 
 # # Temporarily disable prompts during the build
 # ARG DEBIAN_FRONTEND=noninteractive
@@ -23,8 +23,8 @@ FROM docker.io/bitnami/minideb:buster
 # # Set a time zone for `tzdata`
 # ENV TZ=Europe/Moscow
 
-# # Install essential packages
-# RUN /build-scripts/root/install-essential-packages.bash
+# Install essential packages
+RUN /build-scripts/root/install-essential-packages.bash
 
 # # Install Zsh
 # RUN /build-scripts/root/install-zsh.bash
