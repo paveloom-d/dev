@@ -13,8 +13,12 @@ jobs:
       uses: actions/checkout@master
     - name: Build the image
       run: podman --storage-opt=overlay.mount_program=/usr/bin/fuse-overlayfs build --squash-all -t dev .
-    - name: Run the image
+    - name: Run a container
       run: |
         podman run --name container -td dev
         podman exec -it container echo "Hello, world!"
-        podman stop dev
+        podman stop container
+    - name: Export the container
+      run: |
+        podman export container > dev-`${GITHUB_SHA} | cut -c1-8`
+        ls
