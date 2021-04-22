@@ -1,5 +1,5 @@
 # Base image
-FROM docker.io/bitnami/minideb:latest
+FROM docker.io/bitnami/minideb:stretch
 
 # # Meta information
 # LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
