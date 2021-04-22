@@ -22,6 +22,6 @@ jobs:
       run: |
         podman export container > dev-`echo ${{ github.event.pull_request.head.sha }} | cut -c1-7`.tar
     - name: Upload the archive as an artifact
-    - uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         path: dev*.tar
