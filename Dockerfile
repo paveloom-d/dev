@@ -1,5 +1,5 @@
 # Base image
-FROM docker.io/bitnami/minideb:buster-amd64
+FROM docker.io/bitnami/minideb:latest
 
 # # Meta information
 # LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
