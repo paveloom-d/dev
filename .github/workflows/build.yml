@@ -11,5 +11,7 @@ jobs:
     steps:
     - name: Checkout the repository
       uses: actions/checkout@master
+    - name: Podman version
+      run: podman info --debug
     - name: Build the image
-      run: podman build -t dev .
+      run: podman build --squash-all -t dev .
