@@ -48,8 +48,6 @@ See all details under the spoiler:
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>
-  <li>X2Go Server and XFCE Desktop Environment</li>
-  <li>Midori Web Browser</li>
   <li><a href="#auxiliary-user-scripts-huh-whats-that">Auxiliary user scripts</a></li>
   <li>Zsh as the default shell:</li>
   <ul>
@@ -68,48 +66,8 @@ See all details under the spoiler:
       <li><a href="#theme-adjustments-why-is-that">Theme adjustments</a></li>
     </ul>
   </ul>
-  <li>Podman and Buildah</li>
-  <li>Python (3.8):</li>
-  <ul>
-    <li><code>python3-dev</code></li>
-    <li><code>python3-pip</code></li>
-    <li>Packages:</li>
-    <ul>
-      <li><code>wheel</code></li>
-      <li><code>numpy</code></li>
-      <li><code>matplotlib</code></li>
-    </ul>
-  </ul>
-  <li>Jupyter:</li>
-  <ul>
-    <li><code>jupyter</code></li>
-    <li><code>jupyterlab</code></li>
-    <li>
-      <a href="#i-see-jupyter-installed-there-how-do-i-use-it">
-        Aliases to run a notebook server
-      </a>
-    </li>
-  </ul>
   <li>Rust</li>
-  <li>Julia (1.5.3):</li>
-  <ul>
-    <li><a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a></li>
-    <li><a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a></li>
-    <li><a href="https://github.com/timholy/Revise.jl">Revise.jl</a></li>
-    <li><a href="https://github.com/JuliaLang/IJulia.jl">IJulia.jl</a></li>
-    <li><a href="https://github.com/JuliaPy/PyPlot.jl">PyPlot.jl</a></li>
-    <li><a href="https://github.com/JuliaPlots/Plots.jl">Plots.jl</a></li>
-  </ul>
-  <li>Node.js and npm</li>
-  <li>Rclone</li>
-  <li>TexLive:</li>
-  <ul>
-    <li><code>dvipng</code></li>
-    <li><code>texlive-latex-extra</code></li>
-    <li><code>texlive-fonts-extra</code></li>
-    <li><code>texlive-lang-cyrillic</code></li>
-    <li><code>cm-super</code></li>
-  </ul>
+  <li>Julia (1.6.0):</li>
 </ul>
 </details>
 
@@ -155,26 +113,6 @@ Since Zsh is the default shell, you can enter the container using the following 
 ```bash
 podman exec -it container zsh
 ```
-
-### I see Jupyter installed there. How do I use it?
-
-To use Jupyter Notebook or Jupyter Lab you will need to do two things.
-
-First, publish the `8888` port (or any other, but this one is standard) when running a
-container:
-
-```bash
-podman run -p 8888:8888 --name container -t -d dev
-```
-
-Next, while inside the container, run the notebook server listening on IP `0.0.0.0`:
-
-```bash
-jupyter notebook --ip 0.0.0.0 --no-browser
-```
-
-There are handy aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for
-Jupyter Lab.
 
 ### I don't see any password requests. Is that normal?
 
