@@ -1,9 +1,9 @@
 # Base image
-FROM docker.io/bitnami/minideb:buster
+FROM docker.io/bitnami/minideb:buster-amd64
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-LABEL version="0.4.1"
+LABEL version="0.5.0"
 LABEL description="This is an image containing paveloom's personal development environment."
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL image-repository="https://hub.docker.com/r/paveloom/dev"

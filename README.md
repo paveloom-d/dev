@@ -19,7 +19,7 @@ See all details under the spoiler:
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: <a href="https://github.com/bitnami/minideb">minideb</a> (<em>buster</em>)</li>
+  <li>Base image: <a href="https://github.com/bitnami/minideb">minideb</a> (<em>buster-amd64</em>)</li>
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
