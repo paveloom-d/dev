@@ -12,4 +12,9 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@master
     - name: Build the image
-      run: podman build --squash-all -t dev .
+      run: podman --storage-opt=overlay.mount_program=/usr/bin/fuse-overlayfs build --squash-all -t dev .
+    - name: Run the image
+      run: |
+        podman run --name container -td dev
+        podman exec -it container echo "Hello, world!"
+        podman stop dev
