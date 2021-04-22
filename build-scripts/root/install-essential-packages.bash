@@ -28,7 +28,8 @@ echo -e '\n\e[1;36mInstalling essential packages:\e[0m'
 
 echo -e '\e[1;36m> Installing `git`...\e[0m'
 # apt-get install -y --no-install-recommends git >/dev/null
-install_packages git
+# install_packages git
+git --version
 
 # echo -e '\e[1;36m> Installing `make`...\e[0m'
 # apt-get install -y --no-install-recommends make >/dev/null
