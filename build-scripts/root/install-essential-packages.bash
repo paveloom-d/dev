@@ -6,8 +6,7 @@ echo -e '\n\e[1;36mInstalling essential packages:\e[0m'
 # apt-get update >/dev/null
 
 echo -e '\e[1;36m> Installing `apt-utils`...\e[0m'
-# apt-get -y install apt-utils >/dev/null 2>&1
-install_packages apt-utils
+install_packages apt-utils >/dev/null 2>&1
 
 # echo -e '\e[1;36m> Installing `apt-transport-https`...\e[0m'
 # apt-get install -y --no-install-recommends apt-transport-https >/dev/null
@@ -84,3 +83,5 @@ locale-gen ru_RU.UTF-8 >/dev/null
 
 # echo -e '\e[1;36m> Cleaning the `apt` cache...\e[0m\n'
 # rm -rf /var/lib/apt/lists/*
+
+echo -e '\n'

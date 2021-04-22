@@ -23,8 +23,8 @@ RUN chmod -R +x /build-scripts
 # Install essential packages
 RUN /build-scripts/root/install-essential-packages.bash
 
-# # Install Zsh
-# RUN /build-scripts/root/install-zsh.bash
+# Install Zsh
+RUN /build-scripts/root/install-zsh.bash
 
 # # Set `SHELL` to Zsh
 # ENV SHELL /bin/zsh
