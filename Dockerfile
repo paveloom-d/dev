@@ -26,17 +26,17 @@ RUN /build-scripts/root/install-essential-packages.bash
 # Install Zsh
 RUN /build-scripts/root/install-zsh.bash
 
-# # Set `SHELL` to Zsh
-# ENV SHELL /bin/zsh
+# Set `SHELL` to Zsh
+ENV SHELL /bin/zsh
 
-# # Specify new user
-# ENV USER=paveloom
+# Specify new user
+ENV USER=paveloom
 
-# # Set `HOME` for this user
-# ENV HOME /home/$USER
+# Set `HOME` for this user
+ENV HOME /home/$USER
 
-# # Set up a new user
-# RUN /build-scripts/root/set-up-a-new-user.bash
+# Set up a new user
+RUN /build-scripts/root/set-up-a-new-user.bash
 
 # # Install X2Go Server and XFCE
 # RUN /build-scripts/root/install-x2go-and-xfce.bash

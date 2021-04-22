@@ -84,4 +84,4 @@ locale-gen ru_RU.UTF-8 >/dev/null
 # echo -e '\e[1;36m> Cleaning the `apt` cache...\e[0m\n'
 # rm -rf /var/lib/apt/lists/*
 
-echo -e '\n'
+echo
