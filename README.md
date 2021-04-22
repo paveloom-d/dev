@@ -14,13 +14,12 @@ remote development, but can also be used both locally and in the cloud.
 
 ### What's inside?
 
-Well, what's not there? The list is large and varied, so see all the details under the
-spoiler:
+See all details under the spoiler:
 
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: <a href="https://hub.docker.com/_/ubuntu">Ubuntu</a> (20.10)</li>
+  <li>Base image: <a href="https://github.com/bitnami/minideb">minideb</a> (<em>buster</em>)</li>
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>

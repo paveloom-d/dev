@@ -1,5 +1,5 @@
 # Base image
-FROM docker.io/library/ubuntu:20.10
+FROM docker.io/bitnami/minideb:buster
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
