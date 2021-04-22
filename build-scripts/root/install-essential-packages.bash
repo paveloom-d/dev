@@ -24,8 +24,9 @@ echo -e '\e[1;36m> Installing `htop`...\e[0m'
 # apt-get install -y --no-install-recommends htop >/dev/null
 install_packages htop >/dev/null
 
-# echo -e '\e[1;36m> Installing `ca-certificates`...\e[0m'
+echo -e '\e[1;36m> Installing `ca-certificates`...\e[0m'
 # apt-get install -y --no-install-recommends ca-certificates >/dev/null
+install_packages ca-certificates
 
 echo -e '\e[1;36m> Installing `git`...\e[0m'
 install_packages git >/dev/null
