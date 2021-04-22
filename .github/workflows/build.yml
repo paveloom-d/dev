@@ -12,4 +12,4 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@master
     - name: Build the image
-      run: docker build -t dev .
+      run: podman build -t dev .
