@@ -8,9 +8,6 @@ LABEL description="This is an image containing paveloom's personal development e
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL image-repository="https://github.com/orgs/paveloom-d/packages/container/package/dev"
 
-# Set the default shell for `RUN` commands
-SHELL ["/bin/bash", "-c"]
-
 # Copy build scripts to the root
 COPY build-scripts /build-scripts
 
