@@ -65,8 +65,8 @@ See all details under the spoiler:
 
 ### How do I get it?
 
-I recommend using [Podman](https://podman.io) for building the image and running a container,
-although the same can be done using [Docker](https://www.docker.com).
+I recommend using [Podman](https://podman.io) for pulling and building the image or running
+a container, although the same can be done using [Docker](https://www.docker.com).
 
 Since `v0.4.0`, the image can be pulled from
 [GitHub Container Registry](https://github.com/orgs/paveloom-d/packages/container/package/dev):
@@ -84,6 +84,10 @@ from [GitHub Packages](https://github.com/paveloom-d/dev/packages/290377):
 ```bash
 podman pull docker.io/paveloom/dev:tag
 ```
+
+Since `v0.5.0` container archives are provided as part of the
+[releases](https://github.com/paveloom-d/dev/releases). These can be used for importing a
+container using Docker / Podman or for registering as a WSL distribution.
 
 ### Can I build the image myself?
 
