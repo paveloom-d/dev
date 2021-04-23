@@ -22,5 +22,5 @@ jobs:
       uses: actions/checkout@master
     - name: Determine whether to upload a release version
       run: bash .github/scripts/version.bash
-    - name: Publish to GHCR
+    - name: Publish the image and add a container archive to assets
       run: bash .github/scripts/publish.bash
