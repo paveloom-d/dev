@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This script will install the latest stable version of Rust toolchain
+
+set -e
+set -o pipefail
+
 echo -e '\n\e[1;36mInstalling Rust:\e[0m'
 
 echo -e '\e[1;36m> Installing `rustup`...\e[0m'

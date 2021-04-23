@@ -56,8 +56,11 @@ install_packages wget >/dev/null
 echo -e '\e[1;36m> Installing `curl`...\e[0m'
 install_packages curl >/dev/null
 
-echo -e '\e[1;36m> Installing `gnupg-agent`...\e[0m'
-install_packages gnupg-agent >/dev/null
+# echo -e '\e[1;36m> Installing `gnupg-agent`...\e[0m'
+# install_packages gnupg-agent >/dev/null
+
+echo -e '\e[1;36m> Installing `gpg`...\e[0m'
+install_packages gpg
 
 echo -e '\e[1;36m> Installing `sudo`...\e[0m'
 # wget --no-check-certificate https://github.com/sudo-project/sudo/releases/download/SUDO_1_9_6p1/sudo_1.9.6-2_deb10_amd64.deb >/dev/null 2>&1

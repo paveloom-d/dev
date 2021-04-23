@@ -66,8 +66,6 @@ See all details under the spoiler:
       <li><a href="#theme-adjustments-why-is-that">Theme adjustments</a></li>
     </ul>
   </ul>
-  <li>Rust</li>
-  <li>Julia (1.6.0):</li>
 </ul>
 </details>
 
@@ -156,8 +154,12 @@ in the `~/.zshrc`, just uncomment them and specify your keys.
 ### Auxiliary user scripts, huh? What's that?
 
 The image provides auxiliary scripts that can help the user create SSH and GPG keys and
-connect them to an account on GitHub. Also, these scripts adjust Git config and add several
-Git aliases. They are located in `~/Scripts`.
+connect them to an account on GitHub. These scripts adjust Git config and add several
+Git aliases.
+
+Also, scripts to install the latest stable versions of Julia and Rust are included.
+
+They are located in `~/Scripts`.
 
 ### Theme adjustments? Why?
 

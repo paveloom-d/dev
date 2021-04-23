@@ -56,11 +56,5 @@ RUN /build-scripts/user/point-to-the-hosts-file.bash
 # Install OhMyZsh
 RUN /build-scripts/user/install-ohmyzsh.bash
 
-# Install Rust
-RUN /build-scripts/user/install-rust.bash
-
-# Install Julia
-RUN /build-scripts/user/install-julia.bash
-
 # Remove build scripts
 RUN sudo rm -rf /build-scripts
