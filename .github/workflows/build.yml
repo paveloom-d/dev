@@ -5,24 +5,45 @@ on:
     branches:
       - develop
 
+env:
+  GHCR_PAT: ${{ secrets.GHCR_PAT }}
+  IMAGENAME: ${{ github.event.repository.name }}
+  OWNER: ${{ github.repository_owner }}
+  REPOSITORY: ${{ github.repository }}
+  USERNAME: ${{ github.actor }}
+  RELEASE_VERSION: 0.5.0
+
 jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the repository
       uses: actions/checkout@master
-    - name: Build the image
-      run: podman --storage-opt=overlay.mount_program=/usr/bin/fuse-overlayfs build --squash-all -t dev .
-    - name: Run a container
+    # - name: Build the image
+    #   run: podman --storage-opt=overlay.mount_program=/usr/bin/fuse-overlayfs build --squash-all -t dev .
+    # - name: Run a container
+    #   run: |
+    #     podman run --name container -td dev
+    #     podman exec -it container echo "Hello, world!"
+    #     podman stop container
+    # - name: Export the container
+    #   run: |
+    #     podman export container > dev-`echo ${{ github.event.pull_request.head.sha }} | cut -c1-7`.tar
+    # - name: Upload the archive as an artifact
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: dev-container
+    #     path: dev*.tar
+    - name: Test Publish workflow
       run: |
+        podman --storage-opt=overlay.mount_program=/usr/bin/fuse-overlayfs build --squash-all -t ${IMAGENAME} .
         podman run --name container -td dev
-        podman exec -it container echo "Hello, world!"
         podman stop container
-    - name: Export the container
-      run: |
-        podman export container > dev-`echo ${{ github.event.pull_request.head.sha }} | cut -c1-7`.tar
-    - name: Upload the archive as an artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: dev-container
-        path: dev*.tar
+        FILE_TAR="dev-${RELEASE_VERSION}.tar"
+        FILE_ZIP="dev-${RELEASE_VERSION}.zip"
+        podman export container > ${FILE_TAR}
+        zip ${FILE_ZIP} ${FILE_TAR}
+        AUTH="Authorization: token ${GITHUB_TOKEN}"
+        RELEASE_ID=$(curl -sH "${AUTH}" "https://api.github.com/repos/${REPOSITORY}/releases/latest" | grep -m 1 "\"id\":" | sed -E 's/.*"id": (.*),/\1/')
+        UPLOAD_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILE_ZIP}"
+        curl -H ${AUTH} -H "Content-Type: application/zip" --data-binary @"${FILE_ZIP}" ${UPLOAD_URL}
