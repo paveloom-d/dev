@@ -43,7 +43,9 @@ jobs:
         FILE_ZIP="dev-${RELEASE_VERSION}.zip"
         podman export container > ${FILE_TAR}
         zip ${FILE_ZIP} ${FILE_TAR}
-        AUTH="Authorization: token ${{ secrets.GITHUB_TOKEN }}"
+        AUTH="Authorization: token ${GHCR_PAT}"
+        echo "here"
         RELEASE_ID=$(curl -sH "${AUTH}" "https://api.github.com/repos/${REPOSITORY}/releases/latest" | grep -m 1 "\"id\":" | sed -E 's/.*"id": (.*),/\1/')
+        echo ${RELEASE_ID}
         UPLOAD_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILE_ZIP}"
         curl -H ${AUTH} -H "Content-Type: application/zip" --data-binary @"${FILE_ZIP}" ${UPLOAD_URL}
