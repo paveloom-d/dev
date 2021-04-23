@@ -22,6 +22,6 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@master
     - name: Determine whether to upload a release version
-      run: .github/scripts/version.bash
+      run: bash .github/scripts/version.bash
     - name: Publish to GHCR
-      run: .github/scripts/publish.bash
+      run: bash .github/scripts/publish.bash
