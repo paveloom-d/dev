@@ -14,12 +14,6 @@ COPY build-scripts /build-scripts
 # Allow their execution
 RUN chmod -R +x /build-scripts
 
-# # Temporarily disable prompts during the build
-# ARG DEBIAN_FRONTEND=noninteractive
-
-# # Set a time zone for `tzdata`
-# ENV TZ=Europe/Moscow
-
 # Install essential packages
 RUN /build-scripts/root/install-essential-packages.bash
 

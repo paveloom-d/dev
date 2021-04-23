@@ -46,6 +46,5 @@ install_packages keychain >/dev/null
 
 echo -e '\e[1;36m> Installing `locales`...\e[0m'
 install_packages locales >/dev/null
-# locale-gen ru_RU.UTF-8 >/dev/null
 
 echo
