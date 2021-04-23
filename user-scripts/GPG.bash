@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# This a script which will help you to generate a
-# GPG key and connect it to your GitHub account
+# This script will help you generate a GPG key
+# and connect it to your GitHub account
+
+set -e
+set -o pipefail
 
 # Set prompt auxiliary variables
 # for ANSI escape codes
@@ -13,8 +16,8 @@ bl="\e[1A"      # Back to the beginning of the previous line
 cl="\e[K"       # Clear the current line
 
 # Print the header in the prompt
-echo -e "\n${cyan}This a script which will help you to generate\n\
-a GPG key and connect it to your GitHub account${reset}\n"
+echo -e "\n${cyan}This script will help you generate a GPG key\n\
+and connect it to your GitHub account${reset}\n"
 
 # Ask if we're good to go
 echo -e "${cyan}Continue? (${mage}y${cyan}/${mage}n${cyan})${reset}\n"
@@ -28,7 +31,7 @@ while true; do
 done
 
 # User's e-mail
-EMAIL=paveloom@mail.ru
+EMAIL=paveloomm@gmail.com
 EMAIL_Default=$EMAIL
 
 # Check if the current e-mail is what the user needs

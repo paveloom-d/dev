@@ -14,25 +14,18 @@ remote development, but can also be used both locally and in the cloud.
 
 ### What's inside?
 
-Well, what's not there? The list is large and varied, so see all the details under the
-spoiler:
+See all details under the spoiler:
 
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: <a href="https://hub.docker.com/_/ubuntu">Ubuntu</a> (20.10)</li>
+  <li>Base image: <a href="https://github.com/bitnami/minideb">minideb</a> (<em>buster</em>)</li>
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
-    <li><code>apt-transport-https</code></li>
-    <li><code>build-essential</code></li>
-    <li><code>dialog</code></li>
-    <li><code>dumb-init</code></li>
     <li><code>htop</code></li>
     <li><code>ca-certificates</code></li>
     <li><code>git</code></li>
-    <li><code>make</code></li>
-    <li><code>screen</code></li>
     <li><code>ncdu</code></li>
     <li><code>zip</code></li>
     <li><code>unzip</code></li>
@@ -40,17 +33,15 @@ spoiler:
     <li><code>less</code></li>
     <li><code>wget</code></li>
     <li><code>curl</code></li>
+    <li><code>gpg</code></li>
     <li><code>gnupg-agent</code></li>
-    <li><a href="https://github.com/sudo-project/sudo"><code>sudo</code></a> (1.9.1)</li>
+    <li><code>sudo</code></li>
     <li><code>ssh</code></li>
+    <li><code>keychain</code></li>
     <li><code>locales</code></li>
-    <li><code>language-pack-en-base</code></li>
-    <li><code>software-properties-common</code></li>
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>
-  <li>X2Go Server and XFCE Desktop Environment</li>
-  <li>Midori Web Browser</li>
   <li><a href="#auxiliary-user-scripts-huh-whats-that">Auxiliary user scripts</a></li>
   <li>Zsh as the default shell:</li>
   <ul>
@@ -66,58 +57,16 @@ spoiler:
           </a>
         </li>
       </ul>
-      <li><a href="#theme-adjustments-why-is-that">Theme adjustments</a></li>
+      <li><a href="#theme-adjustments-why">Theme adjustments</a></li>
     </ul>
-  </ul>
-  <li>Podman and Buildah</li>
-  <li>Python (3.8):</li>
-  <ul>
-    <li><code>python3-dev</code></li>
-    <li><code>python3-pip</code></li>
-    <li>Packages:</li>
-    <ul>
-      <li><code>wheel</code></li>
-      <li><code>numpy</code></li>
-      <li><code>matplotlib</code></li>
-    </ul>
-  </ul>
-  <li>Jupyter:</li>
-  <ul>
-    <li><code>jupyter</code></li>
-    <li><code>jupyterlab</code></li>
-    <li>
-      <a href="#i-see-jupyter-installed-there-how-do-i-use-it">
-        Aliases to run a notebook server
-      </a>
-    </li>
-  </ul>
-  <li>Rust</li>
-  <li>Julia (1.5.3):</li>
-  <ul>
-    <li><a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a></li>
-    <li><a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a></li>
-    <li><a href="https://github.com/timholy/Revise.jl">Revise.jl</a></li>
-    <li><a href="https://github.com/JuliaLang/IJulia.jl">IJulia.jl</a></li>
-    <li><a href="https://github.com/JuliaPy/PyPlot.jl">PyPlot.jl</a></li>
-    <li><a href="https://github.com/JuliaPlots/Plots.jl">Plots.jl</a></li>
-  </ul>
-  <li>Node.js and npm</li>
-  <li>Rclone</li>
-  <li>TexLive:</li>
-  <ul>
-    <li><code>dvipng</code></li>
-    <li><code>texlive-latex-extra</code></li>
-    <li><code>texlive-fonts-extra</code></li>
-    <li><code>texlive-lang-cyrillic</code></li>
-    <li><code>cm-super</code></li>
   </ul>
 </ul>
 </details>
 
 ### How do I get it?
 
-I recommend using [Podman](https://podman.io) for building the image and running a container,
-although the same can be done using [Docker](https://www.docker.com).
+I recommend using [Podman](https://podman.io) for pulling and building the image or running
+a container, although the same can be done using [Docker](https://www.docker.com).
 
 Since `v0.4.0`, the image can be pulled from
 [GitHub Container Registry](https://github.com/orgs/paveloom-d/packages/container/package/dev):
@@ -135,6 +84,10 @@ from [GitHub Packages](https://github.com/paveloom-d/dev/packages/290377):
 ```bash
 podman pull docker.io/paveloom/dev:tag
 ```
+
+Since `v0.5.0` container archives are provided as part of the
+[releases](https://github.com/paveloom-d/dev/releases). These can be used for importing a
+container using Docker / Podman or for registering as a WSL distribution.
 
 ### Can I build the image myself?
 
@@ -156,26 +109,6 @@ Since Zsh is the default shell, you can enter the container using the following 
 ```bash
 podman exec -it container zsh
 ```
-
-### I see Jupyter installed there. How do I use it?
-
-To use Jupyter Notebook or Jupyter Lab you will need to do two things.
-
-First, publish the `8888` port (or any other, but this one is standard) when running a
-container:
-
-```bash
-podman run -p 8888:8888 --name container -t -d dev
-```
-
-Next, while inside the container, run the notebook server listening on IP `0.0.0.0`:
-
-```bash
-jupyter notebook --ip 0.0.0.0 --no-browser
-```
-
-There are handy aliases for the last step: `jnote` for Jupyter Notebook and `jlab` for
-Jupyter Lab.
 
 ### I don't see any password requests. Is that normal?
 
@@ -219,8 +152,12 @@ in the `~/.zshrc`, just uncomment them and specify your keys.
 ### Auxiliary user scripts, huh? What's that?
 
 The image provides auxiliary scripts that can help the user create SSH and GPG keys and
-connect them to an account on GitHub. Also, these scripts adjust Git config and add several
-Git aliases. They are located in `~/Scripts`.
+connect them to an account on GitHub. These scripts adjust Git config and add several
+Git aliases.
+
+Also, scripts to install the latest stable versions of Julia and Rust are included.
+
+They are located in `~/Scripts`.
 
 ### Theme adjustments? Why?
 
