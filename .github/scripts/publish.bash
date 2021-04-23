@@ -28,8 +28,8 @@ if [ "${PUBLISH_RELEASE_VERSION}" = true ]; then
     zip ${FILE_ZIP} ${FILE_TAR}
 
     # Upload the archive as an asset to the latest release
-    AUTH="Authorization: token ${GH_TOKEN}"
-    RELEASE_ID=$(curl -sH "$AUTH" "https://api.github.com/repos/${REPOSITORY}/releases/latest" | grep -m 1 "\"id\":" | sed -E 's/.*"id": (.*),/\1/')
+    AUTH="Authorization: token ${GHCR_PAT}"
+    RELEASE_ID=$(curl -sH "${AUTH}" "https://api.github.com/repos/${REPOSITORY}/releases/latest" | grep -m 1 "\"id\":" | sed -E 's/.*"id": (.*),/\1/')
     UPLOAD_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILE_ZIP}"
     curl -H ${AUTH} -H "Content-Type: application/zip" --data-binary @"${FILE_ZIP}" ${UPLOAD_URL}
 fi
