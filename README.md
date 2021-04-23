@@ -57,7 +57,7 @@ See all details under the spoiler:
           </a>
         </li>
       </ul>
-      <li><a href="#theme-adjustments-why-is-that">Theme adjustments</a></li>
+      <li><a href="#theme-adjustments-why">Theme adjustments</a></li>
     </ul>
   </ul>
 </ul>
