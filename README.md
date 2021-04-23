@@ -23,15 +23,9 @@ See all details under the spoiler:
   <li>Essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
-    <li><code>apt-transport-https</code></li>
-    <li><code>build-essential</code></li>
-    <li><code>dialog</code></li>
-    <li><code>dumb-init</code></li>
     <li><code>htop</code></li>
     <li><code>ca-certificates</code></li>
     <li><code>git</code></li>
-    <li><code>make</code></li>
-    <li><code>screen</code></li>
     <li><code>ncdu</code></li>
     <li><code>zip</code></li>
     <li><code>unzip</code></li>
@@ -39,12 +33,12 @@ See all details under the spoiler:
     <li><code>less</code></li>
     <li><code>wget</code></li>
     <li><code>curl</code></li>
+    <li><code>gpg</code></li>
     <li><code>gnupg-agent</code></li>
-    <li><a href="https://github.com/sudo-project/sudo"><code>sudo</code></a> (1.9.1)</li>
+    <li><code>sudo</code></li>
     <li><code>ssh</code></li>
+    <li><code>keychain</code></li>
     <li><code>locales</code></li>
-    <li><code>language-pack-en-base</code></li>
-    <li><code>software-properties-common</code></li>
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>

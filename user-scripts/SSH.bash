@@ -31,7 +31,7 @@ while true; do
 done
 
 # User's e-mail
-EMAIL=paveloom@mail.ru
+EMAIL=paveloomm@gmail.com
 EMAIL_Default=$EMAIL
 
 # Check if the current e-mail is what the user needs

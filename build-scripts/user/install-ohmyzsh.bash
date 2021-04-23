@@ -51,8 +51,8 @@ sudo service ssh start >/dev/null
 ## Fix `TTY` for GPG
 export GPG_TTY=$(tty)
 
-## Activate the Russian locale
-export LC_CTYPE=ru_RU.UTF8
+## Switch to UTF-8 encoding
+export LC_ALL=C.UTF-8
 
 ## Make `less` not open a window
 ## if text takes up less space
