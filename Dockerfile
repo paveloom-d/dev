@@ -45,7 +45,7 @@ RUN chown -R $USER:$USER Scripts && chmod -R +x Scripts
 USER $USER
 
 # Point to the hosts file for SSH
-RUN /build-scripts/user/point-to-the-hosts-file.bash
+RUN /build-scripts/user/add-configs.bash
 
 # Install OhMyZsh
 RUN /build-scripts/user/install-ohmyzsh.bash
