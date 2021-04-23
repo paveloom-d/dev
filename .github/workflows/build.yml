@@ -12,4 +12,17 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@master
     - name: Build the image
-      run: podman build --squash-all -t dev .
+      run: podman --storage-opt=overlay.mount_program=/usr/bin/fuse-overlayfs build --squash-all -t dev .
+    - name: Run a container
+      run: |
+        podman run --name container -td dev
+        podman exec -it container echo "Hello, world!"
+        podman stop container
+    - name: Export the container
+      run: |
+        podman export container > dev-`echo ${{ github.event.pull_request.head.sha }} | cut -c1-7`.tar
+    - name: Upload the archive as an artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: dev-container
+        path: dev*.tar
