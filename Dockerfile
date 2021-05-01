@@ -17,11 +17,11 @@ RUN chmod -R +x /build-scripts
 # Install essential packages
 RUN /build-scripts/root/install-essential-packages.bash
 
-# Install Zsh
-RUN /build-scripts/root/install-zsh.bash
+# Install Fish
+RUN /build-scripts/root/install-fish.bash
 
-# Set `SHELL` to Zsh
-ENV SHELL /bin/zsh
+# Set `SHELL` to Fish
+ENV SHELL /bin/fish
 
 # Specify new user
 ENV USER=paveloom
@@ -44,11 +44,8 @@ RUN chown -R $USER:$USER Scripts && chmod -R +x Scripts
 # Switch to the created user
 USER $USER
 
-# Point to the hosts file for SSH
-RUN /build-scripts/user/add-configs.bash
-
-# Install OhMyZsh
-RUN /build-scripts/user/install-ohmyzsh.bash
+# Copy the user's configuration files
+COPY configs /home/$USER
 
 # Remove build scripts
 RUN sudo rm -rf /build-scripts
