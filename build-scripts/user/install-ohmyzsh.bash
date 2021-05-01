@@ -59,7 +59,7 @@ export LC_ALL=C.UTF-8
 export LESS=-FXR
 
 ## Set up the display (for WSL)
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '\''{print $2}'\''):0
 
 ## Go home at the start
 cd $HOME' >> ~/.zshrc
