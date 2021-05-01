@@ -20,23 +20,18 @@ See all details under the spoiler:
 <summary>Content of the image</summary>
 <ul>
   <li>Base image: <a href="https://github.com/bitnami/bitnami-docker-git">bitnami/git</a></li>
-  <li>Essential packages:</li>
+  <li>Additional essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
     <li><code>htop</code></li>
-    <li><code>ca-certificates</code></li>
-    <li><code>git</code></li>
     <li><code>ncdu</code></li>
     <li><code>zip</code></li>
     <li><code>unzip</code></li>
     <li><code>nano</code></li>
     <li><code>less</code></li>
     <li><code>wget</code></li>
-    <li><code>curl</code></li>
     <li><code>gpg</code></li>
     <li><code>gnupg-agent</code></li>
-    <li><code>sudo</code></li>
-    <li><code>ssh</code></li>
     <li><code>keychain</code></li>
     <li><code>locales</code></li>
   </ul>
