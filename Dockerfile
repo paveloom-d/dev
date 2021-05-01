@@ -36,16 +36,16 @@ RUN /build-scripts/root/set-up-a-new-user.bash
 WORKDIR $HOME
 
 # Copy user scripts
-COPY user-scripts Scripts
+COPY --chown=$USER:$USER user-scripts Scripts
 
 # Allow their execution and let the user own them
-RUN chown -R $USER:$USER Scripts && chmod -R +x Scripts
+RUN chmod -R +x Scripts
 
 # Switch to the created user
 USER $USER
 
 # Copy the user's configuration files
-COPY configs /home/$USER
+COPY --chown=$USER:$USER configs /home/$USER
 
 # Remove build scripts
 RUN sudo rm -rf /build-scripts
