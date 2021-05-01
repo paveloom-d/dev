@@ -15,7 +15,7 @@ echo -e '\e[1;36m> Letting the user to own the home directory...\e[0m'
 chown -R $USER:$USER $HOME
 
 echo -e '\e[1;36m> Creating `/etc/wsl.conf`...\e[0m'
-echo -e '[user]
-default = ${USER}' > /etc/wsl.conf
+echo -e "[user]
+default = $USER" > /etc/wsl.conf
 
 echo
