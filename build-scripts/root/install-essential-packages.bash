@@ -11,6 +11,9 @@ install_packages apt-utils >/dev/null 2>&1
 echo -e '\e[1;36m> Installing `exa`...\e[0m'
 install_packages exa >/dev/null
 
+echo -e '\e[1;36m> Installing `ncurses-bin`...\e[0m'
+install_packages ncurses-bin >/dev/null
+
 echo -e '\e[1;36m> Installing `htop`...\e[0m'
 install_packages htop >/dev/null
 
