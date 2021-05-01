@@ -11,8 +11,8 @@ install_packages htop >/dev/null
 echo -e '\e[1;36m> Installing `ca-certificates`...\e[0m'
 install_packages ca-certificates >/dev/null
 
-echo -e '\e[1;36m> Installing `git`...\e[0m'
-install_packages git >/dev/null
+# echo -e '\e[1;36m> Installing `git`...\e[0m'
+# install_packages git >/dev/null
 
 echo -e '\e[1;36m> Installing `ncdu`...\e[0m'
 install_packages ncdu >/dev/null
