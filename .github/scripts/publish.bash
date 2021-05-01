@@ -3,7 +3,7 @@
 # A script to build and push the image
 
 # Build the image
-podman --storage-opt=overlay.mount_program=/usr/bin/fuse-overlayfs build --squash-all -t ${IMAGENAME} .
+podman build --squash-all -t ${IMAGENAME} .
 
 # Login to the GHCR
 echo ${GHCR_PAT} | podman login ghcr.io -u ${USERNAME} --password-stdin

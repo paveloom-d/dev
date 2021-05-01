@@ -19,9 +19,9 @@ tar -xf ~/Other/julia/julia-${JULIA_VERSION}-linux-x86_64.tar.gz -C ~/Other/juli
 echo -e '\e[1;36m> Deleting the tarball...\e[0m'
 rm ~/Other/julia/julia*.tar.gz
 
-echo -e '\e[1;36m> Explicitly updating the PATH variable in the `~/.zshrc`...\e[0m'
+echo -e '\e[1;36m> Explicitly updating the PATH variable in the `~/.config/fish/config.fish`...\e[0m'
 echo '
 # Add Julia binary to the `PATH`
-export PATH=$PATH:/home/$USER/Other/julia/bin' >> ~/.zshrc
+set -a PATH /home/$USER/Other/julia/bin' >> ~/.config/fish/config.fish
 
 echo
