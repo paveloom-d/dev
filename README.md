@@ -19,47 +19,29 @@ See all details under the spoiler:
 <details>
 <summary>Content of the image</summary>
 <ul>
-  <li>Base image: <a href="https://github.com/bitnami/minideb">minideb</a> (<em>buster</em>)</li>
-  <li>Essential packages:</li>
+  <li>Base image: <a href="https://github.com/bitnami/bitnami-docker-git">bitnami/git</a></li>
+  <li>Additional essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
+    <li><code>exa</code></li>
+    <li><code>ncurses-bin</code></li>
     <li><code>htop</code></li>
-    <li><code>ca-certificates</code></li>
-    <li><code>git</code></li>
     <li><code>ncdu</code></li>
     <li><code>zip</code></li>
     <li><code>unzip</code></li>
     <li><code>nano</code></li>
     <li><code>less</code></li>
     <li><code>wget</code></li>
-    <li><code>curl</code></li>
     <li><code>gpg</code></li>
     <li><code>gnupg-agent</code></li>
-    <li><code>sudo</code></li>
-    <li><code>ssh</code></li>
     <li><code>keychain</code></li>
     <li><code>locales</code></li>
   </ul>
   <li>Non-root user set-up</li>
   <li><a href="#what-is-this-keychain-thing">Keychain to manage your SSH keys</a></li>
   <li><a href="#auxiliary-user-scripts-huh-whats-that">Auxiliary user scripts</a></li>
-  <li>Zsh as the default shell:</li>
-  <ul>
-    <li><a href="https://github.com/ohmyzsh/ohmyzsh">OhMyZsh</a></li>
-    <ul>
-      <li>Additional plugins:</li>
-      <ul>
-        <li>
-          <a href="https://github.com/zsh-users/zsh-autosuggestions">
-            <code>
-              zsh-autosuggestions
-            </code>
-          </a>
-        </li>
-      </ul>
-      <li><a href="#theme-adjustments-why">Theme adjustments</a></li>
-    </ul>
-  </ul>
+  <li>Fish as the default shell</li>
+  <li><a href="#color-scheme">Color scheme</a></li>
 </ul>
 </details>
 
@@ -104,10 +86,10 @@ You can then run a container based on this image as follows:
 podman run --name container -t -d dev
 ```
 
-Since Zsh is the default shell, you can enter the container using the following command:
+Since Fish is the default shell, you can enter the container using the following command:
 
 ```bash
-podman exec -it container zsh
+podman exec -it container fish
 ```
 
 ### I don't see any password requests. Is that normal?
@@ -147,7 +129,7 @@ This will prompt for the `username`'s password. If you haven't done this yet,
 
 Instead of calling `ssh-add` every time you log-in, you can add your SSH key(s) using
 [`keychain`](https://linux.die.net/man/1/keychain). The corresponding lines are present
-in the `~/.zshrc`, just uncomment them and specify your keys.
+in the `~/.config/fish/config.fish`, just uncomment them and specify your keys.
 
 ### Auxiliary user scripts, huh? What's that?
 
@@ -159,7 +141,7 @@ Also, scripts to install the latest stable versions of Julia and Rust are includ
 
 They are located in `~/Scripts`.
 
-### Theme adjustments? Why?
+### Color scheme?
 
 Different terminals (like Xterm), programs (like Visual Studio Code) and utilities
 (like PuTTY) have their own color pallettes. So the current theme can look ugly depending
@@ -195,4 +177,4 @@ It's based on
 [`synthwave-everything`](https://atomcorp.github.io/themes/?theme=synthwave-everything).
 With everything else set correctly, the terminal window should look like this:
 
-![](https://github.com/paveloom-d/dev/raw/master/.github/pictures/color-theme.png)
+![](./.github/pictures/color-scheme.png)
