@@ -177,4 +177,4 @@ It's based on
 [`synthwave-everything`](https://atomcorp.github.io/themes/?theme=synthwave-everything).
 With everything else set correctly, the terminal window should look like this:
 
-![](./color-scheme.png)
+![](./.github/pictures/color-scheme.png)
