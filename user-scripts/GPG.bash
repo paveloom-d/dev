@@ -31,7 +31,7 @@ while true; do
 done
 
 # User's e-mail
-EMAIL=paveloomm@gmail.com
+EMAIL=paveloom@tuta.io
 EMAIL_Default=$EMAIL
 
 # Check if the current e-mail is what the user needs
@@ -79,6 +79,7 @@ git config --global push.default matching
 git config --global pull.rebase false
 git config --global commit.gpgsign true
 git config --global gpg.program gpg
+git config --global core.editor nano
 
 echo -e "\n${cyan}This script have also updated the ${mage}git${cyan} configuration. You can check it using ${mage}git config --list${cyan}.${reset}"
 

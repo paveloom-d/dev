@@ -8,6 +8,9 @@ ln -s /opt/bitnami/git/bin/git /usr/bin/git
 echo -e '\e[1;36m> Installing `apt-utils`...\e[0m'
 install_packages apt-utils >/dev/null 2>&1
 
+echo -e '\e[1;36m> Installing `iproute2`...\e[0m'
+install_packages iproute2 >/dev/null
+
 echo -e '\e[1;36m> Installing `exa`...\e[0m'
 install_packages exa >/dev/null
 
