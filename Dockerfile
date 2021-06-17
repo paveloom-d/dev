@@ -3,7 +3,7 @@ FROM docker.io/bitnami/git:2
 
 # Meta information
 LABEL maintainer="Pavel Sobolev (https://github.com/Paveloom)"
-LABEL version="0.6.0"
+LABEL version="0.6.1"
 LABEL description="This is an image containing paveloom's personal development environment."
 LABEL github-repository="https://github.com/paveloom-d/dev"
 LABEL image-repository="https://github.com/orgs/paveloom-d/packages/container/package/dev"

@@ -23,6 +23,7 @@ See all details under the spoiler:
   <li>Additional essential packages:</li>
   <ul>
     <li><code>apt-utils</code></li>
+    <li><code>iproute2</code></li>
     <li><code>exa</code></li>
     <li><code>ncurses-bin</code></li>
     <li><code>htop</code></li>

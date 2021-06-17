@@ -1,5 +1,5 @@
 function fish_prompt --description 'Write out the prompt'
-    set -l last_pipestatus $pipestatus
+    set -l pipestatus_ $pipestatus
 
     set -g __fish_git_prompt_show_informative_status 1
     set -g __fish_git_prompt_hide_untrackedfiles 1
@@ -21,12 +21,16 @@ function fish_prompt --description 'Write out the prompt'
     set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
     set -g __fish_git_prompt_color_cleanstate green --bold
 
-    set -l prefix_color
-    if test $pipestatus = 0
-       set prefix_color green
-    else
-       set prefix_color red
+    set -l prefix_color_ green
+    for i in $pipestatus
+       if test $i = 1
+          set prefix_color_ red
+          break
+       end
     end
+
+    set -l prefix_color
+    set -l prefix_color $prefix_color_
 
     # PWD
     echo -n (set_color $prefix_color)"~> "(set_color -o cyan)(basename (prompt_pwd))(set_color normal)
