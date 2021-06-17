@@ -26,6 +26,9 @@ set -gx DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 ## Set the quotes' color to green
 set -gx fish_color_quote green
 
+## Let the GPG program use the terminal connected to standard input
+set -x GPG_TTY (tty)
+
 # Aliases
 alias ls=exa
 alias cfg="nano ~/.config/fish/config.fish"
