@@ -34,4 +34,4 @@ alias ls=exa
 alias cfg="nano ~/.config/fish/config.fish"
 
 # Keychain
-# eval keychain -q --noask --eval id_rsa >/dev/null
+# eval (keychain -q --eval id_rsa) >/dev/null
